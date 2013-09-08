@@ -24,7 +24,7 @@
 
 $locale['ccp000'] = "Clankasse";
 $locale['ccp001'] = "Panel f&uuml;r die Verwaltung der Clankasse.";
-$locale['ccp002'] = "1.2";
+$locale['ccp002'] = "1.3";
 
 $locale['ccp100'] = "Verwaltung";
 $locale['ccp101'] = "Datum";

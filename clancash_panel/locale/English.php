@@ -24,7 +24,7 @@
 
 $locale['ccp000'] = "Clancash";
 $locale['ccp001'] = "Panel for manage your clan cashflow.";
-$locale['ccp002'] = "1.2";
+$locale['ccp002'] = "1.3";
 
 $locale['ccp100'] = "Administration";
 $locale['ccp101'] = "date:";
