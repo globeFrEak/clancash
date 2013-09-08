@@ -2,7 +2,7 @@
 /*---------------------------------------------------+
 | PHP-Fusion 7 Content Management System
 +----------------------------------------------------+
-| Copyright © 2002 - 2013 Nick Jones
+| Copyright Â© 2002 - 2013 Nick Jones
 | http://www.php-fusion.co.uk/
 |----------------------------------------------------+
 | Infusion: Clankasse

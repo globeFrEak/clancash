@@ -105,6 +105,6 @@ echo "<table class='tbl-border' cellspacing='1' cellpadding='0' style='width:100
       	require_once "ccp_beitrag.php";        
 	echo"</div>"; 
         echo "<div id='box_graph'"; if($opengraph=="off"){ echo "style='display:none'"; } echo ">\n";
-      	echo "<center><img src='".INFUSIONS."clancash_panel/ccp_graph.php?year='$view_jahr' alt='Ein-/Ausgaben' title='Ein-/Ausgaben'></center>";        
+      	echo "<center><img src='".INFUSIONS."clancash_panel/ccp_graph.php?year='$view_jahr' alt='".$locale['ccp161']."' title='".$locale['ccp161']."'></center>";        
 	echo"</div>";
 ?>

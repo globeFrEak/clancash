@@ -85,40 +85,40 @@ echo"
       }
       echo"</select></td>
   </tr>";
-  $data1 = dbarray(dbquery("SELECT * FROM ".DB_CCP_SETTINGS.""));
+  $data = dbarray(dbquery("SELECT * FROM ".DB_CCP_SETTINGS.""));
   echo"
   <tr>
   <td class='tbl1' align='center' width='50%'>".$locale['ccp149']."</td>
     <td class='tbl1' align='center' width='50%'>
       <select name='zeilen' class='textbox'>
-        <option".($data1['zeilen'] == 5 ? " selected" : "")." value='5' style='text-align:center'>5</option>
-        <option".($data1['zeilen'] == 10 ? " selected" : "")." value='10' style='text-align:center'>10</option>
-        <option".($data1['zeilen'] == 15 ? " selected" : "")." value='15' style='text-align:center'>15</option>
-        <option".($data1['zeilen'] == 20 ? " selected" : "")." value='20' style='text-align:center'>20</option>
-        <option".($data1['zeilen'] == 25 ? " selected" : "")." value='25' style='text-align:center'>25</option>
-        <option".($data1['zeilen'] == 30 ? " selected" : "")." value='30' style='text-align:center'>30</option>
-        <option".($data1['zeilen'] == 35 ? " selected" : "")." value='35' style='text-align:center'>35</option>
-        <option".($data1['zeilen'] == 40 ? " selected" : "")." value='40' style='text-align:center'>40</option>
-        <option".($data1['zeilen'] == 45 ? " selected" : "")." value='45' style='text-align:center'>45</option>
-        <option".($data1['zeilen'] == 50 ? " selected" : "")." value='50' style='text-align:center'>50</option>
+        <option".($data['zeilen'] == 5 ? " selected" : "")." value='5' style='text-align:center'>5</option>
+        <option".($data['zeilen'] == 10 ? " selected" : "")." value='10' style='text-align:center'>10</option>
+        <option".($data['zeilen'] == 15 ? " selected" : "")." value='15' style='text-align:center'>15</option>
+        <option".($data['zeilen'] == 20 ? " selected" : "")." value='20' style='text-align:center'>20</option>
+        <option".($data['zeilen'] == 25 ? " selected" : "")." value='25' style='text-align:center'>25</option>
+        <option".($data['zeilen'] == 30 ? " selected" : "")." value='30' style='text-align:center'>30</option>
+        <option".($data['zeilen'] == 35 ? " selected" : "")." value='35' style='text-align:center'>35</option>
+        <option".($data['zeilen'] == 40 ? " selected" : "")." value='40' style='text-align:center'>40</option>
+        <option".($data['zeilen'] == 45 ? " selected" : "")." value='45' style='text-align:center'>45</option>
+        <option".($data['zeilen'] == 50 ? " selected" : "")." value='50' style='text-align:center'>50</option>
       </select>
   </tr>
   <tr>
   <td class='tbl1' align='center' width='50%'>".$locale['ccp150']."</td>
     <td class='tbl1' align='center' width='50%'>";
-    echo"<input name='waehrung' class='textbox' style='width:40px; text-align:center' value='".$data1['waehrung']."'>          
+    echo"<input name='waehrung' class='textbox' style='width:40px; text-align:center' value='".$data['waehrung']."'>          
     </td>
   </tr>
   <tr>
   <td class='tbl1' align='center' width='50%'>".$locale['ccp159']."</td>
     <td class='tbl1' align='center' width='50%'>";
-    echo"<input type='checkbox' ".(($data1['member_show_all'] == 1) ? "checked='checked'": "")." name='member_show_all' value='1' style='width:10px; text-align:center'>
+    echo"<input type='checkbox' ".(($data['member_show_all'] == 1) ? "checked='checked'": "")." name='member_show_all' value='1' style='width:10px; text-align:center'>
     </td>
   </tr>
   <tr>
   <td class='tbl2' align='center' width='100%' colspan='2'><input class='button' type='submit' name='save' style='width:150' value='".$locale['ccp108']."'></td>
   </tr></table></form>";
-  
+    
 closetable();
   echo '</td></tr></table>';
 closetable();
