@@ -1,11 +1,10 @@
-#clancash
+clancash
 =========
 
 ClanCash Panel for PHP-Fusion 7.02.X
 
 
 ##Erstellt von:
----------------
 Infusion: Clankasse  
 Version: 1.2  
 Autor: RedDragon  
@@ -19,6 +18,5 @@ Email: globefreak@cwclan.de
 Homepage: http://www.germanys-united-legends.de  
 
 ##Beinhaltet:
--------------
 pChart - a PHP Charting library
 Made by: Jean-Damien POGOLOTTI
