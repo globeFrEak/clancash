@@ -20,7 +20,10 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +----------------------------------------------------*/
-if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");   
+if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!"); 
+
+//vars
+$fzeichen = "-";
 
 if (((isset($_POST['filter_jahr'])) || (isset($_POST['filter_monat'])) || (isset($_POST['filter_user'])) || (isset($_POST['filter_cat'])) || (isset($_POST['filter_konto'])) || (isset($_GET['year'])) || (isset($_GET['month'])) || (isset($_GET['user'])) || (isset($_GET['cat'])) || (isset($_GET['account']))) && !(isset($_POST['reset'])))
   {
