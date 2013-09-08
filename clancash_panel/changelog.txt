@@ -1,18 +1,17 @@
-changelog Clankass v1.2
+changelog Clankasse v1.2
 
-
--Umschreibung für PHP-FUSION v7.02
--Konten lassen sich bearbeiten --- löschen
--Kategorien lassen sich bearbeiten --- löschen
--Buchungen lassen sich bearbeiten --- löschen
--Member dürfen alle Buchungen sehen ja - nein (checkbox)
+-Umschreibung fÃ¼r PHP-FUSION v7.02
+-Konten lassen sich bearbeiten --- lÃ¶schen
+-Kategorien lassen sich bearbeiten --- lÃ¶schen
+-Buchungen lassen sich bearbeiten --- lÃ¶schen
+-Member dÃ¼rfen alle Buchungen sehen ja - nein (checkbox)
  > Wenn ja sind Einnahmen/Ausgaben auch als Flipbox mit Usernamen sichtbar
  > wenn nein sind nur eigene Zahlungen und Buchungen die keinem Benutzer zugeordnet 
  > sind sichtbar
  > keine Anzeige des Kontostand
 -Kassenadmins lassen sich auch aus Benutzergruppen erstellen mit voller 
- > Zugriffsberechtigung außer auf die settings.php
+ > Zugriffsberechtigung auï¿½er auf die settings.php
 -Variablenzuweisung neu gesetzt
--Änderung des Datenbankzugriffes von ".$prefix" auf ".DB_"
--Überarbeitung des copyrights mit namentlicher Erwähnung aller Authoren
+-ï¿½nderung des Datenbankzugriffes von ".$prefix" auf ".DB_"
+-ï¿½berarbeitung des copyrights mit namentlicher Erwï¿½hnung aller Authoren
 
