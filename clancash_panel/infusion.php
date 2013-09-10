@@ -110,7 +110,7 @@ $inf_deldbrow[1] = DB_PANELS." WHERE panel_filename='".$inf_folder."'";
 
 $inf_adminpanel[1] = array(
     "title" => $locale['ccp000'], 
-    "image" => "infusions/clancash_panel/images/admin.gif",
+    "image" => "../infusions/clancash_panel/images/admin.gif",
     "panel" => "ccp_settings_panel.php", 
     "rights" => "CCP" 
 );
