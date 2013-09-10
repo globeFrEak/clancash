@@ -10,8 +10,8 @@ changelog Clankasse v1.2
  > sind sichtbar
  > keine Anzeige des Kontostand
 -Kassenadmins lassen sich auch aus Benutzergruppen erstellen mit voller 
- > Zugriffsberechtigung au�er auf die settings.php
+ > Zugriffsberechtigung außer auf die settings.php
 -Variablenzuweisung neu gesetzt
--�nderung des Datenbankzugriffes von ".$prefix" auf ".DB_"
--�berarbeitung des copyrights mit namentlicher Erw�hnung aller Authoren
+-Änderung des Datenbankzugriffes von ".$prefix" auf ".DB_"
+-Überarbeitung des copyrights mit namentlicher Erwähnung aller Authoren
 
