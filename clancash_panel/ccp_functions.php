@@ -29,6 +29,7 @@ $set_admin_id = $data['cashadmin_groupid'];
 $b_per_page = $data['zeilen'];
 $is_admin = checkgroup($set_admin_id);
 $show_all = $data['member_show_all'];
+$show_names = $data['member_show_names'];
 $gespeichert = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:green;'><b>".$locale['ccp130']."</b></span></td></tr>\n</table>\n";
 $ngespeichert = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:red;'><b>".$locale['ccp132']."</b></span></td></tr>\n</table>\n";
 $geloescht = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:green;'><b>".$locale['ccp131']."</b></span></td></tr>\n</table>\n";

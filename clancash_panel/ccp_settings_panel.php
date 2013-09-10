@@ -41,7 +41,8 @@ if (isset($_POST['save'])) {
     member_groupid='".stripinput($_POST['member_id'])."',
     zeilen='".stripinput($_POST['zeilen'])."',
     waehrung='".stripinput($_POST['waehrung'])."',
-    member_show_all='".stripinput((isset($_POST['member_show_all'])? 1: 0))."'"
+    member_show_all='".stripinput((isset($_POST['member_show_all'])? 1: 0))."',
+    member_show_names='".stripinput((isset($_POST['member_show_names'])? 1: 0))."'"
     );
     echo $gespeichert;
     echo "<br>";
@@ -113,6 +114,12 @@ echo"
   <td class='tbl1' align='center' width='50%'>".$locale['ccp159']."</td>
     <td class='tbl1' align='center' width='50%'>";
     echo"<input type='checkbox' ".(($data['member_show_all'] == 1) ? "checked='checked'": "")." name='member_show_all' value='1' style='width:10px; text-align:center'>
+    </td>
+  </tr>
+  <tr>
+  <td class='tbl1' align='center' width='50%'>".$locale['ccp180']."</td>
+    <td class='tbl1' align='center' width='50%'>";
+    echo"<input type='checkbox' ".(($data['member_show_names'] == 1) ? "checked='checked'": "")." name='member_show_names' value='1' style='width:10px; text-align:center'>
     </td>
   </tr>
   <tr>

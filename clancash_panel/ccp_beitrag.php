@@ -65,12 +65,12 @@ echo"<form name='zahlungen' method='post' enctype='multipart/form-data' action='
                   echo"</tr>";
           if ($set_member_id == 0 || 101 || 102 || 103){
             if ($set_member_id == 101){
-                $result = dbquery("SELECT a.user_id, a.user_name FROM ".DB_USERS." AS a, ".DB_CCP_BUCHUNGEN." AS b WHERE b.jahr='$view_jahr' AND b.geloescht='0' AND a.user_id=b.user_id GROUP BY a.user_name ORDER BY a.user_name");                                
+                $result = dbquery("SELECT a.user_id, a.user_name, a.user_status FROM ".DB_USERS." AS a, ".DB_CCP_BUCHUNGEN." AS b WHERE b.jahr='$view_jahr' AND b.geloescht='0' AND a.user_id=b.user_id GROUP BY a.user_name ORDER BY a.user_name");                                
             } elseif($set_member_id == 102 || 103){
-                $result = dbquery("SELECT a.user_id, a.user_name FROM ".DB_USERS." AS a, ".DB_CCP_BUCHUNGEN." AS b WHERE a.user_level = ".$set_member_id." AND b.jahr='$view_jahr' AND b.geloescht='0' AND a.user_id=b.user_id GROUP BY a.user_name ORDER BY user_name");                              
+                $result = dbquery("SELECT a.user_id, a.user_name, a.user_status FROM ".DB_USERS." AS a, ".DB_CCP_BUCHUNGEN." AS b WHERE a.user_level = ".$set_member_id." AND b.jahr='$view_jahr' AND b.geloescht='0' AND a.user_id=b.user_id GROUP BY a.user_name ORDER BY user_name");                              
             }            
           } else {
-            $result = dbquery("SELECT a.user_id, a.user_name FROM ".DB_USERS." AS a, ".DB_CCP_BUCHUNGEN." AS b WHERE a.user_groups REGEXP('^\\\.{$set_member_id}$|\\\.{$set_member_id}\\\.|\\\.{$set_member_id}$') AND b.jahr='$view_jahr' AND b.geloescht='0' AND a.user_id=b.user_id GROUP BY a.user_name ORDER BY user_name");            
+            $result = dbquery("SELECT a.user_id, a.user_name, a.user_status FROM ".DB_USERS." AS a, ".DB_CCP_BUCHUNGEN." AS b WHERE a.user_groups REGEXP('^\\\.{$set_member_id}$|\\\.{$set_member_id}\\\.|\\\.{$set_member_id}$') AND b.jahr='$view_jahr' AND b.geloescht='0' AND a.user_id=b.user_id GROUP BY a.user_name ORDER BY user_name");            
           }          
             while ($data = dbarray($result)){              
               for ($count_monat = 1; $count_monat < 13; $count_monat++)
@@ -82,7 +82,11 @@ echo"<form name='zahlungen' method='post' enctype='multipart/form-data' action='
                   {
                   ${"col_".$nr} = (${"total_".$nr} > 0 ? "<a href='".INFUSIONS."clancash_panel/ccp_clancash.php?user=".$data['user_id']."&amp;year=$view_jahr&amp;month=$nr&amp;cat=all&amp;account=all'>".round(${"total_".$nr},2)." $set_symbol</a>" : "");
                   }
-              $username = $data['user_name'];
+              if($show_names == 1 || (iSUPERADMIN)){
+                  $username = profile_link($data['user_id'], $data['user_name'], $data['user_status']);
+              } else {
+                  $username = "xxxxx";
+              }              
               echo"<tr>
               <td class='$cell_color' align='center'>".$username."</td>\n";
               for ($c = 1; $c < 13; $c++){echo"<td class='$cell_color' align='center'>".${"col_".$c}."</td>\n";}

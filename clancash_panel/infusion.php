@@ -90,12 +90,13 @@ member_groupid int(6) NOT NULL,
 zeilen int(2) NOT NULL default '15',
 waehrung varchar(5) default 'EUR',
 member_show_all BOOL NOT NULL,
+member_show_names BOOL NOT NULL,
 PRIMARY KEY  (id)
 )ENGINE=MyISAM;";
 
-/*$inf_altertable_[1] = "ccp_settings ADD
-    member_show_all BOOL NOT NULL
-";*/
+$inf_altertable_[1] = DB_CCP_SETTINGS ."ADD
+    member_show_names BOOL NOT NULL
+";
 
 $inf_droptable[1] = DB_CCP_BUCHUNGEN;
 $inf_droptable[2] = DB_CCP_BUDGET;
