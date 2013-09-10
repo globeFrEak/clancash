@@ -107,9 +107,13 @@ $inf_insertdbrow_[1] = "";
 
 $inf_adminpanel[1] = array(
     "title" => $locale['ccp000'], 
-    "image" => "infusions/clancash_panel/images/admin.gif",
+    "image" => "../infusions/clancash_panel/images/admin.gif",
     "panel" => "ccp_settings_panel.php", 
     "rights" => "CCP" 
 );
-
+$inf_sitelink[1] = array(
+	"title" => $locale['install_003'],
+	"url" => "urlaub.php",
+	"visibility" => "101" // 0 - Guest / 101 - Member / 102 - Admin / 103 - Super Admin.
+)
 ?>
