@@ -103,7 +103,9 @@ $inf_droptable[3] = DB_CCP_KATEGORIEN;
 $inf_droptable[4] = DB_CCP_KONTEN;
 $inf_droptable[5] = DB_CCP_SETTINGS;
 
-$inf_insertdbrow_[1] = "";
+$inf_insertdbrow[1] = DB_PANELS." SET panel_name='".$inf_title."', panel_filename='".$inf_folder."', panel_side=1, panel_order='4', panel_type='file', panel_access='101', panel_display='0', panel_status='1' ";
+
+$inf_deldbrow[1] = DB_PANELS." WHERE panel_filename='".$inf_folder."'";
 
 $inf_adminpanel[1] = array(
     "title" => $locale['ccp000'], 
