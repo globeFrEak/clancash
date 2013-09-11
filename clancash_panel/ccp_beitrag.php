@@ -77,12 +77,13 @@ if ($set_member_id == 0 || 101 || 102 || 103) {
 while ($data = dbarray($result)) {
     for ($count_monat = 1; $count_monat < 13; $count_monat++) {
         $db_total = dbarray(dbquery("SELECT SUM(valuta) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='" . $data['user_id'] . "' AND geloescht='0'"));
-        ${"total_" . $count_monat} = $db_total['total'];
+        $summe = number_format($db_total['total'],2,',','.');
+        ${"total_" . $count_monat} = $summe;
     }
     $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
     $i++;
     for ($nr = 1; $nr < 13; $nr++) {
-        ${"col_" . $nr} = (${"total_" . $nr} > 0 ? "<a href='" . INFUSIONS . "clancash_panel/ccp_clancash.php?user=" . $data['user_id'] . "&amp;year=$view_jahr&amp;month=$nr&amp;cat=all&amp;account=all'>" . round(${"total_" . $nr}, 2) . " $set_symbol</a>" : "");
+        ${"col_" . $nr} = (${"total_" . $nr} > 0 ? "<a href='" . INFUSIONS . "clancash_panel/ccp_clancash.php?user=" . $data['user_id'] . "&amp;year=$view_jahr&amp;month=$nr&amp;cat=all&amp;account=all'>" . ${"total_" . $nr} . " $set_symbol</a>" : "");
     }
     if ($show_names == 1 || (iSUPERADMIN)) {
         $username = profile_link($data['user_id'], $data['user_name'], $data['user_status']);
@@ -103,12 +104,13 @@ if (dbrows($result) > 0) {
     while ($data = dbarray($result)) {
         for ($count_monat = 1; $count_monat < 13; $count_monat++) {
             $db_total = dbarray(dbquery("SELECT SUM(valuta) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='0' AND geloescht='0' AND kat_id='" . $data['id'] . "'"));
-            ${"total_" . $count_monat} = $db_total['total'];
+            $summe = number_format($db_total['total'],2,',','.');
+            ${"total_" . $count_monat} = $summe;
         }
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         $i++;
         for ($nr = 1; $nr < 13; $nr++) {
-            ${"col_" . $nr} = (${"total_" . $nr} <> 0 ? round(${"total_" . $nr}, 2) . "$set_symbol" : "");
+            ${"col_" . $nr} = (${"total_" . $nr} <> 0 ? ${"total_" . $nr} . " $set_symbol" : "");
         }
         echo"<tr>
               <td class='$cell_color' align='center'>" . $data['kat_klartext'] . "</td>\n";
