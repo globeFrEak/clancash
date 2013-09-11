@@ -94,8 +94,6 @@ $locale['ccp162'] = "Du musst eingelogt sein um weitere Details angezeigt zu bek
 $locale['ccp180'] = "Namen sichtbar";
 $locale['ccp181'] = "Anzeige wenn 'Namen sichtbar' deaktiviert' ist";
 
-$locale['ccp200'] = "<b>sonstige Buchungen nach Kategorie</b>";
-
 $locale['ccp999'] = "Wirklich löschen?";
 ?>
 
