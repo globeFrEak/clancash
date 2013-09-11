@@ -22,7 +22,7 @@
 +----------------------------------------------------*/
 // Infusion titles & description
 
-$locale['ccp000'] = "Clancash";
+$locale['ccp000'] = "ClanCash";
 $locale['ccp001'] = "Panel for manage your clan cashflow.";
 $locale['ccp002'] = "1.3";
 $locale['ccp003'] = "donation";
