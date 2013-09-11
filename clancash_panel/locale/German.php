@@ -86,13 +86,13 @@ $locale['ccp155'] = "Kommentar";
 $locale['ccp156'] = "Verwendungszweck";
 $locale['ccp157'] = "Nicht gespeichert!<br>Eintrag ist schon vorhanden.";
 $locale['ccp158'] = "Beitrags&uuml;bersicht";
-$locale['ccp159'] = "Member k&ouml;nnen alle Buchungen sehen";
+$locale['ccp159'] = "Buchungen sichtbar";
 $locale['ccp160'] = "entg&uuml;ltig L&ouml;schen";
 $locale['ccp161'] = "Einnahmen/Ausgaben";
 $locale['ccp162'] = "Du musst eingelogt sein um weitere Details angezeigt zu bekommen";
 
 $locale['ccp180'] = "Namen sichtbar";
-$locale['ccp181'] = "Angezeigter Name wenn 'Namen sichtbar' deaktiviert' ist";
+$locale['ccp181'] = "Anzeige wenn 'Namen sichtbar' deaktiviert' ist";
 
 $locale['ccp200'] = "<b>sonstige Buchungen nach Kategorie</b>";
 
