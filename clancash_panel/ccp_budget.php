@@ -30,7 +30,7 @@ if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) 
     include INFUSIONS."clancash_panel/locale/English.php";
 }
 
-include INFUSIONS."clancash_panel/ccp_functions.php";
+include_once INFUSIONS."clancash_panel/ccp_functions.php";
 
 if (!checkgroup($set_admin_id)) redirect("../../login.php");
 

@@ -30,7 +30,7 @@ if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) 
     include INFUSIONS."clancash_panel/locale/English.php";
 }
 
-require_once INFUSIONS."clancash_panel/ccp_functions.php";
+include_once INFUSIONS."clancash_panel/ccp_functions.php";
 
 $edit = (isset($_POST['edit'])) ? $_POST['edit'] : "";
 $id = (isset($_POST['id'])) ? $_POST['id'] : "";

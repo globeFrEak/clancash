@@ -30,6 +30,8 @@ if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) 
     include INFUSIONS."clancash_panel/locale/English.php";
 }
 
+include_once INFUSIONS."clancash_panel/ccp_functions.php";
+
 add_to_footer("<script type='text/javascript'>    
     if( $('#set_1').attr('checked')){ 
         $('.placeholder_set_1').hide();} 
@@ -42,8 +44,6 @@ add_to_footer("<script type='text/javascript'>
             $('.placeholder_'+e.target.id).fadeIn('slow');
         }
     });</script>");
-
-require_once INFUSIONS."clancash_panel/ccp_functions.php";
 
 if (!checkrights("CCP") || !defined("iAUTH") || !isset($_GET['aid']) || $_GET['aid'] != iAUTH) redirect("../../login.php");
 

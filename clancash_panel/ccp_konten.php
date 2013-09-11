@@ -29,7 +29,7 @@ if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) 
 } else {
     include INFUSIONS."clancash_panel/locale/English.php";
 }
-include INFUSIONS."clancash_panel/ccp_functions.php";
+include_once INFUSIONS."clancash_panel/ccp_functions.php";
 
 $del = (isset($_POST['del'])) ? $_POST['del'] : "";
 $edit = (isset($_POST['edit'])) ? $_POST['edit'] : "";
