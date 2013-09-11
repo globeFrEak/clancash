@@ -96,6 +96,3 @@ $locale['ccp181'] = "Anzeige wenn 'Namen sichtbar' deaktiviert' ist";
 
 $locale['ccp999'] = "Wirklich löschen?";
 ?>
-
-
-

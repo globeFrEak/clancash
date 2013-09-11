@@ -96,6 +96,3 @@ $locale['ccp181'] = "Display name when 'Members can see names' disabled";
 
 $locale['ccp999'] = "are u sure?";
 ?>
-
-
-
