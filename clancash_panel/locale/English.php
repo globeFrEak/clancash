@@ -92,6 +92,9 @@ $locale['ccp161'] = "income/expenditure";
 $locale['ccp162'] = "You have got to be logged in to shown more details";
 
 $locale['ccp180'] = "Members can see names";
+$locale['ccp181'] = "Display name when 'Members can see names' disabled";
+
+$locale['ccp200'] = "<b>Other postings by category</b>";
 
 $locale['ccp999'] = "are u sure?";
 ?>

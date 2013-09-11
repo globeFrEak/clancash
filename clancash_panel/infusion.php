@@ -90,11 +90,12 @@ zeilen int(2) NOT NULL default '15',
 waehrung varchar(5) default 'EUR',
 member_show_all BOOL NOT NULL,
 member_show_names BOOL NOT NULL,
+placeholder_name varchar(15) default 'xxxxx',
 PRIMARY KEY  (id)
 )ENGINE=MyISAM;";
 
 $inf_altertable_[1] = DB_CCP_SETTINGS ."ADD
-    member_show_names BOOL NOT NULL
+    member_show_names BOOL NOT NULL, placeholder_name varchar(15) default 'xxxxx'
 ";
 
 $inf_droptable[1] = DB_CCP_BUCHUNGEN;
@@ -103,7 +104,7 @@ $inf_droptable[3] = DB_CCP_KATEGORIEN;
 $inf_droptable[4] = DB_CCP_KONTEN;
 $inf_droptable[5] = DB_CCP_SETTINGS;
 
-$inf_insertdbrow[1] = DB_CCP_SETTINGS." SET cashadmin_groupid='103', member_groupid='101', zeilen='15', waehrung='€', member_show_all='1', member_show_names='0'";
+$inf_insertdbrow[1] = DB_CCP_SETTINGS." SET cashadmin_groupid='103', member_groupid='101', zeilen='15', waehrung='€', member_show_all='1', member_show_names='0', placeholder_name='xxxxx'";
 $inf_insertdbrow[2] = DB_CCP_KATEGORIEN." SET kat_klartext='".$locale['ccp003']."'";
 
 $inf_adminpanel[1] = array(

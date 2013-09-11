@@ -91,7 +91,10 @@ $locale['ccp160'] = "entg&uuml;ltig L&ouml;schen";
 $locale['ccp161'] = "Einnahmen/Ausgaben";
 $locale['ccp162'] = "Du musst eingelogt sein um weitere Details angezeigt zu bekommen";
 
-$locale['ccp180'] = "Member k&ouml;nnen alle Namen sehen";
+$locale['ccp180'] = "Namen sichtbar";
+$locale['ccp181'] = "Angezeigter Name wenn 'Namen sichtbar' deaktiviert' ist";
+
+$locale['ccp200'] = "<b>sonstige Buchungen nach Kategorie</b>";
 
 $locale['ccp999'] = "Wirklich löschen?";
 ?>

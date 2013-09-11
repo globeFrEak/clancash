@@ -85,7 +85,7 @@ echo"<form name='zahlungen' method='post' enctype='multipart/form-data' action='
               if($show_names == 1 || (iSUPERADMIN)){
                   $username = profile_link($data['user_id'], $data['user_name'], $data['user_status']);
               } else {
-                  $username = "xxxxx";
+                  $username = $placeholder_name;
               }              
               echo"<tr>
               <td class='$cell_color' align='center'>".$username."</td>\n";
@@ -93,7 +93,7 @@ echo"<form name='zahlungen' method='post' enctype='multipart/form-data' action='
               echo"</tr>";    
             }
             // Auslesen der Buchungen ohne User Bezug!!///
-            echo"<tr><td align='center' colspan='13'><b>sonstige Buchungen nach Kategorie</b></td>\n";
+            echo"<tr><td align='center' colspan='13'>".$locale['ccp200']."</td>\n";
             echo"</tr>"; 
             $result = dbquery("SELECT a.id, a.kat_klartext FROM ".DB_CCP_KATEGORIEN." AS a, ".DB_CCP_BUCHUNGEN." AS b WHERE b.geloescht='0' AND a.id=b.kat_id AND a.id!='3' GROUP BY a.id ORDER BY a.id");
             while ($data = dbarray($result)){              

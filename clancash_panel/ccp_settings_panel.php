@@ -30,6 +30,19 @@ if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) 
     include INFUSIONS."clancash_panel/locale/English.php";
 }
 
+add_to_footer("<script type='text/javascript'>    
+    if( $('#set_1').attr('checked')){ 
+        $('.placeholder_set_1').hide();} 
+    else { 
+        $('.placeholder_set_1').show();}
+    $(':checkbox').change(function(e) {
+        if($(this).is(':checked')){
+            $('.placeholder_'+e.target.id).fadeOut('slow');            
+        }else{           
+            $('.placeholder_'+e.target.id).fadeIn('slow');
+        }
+    });</script>");
+
 require_once INFUSIONS."clancash_panel/ccp_functions.php";
 
 if (!checkrights("CCP") || !defined("iAUTH") || !isset($_GET['aid']) || $_GET['aid'] != iAUTH) redirect("../../login.php");
@@ -42,7 +55,8 @@ if (isset($_POST['save'])) {
     zeilen='".stripinput($_POST['zeilen'])."',
     waehrung='".stripinput($_POST['waehrung'])."',
     member_show_all='".stripinput((isset($_POST['member_show_all'])? 1: 0))."',
-    member_show_names='".stripinput((isset($_POST['member_show_names'])? 1: 0))."'"
+    member_show_names='".stripinput((isset($_POST['member_show_names'])? 1: 0))."',
+    placeholder_name='".stripinput($_POST['placeholder_name'])."'"
     );
     echo $gespeichert;
     echo "<br>";
@@ -119,7 +133,13 @@ echo"
   <tr>
   <td class='tbl1' align='center' width='50%'>".$locale['ccp180']."</td>
     <td class='tbl1' align='center' width='50%'>";
-    echo"<input type='checkbox' ".(($data['member_show_names'] == 1) ? "checked='checked'": "")." name='member_show_names' value='1' style='width:10px; text-align:center'>
+    echo"<input id='set_1' type='checkbox' ".(($data['member_show_names'] == 1) ? "checked='checked'": "")." name='member_show_names' value='1' style='width:10px; text-align:center'>
+    </td>
+  </tr>
+  <tr>
+  <td class='tbl1 placeholder_set_1' align='center' width='50%'>".$locale['ccp181']."</td>
+    <td class='tbl1 placeholder_set_1' align='center' width='50%'>";
+    echo"<input name='placeholder_name' class='textbox' style='width:150px; text-align:center' value='".$data['placeholder_name']."'>
     </td>
   </tr>
   <tr>
