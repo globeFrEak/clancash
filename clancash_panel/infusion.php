@@ -31,7 +31,6 @@ if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) 
 }
 
 // Infusion general information
-
 $inf_title = $locale['ccp000'];
 $inf_version = $locale['ccp002'];
 $inf_developer = "RedDragon (v6) | globefreak (v7) | Sonic (v7.02) ";
@@ -104,9 +103,8 @@ $inf_droptable[3] = DB_CCP_KATEGORIEN;
 $inf_droptable[4] = DB_CCP_KONTEN;
 $inf_droptable[5] = DB_CCP_SETTINGS;
 
-$inf_insertdbrow[1] = DB_PANELS." SET panel_name='".$inf_title."', panel_filename='".$inf_folder."', panel_side=1, panel_order='2', panel_type='file', panel_access='101', panel_display='0', panel_status='1' ";
-
-$inf_deldbrow[1] = DB_PANELS." WHERE panel_filename='".$inf_folder."'";
+$inf_insertdbrow[1] = DB_CCP_SETTINGS." SET cashadmin_groupid='103', member_groupid='101', zeilen='15', waehrung='€', member_show_all='1', member_show_names='0'";
+$inf_insertdbrow[2] = DB_CCP_KATEGORIEN." SET kat_klartext='".$locale['ccp003']."'";
 
 $inf_adminpanel[1] = array(
     "title" => $locale['ccp000'], 
@@ -114,5 +112,4 @@ $inf_adminpanel[1] = array(
     "panel" => "ccp_settings_panel.php", 
     "rights" => "CCP" 
 );
-
 ?>
