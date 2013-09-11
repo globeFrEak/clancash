@@ -55,10 +55,9 @@ $summe = round($data['summe'],2);
 $summe = number_format($summe,2,',','.');
 $valuta = "<font style='font-size:150%'><b>$zeichen$summe $set_symbol</b></font>";
 
-echo"<script type='text/javascript'>\n
-      function ccp_ask_first(link)\n
-            {\n
-                return window.confirm('".$locale['ccp999']."');\n
-            }\n
-</script>\n";
+add_to_head("<script type='text/javascript'>
+    function ccp_ask_first(link){
+        return window.confirm('".$locale['ccp999']."');
+    }
+</script>");
 ?>

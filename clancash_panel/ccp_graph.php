@@ -23,7 +23,6 @@
 require_once "../../maincore.php";
 include INFUSIONS."clancash_panel/infusion_db.php";
 
-
 $akt_jahr = date('Y');
 $view_jahr = ($_GET['year'] ? $_GET['year'] : $akt_jahr);
 
@@ -54,14 +53,12 @@ while ($db_total = dbarraynum($result))
  include(CLASS_PATH."/pDraw.class.php");
  include(CLASS_PATH."/pImage.class.php");
  
- // Create and populate the pData object
- $MyData = new pData();  
- $MyData->addPoints($totalein,"Einnahmen");
- $MyData->addPoints($totalaus,"Ausgaben"); 
- $MyData->setAxisName(0,"Ein-/Ausgaben");
- $MyData->addPoints(array("Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"),"Monate");
- $MyData->setSerieDescription("Monate","Monat");
- $MyData->setAbscissa("Monate");
+ if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale']."_graph.php")) {
+    include INFUSIONS."clancash_panel/locale/".$settings['locale']."_graph.php";
+} else {
+    include INFUSIONS."clancash_panel/locale/English_graph.php";
+} 
+ 
 
  // Create the pChart object 
  $myPicture = new pImage(700,230,$MyData);
@@ -85,5 +82,4 @@ while ($db_total = dbarraynum($result))
 
  // Render the picture (choose the best way) 
  $myPicture->autoOutput(INFUSIONS."clancash_panel/pChart/cache/BarChart.png");
-
 ?>
