@@ -41,7 +41,7 @@ echo"
       include "ccp_valuta.php";
       include "ccp_filter.php";
       include "ccp_buchungen.php";
-	echo"</td>\n
+echo"</td>\n
   </tr>\n
 </table>\n";
 

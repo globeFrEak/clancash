@@ -135,9 +135,13 @@ echo "<form name='filter' method='post' enctype='multipart/form-data' action='".
                   <input type='hidden' name='filter_cat' value='all'>\n
                   <input type='hidden' name='filter_konto' value='all'>\n
                   <td width='60%' class='tbl1'>&nbsp;</td>";
-        echo"
-        <td align='center'><input type='submit' name='reset' class='button' style='width:75' value='".$locale['ccp129']."'></td>
-      </tr>
+
+if ((isset($_POST['reset']))){
+echo "<td align='center'></td>";   
+} elseif ((isset($_POST['filter_jahr'])) || (isset($_POST['filter_monat'])) || (isset($_POST['filter_user'])) || (isset($_POST['filter_cat'])) || (isset($_POST['filter_konto']))) {
+echo "<td align='center'><input type='submit' name='reset' class='button' style='width:75' value='".$locale['ccp129']."'></td>";    
+}
+echo "</tr>
       </table>
       </div></form>";
 ?>

@@ -22,12 +22,6 @@
 +----------------------------------------------------*/
 if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");
 
-if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) {
-    include INFUSIONS."clancash_panel/locale/".$settings['locale'].".php";
-} else {
-    include INFUSIONS."clancash_panel/locale/English.php";
-}
-
 if (!isset($rowstart) || !isNum($rowstart)) $rowstart = 0;
 if (dbrows(dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter")) == 0) echo $keintrag;
 else {
