@@ -92,7 +92,7 @@ while ($data = dbarray($result)) {
         $username = $name = $placeholder_name;
     }
     echo"<tr>
-              <td class='$cell_color' align='center'><img src='" . INFUSIONS . "clancash_panel/images/user_16.png' alt='" . $name . "'>&nbsp;" . $username . "</td>\n";
+              <td class='$cell_color' align='left'><img src='" . INFUSIONS . "clancash_panel/images/user_16.png' alt='" . $locale['user1'] . "&nbsp;" . $name . "' title='" . $locale['user1'] . "&nbsp;" . $name . "'>&nbsp;" . $username . "</td>\n";
     for ($c = 1; $c < 13; $c++) {
         echo"<td class='$cell_color' align='center'>" . ${"col_" . $c} . "</td>\n";
     }
@@ -114,7 +114,7 @@ if (dbrows($result) > 0) {
             ${"col_" . $nr} = (${"total_" . $nr} <> 0 ? ${"total_" . $nr} . " $set_symbol" : "");
         }
         echo"<tr>
-              <td class='$cell_color' align='center'><img src='" . INFUSIONS . "clancash_panel/images/cats_16.png' alt='" . $data['kat_klartext'] . "'>&nbsp;" . $data['kat_klartext'] . "</td>\n";
+              <td class='$cell_color' align='left'><img src='" . INFUSIONS . "clancash_panel/images/cats_16.png' alt='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "' title='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "'>&nbsp;" . $data['kat_klartext'] . "</td>\n";
         for ($c = 1; $c < 13; $c++) {
             echo"<td class='$cell_color' align='center'>" . ${"col_" . $c} . "</td>\n";
         }
