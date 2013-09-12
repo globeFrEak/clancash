@@ -21,7 +21,7 @@
 | written permission from the original author(s).
 +----------------------------------------------------*/
 if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");
-
+$rowstart = $_GET['rowstart'];
 if (!isset($rowstart) || !isNum($rowstart)) $rowstart = 0;
 if (dbrows(dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter")) == 0) echo $keintrag;
 else {
