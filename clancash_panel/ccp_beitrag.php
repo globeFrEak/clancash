@@ -77,7 +77,7 @@ if ($set_member_id == 0 || 101 || 102 || 103) {
 while ($data = dbarray($result)) {
     for ($count_monat = 1; $count_monat < 13; $count_monat++) {
         $db_total = dbarray(dbquery("SELECT SUM(valuta) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='" . $data['user_id'] . "' AND geloescht='0'"));
-        $summe = number_format($db_total['total'],2,',','.');
+        $summe = number_format($db_total['total'], 2, ',', '.');
         ${"total_" . $count_monat} = $summe;
     }
     $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
@@ -87,11 +87,12 @@ while ($data = dbarray($result)) {
     }
     if ($show_names == 1 || (iSUPERADMIN)) {
         $username = profile_link($data['user_id'], $data['user_name'], $data['user_status']);
+        $name = $data['user_name'];
     } else {
-        $username = $placeholder_name;
+        $username = $name = $placeholder_name;
     }
     echo"<tr>
-              <td class='$cell_color' align='center'>" . $username . "</td>\n";
+              <td class='$cell_color' align='center'><img src='" . INFUSIONS . "clancash_panel/images/user_16.png' alt='" . $name . "'>&nbsp;" . $username . "</td>\n";
     for ($c = 1; $c < 13; $c++) {
         echo"<td class='$cell_color' align='center'>" . ${"col_" . $c} . "</td>\n";
     }
@@ -104,7 +105,7 @@ if (dbrows($result) > 0) {
     while ($data = dbarray($result)) {
         for ($count_monat = 1; $count_monat < 13; $count_monat++) {
             $db_total = dbarray(dbquery("SELECT SUM(valuta) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='0' AND geloescht='0' AND kat_id='" . $data['id'] . "'"));
-            $summe = number_format($db_total['total'],2,',','.');
+            $summe = number_format($db_total['total'], 2, ',', '.');
             ${"total_" . $count_monat} = $summe;
         }
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
@@ -113,7 +114,7 @@ if (dbrows($result) > 0) {
             ${"col_" . $nr} = (${"total_" . $nr} <> 0 ? ${"total_" . $nr} . " $set_symbol" : "");
         }
         echo"<tr>
-              <td class='$cell_color' align='center'>" . $data['kat_klartext'] . "</td>\n";
+              <td class='$cell_color' align='center'><img src='" . INFUSIONS . "clancash_panel/images/cats_16.png' alt='" . $data['kat_klartext'] . "'>&nbsp;" . $data['kat_klartext'] . "</td>\n";
         for ($c = 1; $c < 13; $c++) {
             echo"<td class='$cell_color' align='center'>" . ${"col_" . $c} . "</td>\n";
         }
