@@ -5,7 +5,7 @@
 | Copyright © 2002 - 2013 Nick Jones
 | http://www.php-fusion.co.uk/
 |----------------------------------------------------+
-| Infusion: Clankasse
+| Infusion: ClanCash
 | Filename: ccp_admin_panel.php
 | Author: 
 | RedDragon(v6) 	http://www.efc-funclan.de
