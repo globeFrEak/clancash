@@ -50,10 +50,9 @@ $ed_user_id = "0";
 $ed_check_p = "selected ";
 
 $data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM ".DB_CCP_BUCHUNGEN." WHERE geloescht='0'"));
-($data['summe'] >= 0 ? $zeichen = "" : "-");
 $summe = round($data['summe'],2);
 $summe = number_format($summe,2,',','.');
-$valuta = "<font style='font-size:150%'><b>$zeichen$summe $set_symbol</b></font>";
+$valuta = "<font style='font-size:150%'><b>$summe $set_symbol</b></font>";
 
 add_to_head("<script type='text/javascript'>
     function ccp_ask_first(link){

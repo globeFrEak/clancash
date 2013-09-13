@@ -61,11 +61,10 @@ $filter1 = ($filter2 != '' || $filter3 != '' || $filter4 != '' || $filter5 != ''
 $filter = "$filter1$filter2$and1$filter3$and2$filter4$and3$filter5$and4$filter6$and5$filter7";
 $and = ($filter == '' && $is_admin == 1 ? "WHERE geloescht='0'" : "AND geloescht='0'");
 $data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM ".DB_CCP_BUCHUNGEN." $filter1$filter2$and1$filter3$and2$filter4$and3$filter5$and4$filter6$and5$filter7 $and"));
-($data['summe'] >= 0 ? $fzeichen = "" : "-");
 
 $fsumme = round($data['summe'],2);
 $fsumme = number_format($fsumme,2,',','.');
-$fvaluta = "$fzeichen$fsumme $set_symbol";
+$fvaluta = $fsumme."&nbsp;".$set_symbol;
 //echo "$filter";   //Filter debugging
 echo "<form name='filter' method='post' enctype='multipart/form-data' action='".FUSION_SELF."'>
       <div>
