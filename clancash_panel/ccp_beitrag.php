@@ -83,7 +83,11 @@ while ($data = dbarray($result)) {
     $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
     $i++;
     for ($nr = 1; $nr < 13; $nr++) {
-        ${"col_" . $nr} = (${"total_" . $nr} > 0 ? "<a href='" . INFUSIONS . "clancash_panel/ccp_clancash.php?user=" . $data['user_id'] . "&amp;year=$view_jahr&amp;month=$nr&amp;cat=all&amp;account=all'>" . ${"total_" . $nr} . " $set_symbol</a>" : "");
+        if (${"total_" . $nr} > 0 || ${"total_" . $nr} < 0) {
+            ${"col_" . $nr} = "<a href='" . INFUSIONS . "clancash_panel/ccp_clancash.php?user=" . $data['user_id'] . "&amp;year=$view_jahr&amp;month=$nr&amp;cat=all&amp;account=all'>" . ${"total_" . $nr} . " $set_symbol</a>";
+        } else {
+            ${"col_" . $nr} = "";
+        }
     }
     if ($show_names == 1 || (iSUPERADMIN)) {
         $username = profile_link($data['user_id'], $data['user_name'], $data['user_status']);
