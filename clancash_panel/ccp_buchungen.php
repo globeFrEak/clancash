@@ -21,8 +21,12 @@
 | written permission from the original author(s).
 +----------------------------------------------------*/
 if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");
-$rowstart = $_GET['rowstart'];
-if (!isset($rowstart) || !isNum($rowstart)) $rowstart = 0;
+
+if (!isset($_GET['rowstart']) || !isNum($_GET['rowstart'])) {
+    $rowstart = 0;
+} else {
+    $rowstart = $_GET['rowstart'];
+}
 if (dbrows(dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter")) == 0) echo $keintrag;
 else {
 $result = dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter ORDER BY jahr DESC, monat DESC, tag DESC LIMIT $rowstart,$b_per_page");

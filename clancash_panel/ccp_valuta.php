@@ -37,12 +37,12 @@ $stats_jahr = (isset($_POST['stats_jahr'])) ? $_POST['stats_jahr'] : $akt_jahr;
 echo "<table class='tbl-border' cellspacing='1' cellpadding='0' style='width:100%'>
       <tr>";
 if (checkgroup("$set_admin_id") || $show_all == 1) {
-    echo "<td align='center' ><img onclick=\"javascript:flipBox('view')\" name='b_view' border='0' src='" . THEME . "images/panel_$box_img_view.gif'></td>
+    echo "<td align='center' ><img onclick=\"javascript:flipBox('view')\" name='b_view' border='0' src='" . INFUSIONS . "clancash_panel/images/beitrag_$box_img_view.png'></td>
 	<td align='left' ><span onclick=\"javascript:flipBox('view')\" style='cursor:pointer'>" . $locale['ccp158'] . "</span></td>
-        <td align='center' ><img onclick=\"javascript:flipBox('graph')\" name='b_graph' border='0' src='" . THEME . "images/panel_$box_img_graph.gif'></td>
+        <td align='center' ><img onclick=\"javascript:flipBox('graph')\" name='b_graph' border='0' src='" . INFUSIONS . "clancash_panel/images/einaus_$box_img_graph.png'></td>
         <td align='left' ><span onclick=\"javascript:flipBox('graph')\" style='cursor:pointer'>" . $locale['ccp161'] . "</span></td>";
 }
-echo "<td align='center' ><img onclick=\"javascript:flipBox('konten')\" name='b_konten' border='0' src='" . THEME . "images/panel_$box_img_konto.gif'></td>
+echo "<td align='center' ><img onclick=\"javascript:flipBox('konten')\" name='b_konten' border='0' src='" . INFUSIONS . "clancash_panel/images/konto_$box_img_konto.png'></td>
         <td align='left' ><span onclick=\"javascript:flipBox('konten')\" style='cursor:pointer'>" . $locale['ccp151'] . "</span></td>";
 if (checkgroup("$set_admin_id") || $show_all == 1) {
     echo "<td align='right' >" . $locale['ccp152'] . ": $valuta</td>\n";
