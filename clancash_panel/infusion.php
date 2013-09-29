@@ -79,6 +79,12 @@ iban varchar(34) default NULL,
 swift varchar(11) default NULL,  
 bank varchar(40) NOT NULL,  
 zweck varchar(54) NOT NULL,
+paypal_email varchar(200) NOT NULL,
+paypal_button varchar(200) NOT NULL,
+paypal_submit_button varchar(200) NOT NULL,
+paypal_cancel_url varchar(200) default NULL,
+paypal_thanks_url varchar(200) default NULL,
+paypal_beitrag_checked tinyint(2) NOT NULL default '1',
 PRIMARY KEY  (id)
 )ENGINE=MyISAM;";
 
@@ -94,6 +100,14 @@ placeholder_name varchar(15) default 'xxxxx',
 PRIMARY KEY  (id)
 )ENGINE=MyISAM;";
 
+$inf_newtable[6] = DB_CCP_PAYPAL." (
+id int(11) NOT NULL auto_increment,
+name varchar(32) default NULL,
+subtype varchar(32) default NULL,
+value decimal(8,2) NOT NULL default '10.00',
+PRIMARY KEY  (id)
+) ENGINE=MyISAM;";
+
 $inf_altertable_[1] = DB_CCP_SETTINGS ."ADD
     member_show_names BOOL NOT NULL, placeholder_name varchar(15) default 'xxxxx'
 ";
@@ -103,9 +117,14 @@ $inf_droptable[2] = DB_CCP_BUDGET;
 $inf_droptable[3] = DB_CCP_KATEGORIEN;
 $inf_droptable[4] = DB_CCP_KONTEN;
 $inf_droptable[5] = DB_CCP_SETTINGS;
+$inf_droptable[6] = DB_CCP_PAYPAL;
 
-$inf_insertdbrow[1] = DB_CCP_SETTINGS." SET cashadmin_groupid='103', member_groupid='101', zeilen='15', waehrung='€', member_show_all='1', member_show_names='0', placeholder_name='xxxxx'";
+$inf_insertdbrow[1] = DB_CCP_SETTINGS." SET cashadmin_groupid='103', member_groupid='101', zeilen='15', waehrung='€', member_show_all='1', member_show_names='0', placeholder_name='xxxxx', paypal='1'";
 $inf_insertdbrow[2] = DB_CCP_KATEGORIEN." SET kat_klartext='".$locale['ccp003']."'";
+$inf_insertdbrow[3] = DB_CCP_PAYPAL." VALUES ('1','Betrag', '1', '5.00')";
+$inf_insertdbrow[4] = DB_CCP_PAYPAL." VALUES ('2','Betrag', '2', '10.00')";
+$inf_insertdbrow[5] = DB_CCP_PAYPAL." VALUES ('3','Betrag', '3', '15.00')";
+$inf_insertdbrow[6] = DB_CCP_PAYPAL." VALUES ('4','Betrag', '4', '20.00')";
 
 $inf_adminpanel[1] = array(
     "title" => $locale['ccp000'], 
