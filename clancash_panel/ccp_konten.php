@@ -41,6 +41,14 @@ $blz = (isset($_POST['blz'])) ? $_POST['blz'] : "";
 $iban = (isset($_POST['iban'])) ? $_POST['iban'] : "";
 $swift = (isset($_POST['swift'])) ? $_POST['swift'] : "";
 $bank = (isset($_POST['bank'])) ? $_POST['bank'] : "";
+$paypal_email = (isset($_POST['paypal_email'])) ? $_POST['paypal_email'] : "";
+$paypal_button = (isset($_POST['paypal_button'])) ? $_POST['paypal_button'] : "";
+$paypal_submit_button = (isset($_POST['paypal_submit_button'])) ? $_POST['paypal_submit_button'] : "";
+$paypal_cancel_url = (isset($_POST['paypal_cancel_url'])) ? $_POST['paypal_cancel_url'] : "";
+$paypal_thanks_url = (isset($_POST['paypal_thanks_url'])) ? $_POST['paypal_thanks_url'] : "";
+$paypal_beitrag_checked = (isset($_POST['paypal_beitrag_checked'])) ? $_POST['paypal_beitrag_checked'] : "";
+$don_amount_checked = (isset($_POST['don_amount_checked'])) ? $_POST['don_amount_checked'] : "";
+
 $ed_konto_id = (isset($_POST['ed_konto_id'])) ? $_POST['ed_konto_id'] : "";
 $ed_name = (isset($_POST['ed_name'])) ? $_POST['ed_name'] : "";
 $ed_inhaber = (isset($_POST['ed_inhaber'])) ? $_POST['ed_inhaber'] : "";
@@ -50,6 +58,12 @@ $ed_iban = (isset($_POST['ed_iban'])) ? $_POST['ed_iban'] : "";
 $ed_swift = (isset($_POST['ed_swift'])) ? $_POST['ed_swift'] : "";
 $ed_bank = (isset($_POST['ed_bank'])) ? $_POST['ed_bank'] : "";
 $ed_zweck = (isset($_POST['ed_zweck'])) ? $_POST['ed_zweck'] : "";
+$ed_paypal_email = (isset($_POST['ed_paypal_email'])) ? $_POST['ed_paypal_email'] : "";
+$ed_paypal_button = (isset($_POST['ed_paypal_button'])) ? $_POST['ed_paypal_button'] : "";
+$ed_paypal_submit_button = (isset($_POST['ed_paypal_submit_button'])) ? $_POST['ed_paypal_submit_button'] : "";
+$ed_paypal_cancel_url = (isset($_POST['ed_paypal_cancel_url'])) ? $_POST['ed_paypal_cancel_url'] : "";
+$ed_paypal_thanks_url = (isset($_POST['ed_paypal_thanks_url'])) ? $_POST['ed_paypal_thanks_url'] : "";
+$ed_paypal_beitrag_checked = (isset($_POST['ed_paypal_beitrag_checked'])) ? $_POST['ed_paypal_beitrag_checked'] : "";
 
 if (!checkgroup($set_admin_id)) redirect("../../login.php");
 
@@ -74,6 +88,12 @@ if ((isset($_GET['edit'])) != ''){
   $ed_swift = $update['swift'];
   $ed_bank = $update['bank'];
   $ed_zweck = $update['zweck'];
+  $ed_paypal_email = $update['paypal_email'];
+  $ed_paypal_button = $update['paypal_button'];
+  $ed_paypal_submit_button = $update['paypal_submit_button'];
+  $ed_paypal_cancel_url = $update['paypal_cancel_url'];
+  $ed_paypal_thanks_url = $update['paypal_thanks_url'];
+  $ed_paypal_beitrag_checked = $update['paypal_beitrag_checked'];
 }
 
 if (isset($_POST['save'])) {     
@@ -88,7 +108,13 @@ if (isset($_POST['save'])) {
       iban = '".stripinput($_POST['iban'])."',
       swift = '".stripinput($_POST['swift'])."',
       bank = '".stripinput($_POST['bank'])."',
-      zweck = '".stripinput($_POST['zweck'])."'");
+      zweck = '".stripinput($_POST['zweck'])."',
+	  paypal_email = '".stripinput($_POST['paypal_email'])."',
+	  paypal_button = '".stripinput($_POST['paypal_button'])."',
+	  paypal_submit_button = '".stripinput($_POST['paypal_submit_button'])."',
+	  paypal_cancel_url = '".stripinput($_POST['paypal_cancel_url'])."',
+	  paypal_thanks_url = '".stripinput($_POST['paypal_thanks_url'])."',
+	  paypal_beitrag_checked = '".stripinput($_POST['paypal_beitrag_checked'])."'");
       echo $gespeichert;
       tablebreak();
      }    
@@ -96,7 +122,8 @@ if (isset($_POST['save'])) {
 
 if (isset($_POST['update'])) {
     if ($_POST['konto_id'] == '' || $_POST['name'] == '' || $_POST['inhaber'] == '' || $_POST['blz'] == '' || $_POST['zweck'] == ''){ 
-    echo $ngespeichert;tablebreak();}
+    echo $ngespeichert;
+	tablebreak();}
     else {
 dbquery("UPDATE ".DB_CCP_KONTEN." SET
       konto_id = '".stripinput($_POST['konto_id'])."',
@@ -106,11 +133,28 @@ dbquery("UPDATE ".DB_CCP_KONTEN." SET
       iban = '".stripinput($_POST['iban'])."',
       swift = '".stripinput($_POST['swift'])."',
       bank = '".stripinput($_POST['bank'])."',
-      zweck = '".stripinput($_POST['zweck'])."' WHERE id='$ed_id'");
+      zweck = '".stripinput($_POST['zweck'])."',
+	  paypal_email = '".stripinput($_POST['paypal_email'])."',
+	  paypal_button = '".stripinput($_POST['paypal_button'])."',
+	  paypal_submit_button = '".stripinput($_POST['paypal_submit_button'])."',
+	  paypal_cancel_url = '".stripinput($_POST['paypal_cancel_url'])."',
+	  paypal_thanks_url = '".stripinput($_POST['paypal_thanks_url'])."',
+	  paypal_beitrag_checked = '".stripinput($_POST['paypal_beitrag_checked'])."' WHERE id='$ed_id'");
+}	
+
+	$var_don_amount_1 = stripinput($_POST['var_don_amount_1']);
+	$var_don_amount_2 = stripinput($_POST['var_don_amount_2']);
+	$var_don_amount_3 = stripinput($_POST['var_don_amount_3']);
+	$var_don_amount_4 = stripinput($_POST['var_don_amount_4']);
+	
+	$result = dbquery("UPDATE ".DB_CCP_PAYPAL." SET value='$var_don_amount_1' WHERE subtype=1");
+	$result = dbquery("UPDATE ".DB_CCP_PAYPAL." SET value='$var_don_amount_2' WHERE subtype=2");
+	$result = dbquery("UPDATE ".DB_CCP_PAYPAL." SET value='$var_don_amount_3' WHERE subtype=3");
+	$result = dbquery("UPDATE ".DB_CCP_PAYPAL." SET value='$var_don_amount_4' WHERE subtype=4");
       echo $gespeichert;
       tablebreak();
      }
-}
+
 
 opentable($locale['ccp000']);
 echo"<table width='100%' border='0'>
@@ -153,6 +197,102 @@ echo"<table width='100%' border='0'>
             <td class='tbl1' align='center'>".$locale['ccp142'].":</td>
             <td class='tbl1' align='center'><input name='swift' class='textbox' value='$ed_swift' maxlength='11' size='12' style='width:100%'></td>
           </tr><tr>";
+		$data = dbarray(dbquery("SELECT paypal FROM ".DB_CCP_SETTINGS.""));  
+		if ($data['paypal'] != '0'){
+		    opentable($locale['ccp188']);
+    echo"<form name='chasadmin' method='post' enctype='multipart/form-data' action='".FUSION_SELF."'>";
+     echo"<table align='center' class='tbl-border' width='100%'>";
+		echo"
+		  <tr>
+            <td class='tbl1' align='center' width='30%'>".$locale['ccp183'].":$required</td>
+            <td class='tbl1' align='center' width='70%'><input name='paypal_email' class='textbox' value='$ed_paypal_email' maxlength='200' size='200' style='width:100%'></td>
+          </tr>
+		  
+		  <tr>
+            <td class='tbl1' align='center'>".$locale['ccp184'].":$required</td>";
+			If ($ed_paypal_button =='') 
+			 echo"<td title='".$locale['ccp192']."' class='tbl1' align='center'><input name='paypal_button' class='textbox' value='https://www.paypal.com/de_DE/i/btn/x-click-but21.gif' maxlength='200' size='200' style='width:100%'></td></tr>";
+			else 
+			 echo"<td title='".$locale['ccp192']."' class='tbl1' align='center'><input name='paypal_button' class='textbox' value='$ed_paypal_button' maxlength='200' size='200' style='width:100%'></td>
+          </tr>";
+		  
+		  echo"
+		  <tr>
+            <td class='tbl1' align='center'>".$locale['ccp185'].":$required</td>";
+			If ($ed_paypal_submit_button =='') 
+			 echo"<td title='".$locale['ccp192']."' class='tbl1' align='center'><input name='paypal_submit_button' class='textbox' value='https://www.paypal.com/de_DE/i/btn/x-click-but04.gif' maxlength='200' size='200' style='width:100%'></td></tr>";
+			else 
+            echo"<td title='".$locale['ccp192']."' class='tbl1' align='center'><input name='paypal_submit_button' class='textbox' value='$ed_paypal_submit_button' maxlength='200' size='200' style='width:100%'></td>
+          </tr>";
+		  
+		  echo"
+		  <tr>
+            <td class='tbl1' align='center'>".$locale['ccp186'].":$required</td>
+            <td class='tbl1' align='center'><input name='paypal_cancel_url' class='textbox' value='$ed_paypal_cancel_url' maxlength='200' size='200' style='width:100%'></td>
+          </tr>
+		  <tr>
+            <td class='tbl1' align='center'>".$locale['ccp187'].":$required</td>
+            <td class='tbl1' align='center'><input name='paypal_thanks_url' class='textbox' value='$ed_paypal_thanks_url' maxlength='200' size='200' style='width:100%'></td>
+          </tr>
+		  ";
+		  
+	if (!isset($_GET['step'])){
+  $step = "donationoptions";
+}else{
+  $step = $_GET['step'];
+}
+
+//Start validation code here! JScript code to validate form fields.
+//include INFUSIONS."donation_manager_panel/includes/inc_jscript_validation_code.htm";
+
+$get_config = dbquery("SELECT * FROM ".DB_CCP_PAYPAL);
+while($data = dbarray($get_config)) {
+	$check_show_amtcheck_1 = "";
+	$check_show_amtcheck_2 = "";
+	$check_show_amtcheck_3 = "";
+	$check_show_amtcheck_4 = "";
+
+	switch($paypal_beitrag_checked)
+	{
+		case 1:
+			$check_show_amtcheck_1 = "selected";
+			break;
+		case 2:
+			$check_show_amtcheck_2 = "selected";
+			break;
+		case 3:
+			$check_show_amtcheck_3 = "selected";
+			break;
+		case 4:
+			$check_show_amtcheck_4 = "selected";
+			break;
+	}
+
+}
+
+//Get donation amounts from db...
+$get_donation_amounts = dbquery("SELECT subtype, value FROM ".DB_CCP_PAYPAL);
+while($data = dbarray($get_donation_amounts)) {
+	switch($data['subtype'])
+	{
+		case 1:
+			$don_amount_value_1 = $data['value'];
+			break;
+		case 2:
+			$don_amount_value_2 = $data['value'];
+			break;
+		case 3:
+			$don_amount_value_3 = $data['value'];
+			break;
+		case 4:
+			$don_amount_value_4 = $data['value'];
+			break;
+	}
+}
+
+	include INFUSIONS."clancash_panel/ccp_paypal_admin_form.php";
+
+}		   
             if ($edit != "") 
               echo"<td align='center' class='tbl2' colspan='2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='".$locale['ccp108']."'></td>";
             else 
@@ -177,6 +317,7 @@ echo"<table width='100%' border='0'>
       }
     echo"</table>";}
     closetable();
+	closetable();
 
 echo "</td></tr></table>";
 closetable();
