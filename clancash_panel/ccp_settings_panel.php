@@ -125,6 +125,12 @@ echo"
     </td>
   </tr>
   <tr>
+  <td class='tbl1' align='center' width='50%'>".$locale['ccp182']."</td>
+    <td class='tbl1' align='center' width='50%'>";
+    echo"<input type='checkbox' ".(($data['paypal'] == 1) ? "checked='checked'": "")." name='paypal' value='1' style='width:10px; text-align:center'>
+    </td>
+  </tr>
+  <tr>
   <td class='tbl1' align='center' width='50%'>".$locale['ccp159']."</td>
     <td class='tbl1' align='center' width='50%'>";
     echo"<input type='checkbox' ".(($data['member_show_all'] == 1) ? "checked='checked'": "")." name='member_show_all' value='1' style='width:10px; text-align:center'>
