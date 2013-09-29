@@ -93,6 +93,23 @@ $locale['ccp162'] = "Du musst eingelogt sein um weitere Details angezeigt zu bek
 
 $locale['ccp180'] = "Namen sichtbar";
 $locale['ccp181'] = "Anzeige wenn 'Namen sichtbar' deaktiviert' ist";
+$locale['ccp182'] = "Paypal-Funktion aktivieren?";
+$locale['ccp183'] = "Paypal-Emailadresse";
+$locale['ccp184'] = "Paypal-Button";
+$locale['ccp185'] = "Paypal-Submit-Button";
+$locale['ccp186'] = "Paypal-Abbruch-URL";
+$locale['ccp187'] = "Paypal-Best&auml;tigungs-URL";
+$locale['ccp188'] = "Paypal-Einstellungen";
+$locale['ccp189'] = "Standardbetrag w&auml;hlen";
+$locale['ccp190'] = "Beitragsverwaltung";
+$locale['ccp191'] = "Beitragsh&ouml;he angeben Bsp: 10.00";
+$locale['ccp192'] = "Die Adresse muss mit  http://...  beginnen";
+$locale['ccp193'] = "Nummer";
+$locale['ccp194'] = "Betrag";
+$locale['ccp195'] = "Bezeichnung";
+$locale['ccp196'] = "Zahlung per Paypal";
+$locale['ccp197'] = "Betrag ausw&auml;hlen und fortfahren";
+$locale['ccp198'] = "Clanbeitrag";
 
 $locale['ccp999'] = "Wirklich löschen?";
 ?>
