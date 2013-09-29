@@ -93,6 +93,10 @@ while ($data = dbarray($result)) {
               <td align='left'><br>&nbsp;" . $data['zweck'] . "</td>
             </tr>
             </table><br>";
+            $data1 = dbarray(dbquery("SELECT paypal FROM ".DB_CCP_SETTINGS.""));  
+			if ($data1['paypal'] != '0'){
+			echo" <a href='".INFUSIONS."clancash_panel/ccp_paypal.php'><img src='".$data['paypal_button']."' border='0'></a>";
+}
 }
 echo"</td></tr></table></div>
           <div id='box_view'";
