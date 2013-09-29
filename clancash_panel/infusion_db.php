@@ -41,4 +41,8 @@ if (!defined("DB_CCP_KONTEN")) {
 if (!defined("DB_CCP_SETTINGS")) {
     define("DB_CCP_SETTINGS", DB_PREFIX."ccp_settings");
 }
+
+if (!defined("DB_CCP_PAYPAL")) {
+    define("DB_CCP_PAYPAL", DB_PREFIX."ccp_paypal");
+}
 ?>
