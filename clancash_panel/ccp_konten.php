@@ -76,7 +76,6 @@ if ((isset($_GET['del'])) != ''){
   tablebreak();
 }
 
-
 if ((isset($_GET['edit'])) != ''){
   $edit = $_GET['edit'];
   $update = dbarray(dbquery("SELECT * FROM ".DB_CCP_KONTEN." WHERE id='$edit'"));
@@ -154,7 +153,6 @@ dbquery("UPDATE ".DB_CCP_KONTEN." SET
       echo $gespeichert;
       tablebreak();
      }
-
 
 opentable($locale['ccp000']);
 echo"<table width='100%' border='0'>
