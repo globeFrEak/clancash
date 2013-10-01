@@ -194,7 +194,7 @@ echo"<table width='100%' border='0'>
           <tr>
             <td class='tbl1' align='center'>".$locale['ccp142'].":</td>
             <td class='tbl1' align='center'><input name='swift' class='textbox' value='$ed_swift' maxlength='11' size='12' style='width:100%'></td>
-          </tr><tr>";
+          </tr><tr><td class='tbl1' align='center' colspan='2'>";
 		$data = dbarray(dbquery("SELECT paypal FROM ".DB_CCP_SETTINGS.""));  
 		if ($data['paypal'] != '0'){
 		    opentable($locale['ccp188']);
@@ -292,12 +292,13 @@ while($data = dbarray($get_donation_amounts)) {
 
 }		   
             if ($edit != "") 
-              echo"<td align='center' class='tbl2' colspan='2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='".$locale['ccp108']."'></td>";
+              echo"<tr><td align='center' class='tbl2' colspan='2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='".$locale['ccp108']."'></td>";
             else 
               echo"<td align='center' class='tbl2' colspan='2'><input type='submit' name='save' class='button' value='".$locale['ccp110']."'></td>";
           echo"</tr><tr>
-          <td class='tbl1' align='center' colspan='2'>".$locale['ccp111']."</td>
-          </table></form><br>";    
+          <td class='tbl1' align='center' colspan='2'>".$locale['ccp111']."</td></tr>
+          </table></form>";
+          closetable();
      if (dbrows(dbquery("SELECT * FROM ".DB_CCP_KONTEN)) == 0) echo $keintrag;
      else {
      echo"<table align='center' class='tbl-border' width='100%'>";
@@ -313,8 +314,7 @@ while($data = dbarray($get_donation_amounts)) {
             echo " -- <span style='text-decoration:line-through;'>".$locale['ccp114']."</span>";}
             echo"</td></tr>";
       }
-    echo"</table>";}
-    closetable();
+    echo"</table>";}    
 	closetable();
 
 echo "</td></tr></table>";
