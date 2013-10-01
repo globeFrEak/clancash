@@ -159,12 +159,8 @@ if (isset($_POST['update'])) {
 }
 
 opentable($locale['ccp000']);
-echo"<table width='100%' border='0'>
-      <tr>
-        <td>";
 include_once "ccp_navigation.php";
-echo"</td></tr><tr><td>";
-//opentable($locale['ccp135']);
+opentable($locale['ccp135']);
 if (dbrows(dbquery("SELECT * FROM " . DB_CCP_KONTEN)) == 0) {
     echo $keintrag;
 } else {
@@ -186,7 +182,6 @@ if (dbrows(dbquery("SELECT * FROM " . DB_CCP_KONTEN)) == 0) {
     echo"</table>";
 }
 echo "<hr></hr>";
-echo"</td></tr><tr><td>";
 echo"<form name='chasadmin' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>";
 echo"<table align='center' class='tbl-border' width='100%'>";
 echo"<tr>
@@ -222,8 +217,7 @@ echo"<tr>
             <td class='tbl1' align='center'><input name='swift' class='textbox' value='$ed_swift' maxlength='11' size='12' style='width:100%'></td>
           </tr><tr><td class='tbl1' align='center' colspan='2'>";
 if ($paypal != '0') {
-    //opentable($locale['ccp188']);
-    echo"<form name='chasadmin' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>";
+    opentable($locale['ccp188']);    
     echo"<table align='center' class='tbl-border' width='100%'>";
     echo"<tr>
             <td class='tbl1' align='center' width='30%'>" . $locale['ccp183'] . ":$required</td>
@@ -305,15 +299,17 @@ if ($paypal != '0') {
 
     include INFUSIONS . "clancash_panel/ccp_paypal_admin_form.php";
 }
+echo "</td></tr></table>";
+closetable();
 if ($edit != "") {
     echo"<tr><td align='center' class='tbl2' colspan='2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='" . $locale['ccp108'] . "'></td></tr>";
 } else {
-    echo"<td align='center' class='tbl2' colspan='2'><input type='submit' name='save' class='button' value='" . $locale['ccp110'] . "'></td></tr>";
+    echo"<tr><td align='center' class='tbl2' colspan='2'><input type='submit' name='save' class='button' value='" . $locale['ccp110'] . "'></td></tr>";
 }
 echo"<tr>
           <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td></tr>
           </table></form>";
-echo "</td></tr></table>";
+closetable();
 closetable();
 include_once "ccp_copyright.php";
 include_once THEMES . "templates/footer.php";
