@@ -55,8 +55,9 @@ if (isset($_POST['save'])) {
     zeilen='".stripinput($_POST['zeilen'])."',
     waehrung='".stripinput($_POST['waehrung'])."',
     member_show_all='".stripinput((isset($_POST['member_show_all'])? 1: 0))."',
-    member_show_names='".stripinput((isset($_POST['member_show_names'])? 1: 0))."',
-    placeholder_name='".stripinput($_POST['placeholder_name'])."'"
+    member_show_names='".stripinput((isset($_POST['member_show_names'])? 1: 0))."',    
+    placeholder_name='".stripinput($_POST['placeholder_name'])."',
+    paypal='".stripinput((isset($_POST['paypal'])? 1: 0))."'"
     );
     echo $gespeichert;
     echo "<br>";
