@@ -51,13 +51,13 @@ if (isset($_POST['save'])) {
     (dbrows(dbquery("SELECT * FROM ".DB_CCP_SETTINGS."")) == 1 ? $action = "UPDATE" : $action = "INSERT");
     $result = dbquery("$action ".DB_CCP_SETTINGS." SET
 		cashadmin_groupid='".stripinput($_POST['cashadmin_id'])."',
-    member_groupid='".stripinput($_POST['member_id'])."',
-    zeilen='".stripinput($_POST['zeilen'])."',
-    waehrung='".stripinput($_POST['waehrung'])."',
-    member_show_all='".stripinput((isset($_POST['member_show_all'])? 1: 0))."',
-    member_show_names='".stripinput((isset($_POST['member_show_names'])? 1: 0))."',    
-    placeholder_name='".stripinput($_POST['placeholder_name'])."',
-    paypal='".stripinput((isset($_POST['paypal'])? 1: 0))."'"
+                member_groupid='".stripinput($_POST['member_id'])."',
+                zeilen='".stripinput($_POST['zeilen'])."',
+                waehrung='".stripinput($_POST['waehrung'])."',
+                member_show_all='".stripinput((isset($_POST['member_show_all'])? 1: 0))."',
+                member_show_names='".stripinput((isset($_POST['member_show_names'])? 1: 0))."',    
+                placeholder_name='".stripinput($_POST['placeholder_name'])."',
+                paypal='".stripinput((isset($_POST['paypal'])? 1: 0))."'"
     );
     echo $gespeichert;
     echo "<br>";
