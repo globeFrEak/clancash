@@ -97,6 +97,7 @@ waehrung varchar(5) default 'EUR',
 member_show_all BOOL NOT NULL,
 member_show_names BOOL NOT NULL,
 placeholder_name varchar(15) default 'xxxxx',
+paypal BOOL NOT NULL,
 PRIMARY KEY  (id)
 )ENGINE=MyISAM;";
 
@@ -108,8 +109,14 @@ value decimal(8,2) NOT NULL default '10.00',
 PRIMARY KEY  (id)
 ) ENGINE=MyISAM;";
 
-$inf_altertable_[1] = DB_CCP_SETTINGS ."ADD
-    member_show_names BOOL NOT NULL, placeholder_name varchar(15) default 'xxxxx'
+$inf_altertable[1] = DB_CCP_SETTINGS ."ADD
+    member_show_names BOOL NOT NULL
+";
+$inf_altertable[2] = DB_CCP_SETTINGS ."ADD
+    placeholder_name varchar(15) default 'xxxxx'
+";
+$inf_altertable[3] = DB_CCP_SETTINGS ."ADD
+    paypal BOOL NOT NULL
 ";
 
 $inf_droptable[1] = DB_CCP_BUCHUNGEN;

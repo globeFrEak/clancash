@@ -47,8 +47,7 @@ echo "<td align='center' ><img onclick=\"javascript:flipBox('konten')\" name='b_
 if (checkgroup("$set_admin_id") || $show_all == 1) {
     echo "<td align='right' >" . $locale['ccp152'] . ": $valuta</td>\n";
 }
-echo"
-      </tr>
+echo"</tr>
       </table><br>
           <div id='box_konten'";
 if ($openkonten == "off") {
@@ -59,8 +58,7 @@ if ($openkonten == "off") {
           <td class='tbl1'>";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN);
 while ($data = dbarray($result)) {
-    echo"
-            <table class='tbl2' cellspacing='1' cellpadding='0' style='width:100%'>
+    echo"<table class='tbl2' cellspacing='1' cellpadding='0' style='width:100%'>
             <tr>
               <td class='tbl-border' align='left' colspan='2'>" . $data['name'] . "</td>
             </tr>
@@ -93,10 +91,9 @@ while ($data = dbarray($result)) {
               <td align='left'><br>&nbsp;" . $data['zweck'] . "</td>
             </tr>
             </table><br>";
-            $data1 = dbarray(dbquery("SELECT paypal FROM ".DB_CCP_SETTINGS.""));  
-			if ($data1['paypal'] != '0'){
-			echo" <a href='".INFUSIONS."clancash_panel/ccp_paypal.php'><img src='".$data['paypal_button']."' border='0'></a>";
-}
+    if ($paypal != '0') {
+        echo" <a href='" . INFUSIONS . "clancash_panel/ccp_paypal.php'><img src='" . $data['paypal_button'] . "' border='0'></a>";
+    }
 }
 echo"</td></tr></table></div>
           <div id='box_view'";
