@@ -1,10 +1,11 @@
 ClanCash v1.3
 -------------
--bessere Anzeige der Beträge (Bsp: 3.000,50)
+-bessere und richtige Anzeige der Beträge (Bsp: 3.000,50)
 -Übersicht: Beitragsübersicht,Einnahmen/Ausgaben,Kontokontakt können nun direkt zum Öffnen der Tabs angeklickt werden
 -Datenbankabfragen optimiert
 -neue Einstellungen: Mitglieder Namen verbergen Ja/Nein & Welcher Name angezeigt werden soll wenn Mitglieder Namen versteckt werden sollen
 -PHP Fusion Fehlerlog Einträge behoben
+-Icons
 
 
 Clankasse v1.2
