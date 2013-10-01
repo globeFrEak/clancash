@@ -165,6 +165,27 @@ echo"<table width='100%' border='0'>
 require_once "ccp_navigation.php";
 echo"</td></tr><tr><td>";
 opentable($locale['ccp135']);
+if (dbrows(dbquery("SELECT * FROM " . DB_CCP_KONTEN)) == 0) {
+    echo $keintrag;
+} else {    
+    echo"<table align='center' class='tbl-border' width='100%'>";
+    $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
+    while ($data = dbarray($result)) {
+        $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
+        $i++;
+        echo"<tr>
+            <td class='$cell_color' align='center' width='70%'>" . $data['name'] . "</td>
+            <td class='$cell_color' align='center' width='30%'><a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'>" . $locale['ccp113'] . "</a>";
+        if (dbrows(dbquery("SELECT * FROM " . DB_CCP_BUCHUNGEN . " WHERE konto_id='" . $data['id'] . "'")) == 0) {
+            echo " -- <a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'>" . $locale['ccp114'] . "</a>";
+        } else {
+            echo " -- <span style='text-decoration:line-through;'>" . $locale['ccp114'] . "</span>";
+        }
+        echo"</td></tr>";
+    }
+    echo"</table>";    
+}
+echo "<hr></hr>";
 echo"<form name='chasadmin' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>";
 echo"<table align='center' class='tbl-border' width='100%'>";
 echo"<tr>
@@ -291,26 +312,6 @@ echo"</tr><tr>
           <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td></tr>
           </table></form>";
 closetable();
-if (dbrows(dbquery("SELECT * FROM " . DB_CCP_KONTEN)) == 0)
-    echo $keintrag;
-else {
-    echo"<table align='center' class='tbl-border' width='100%'>";
-    $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
-    while ($data = dbarray($result)) {
-        $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
-        $i++;
-        echo"<tr>
-            <td class='$cell_color' align='center' width='70%'>" . $data['name'] . "</td>
-            <td class='$cell_color' align='center' width='30%'><a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'>" . $locale['ccp113'] . "</a>";
-        if (dbrows(dbquery("SELECT * FROM " . DB_CCP_BUCHUNGEN . " WHERE konto_id='" . $data['id'] . "'")) == 0) {
-            echo " -- <a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'>" . $locale['ccp114'] . "</a>";
-        } else {
-            echo " -- <span style='text-decoration:line-through;'>" . $locale['ccp114'] . "</span>";
-        }
-        echo"</td></tr>";
-    }
-    echo"</table>";
-}
 closetable();
 
 echo "</td></tr></table>";
