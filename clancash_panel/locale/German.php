@@ -110,6 +110,8 @@ $locale['ccp195'] = "Bezeichnung";
 $locale['ccp196'] = "Zahlung per Paypal";
 $locale['ccp197'] = "Betrag ausw&auml;hlen und fortfahren";
 $locale['ccp198'] = "Clanbeitrag";
+$locale['ccp199'] = "Fehler";
+$locale['ccp200'] = "Paypal-Konto konnte nicht erkannt werden!";
 
 $locale['ccp999'] = "Wirklich löschen?";
 ?>

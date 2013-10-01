@@ -92,7 +92,7 @@ while ($data = dbarray($result)) {
             </tr>
             </table><br>";
     if ($paypal != '0') {
-        echo" <a href='" . INFUSIONS . "clancash_panel/ccp_paypal.php'><img src='" . $data['paypal_button'] . "' border='0'></a>";
+        echo" <a href='" . INFUSIONS . "clancash_panel/ccp_paypal.php?id=" . $data['id'] . "'><img src='" . $data['paypal_button'] . "' border='0'></a>";
     }
 }
 echo"</td></tr></table></div>

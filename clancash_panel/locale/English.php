@@ -94,12 +94,12 @@ $locale['ccp162'] = "You have got to be logged in to shown more details";
 $locale['ccp180'] = "Members can see names";
 $locale['ccp181'] = "Display name when 'Members can see names' disabled";
 $locale['ccp182'] = "Use Paypal-Function?";
-$locale['ccp183'] = "Paypal-Emailadress";
-$locale['ccp184'] = "Paypal-Button";
-$locale['ccp185'] = "Paypal-Submit-Button";
+$locale['ccp183'] = "Paypal-mailadress";
+$locale['ccp184'] = "Paypal-button";
+$locale['ccp185'] = "Paypal-submit-button";
 $locale['ccp186'] = "Paypal-cancel-url";
 $locale['ccp187'] = "Paypal-thank you-url";
-$locale['ccp188'] = "Paypal-Settings";
+$locale['ccp188'] = "Paypal-settings";
 $locale['ccp189'] = "Select standard amount";
 $locale['ccp190'] = "Amount management";
 $locale['ccp191'] = "Enter the amount for example: 10.00";
@@ -110,6 +110,8 @@ $locale['ccp195'] = "Name";
 $locale['ccp196'] = "Pay per Paypal";
 $locale['ccp197'] = "Use the amunt and continue";
 $locale['ccp198'] = "Clanamount";
+$locale['ccp199'] = "error";
+$locale['ccp200'] = "Paypal-Account not found!";
 
 $locale['ccp999'] = "are u sure?";
 ?>
