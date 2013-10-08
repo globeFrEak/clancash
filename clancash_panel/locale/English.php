@@ -112,6 +112,7 @@ $locale['ccp197'] = "Use the amunt and continue";
 $locale['ccp198'] = "Clanamount";
 $locale['ccp199'] = "error";
 $locale['ccp200'] = "Paypal-Account not found!";
+$locale['ccp201'] = "Paypal-Email incorrect!";
 
 $locale['ccp999'] = "are u sure?";
 ?>
