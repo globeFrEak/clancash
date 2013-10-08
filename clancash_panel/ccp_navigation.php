@@ -22,11 +22,21 @@
 +----------------------------------------------------*/
 if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");
 
-echo"<center>\n<h4>\n<a href='ccp_admin_panel.php".$aidlink."'>".$locale['ccp143']."</a>&nbsp;".THEME_BULLET."&nbsp;\n
-     <a href='ccp_cats.php'>".$locale['ccp127']."</a>&nbsp;".THEME_BULLET."&nbsp;\n
-     <a href='ccp_konten.php'>".$locale['ccp135']."</a>&nbsp;".THEME_BULLET."&nbsp;\n
-     <a href='ccp_budget.php'>".$locale['ccp144']."</a>\n";
-if (checkrights('CCP'))echo"&nbsp;".THEME_BULLET."&nbsp;<a href='ccp_settings_panel.php".$aidlink."'>".$locale['ccp145']."</a>\n";
+add_to_head("<style type='text/css'>
+.navi{
+    position: relative;
+    top: -12px;
+    margin: 5px 10px 5px 2px;
+}
+</style>");
+
+echo"<center>\n<h4>\n
+     <img src='" . INFUSIONS . "clancash_panel/images/admin_panel.png' alt='".$locale['ccp143']."'><a class='navi' href='ccp_admin_panel.php".$aidlink."'>".$locale['ccp143']."</a>\n
+     <img src='" . INFUSIONS . "clancash_panel/images/cats.png' alt='".$locale['ccp127']."'><a class='navi' href='ccp_cats.php'>".$locale['ccp127']."</a>\n
+     <img src='" . INFUSIONS . "clancash_panel/images/konto.png' alt='".$locale['ccp135']."'><a class='navi' href='ccp_konten.php'>".$locale['ccp135']."</a>\n
+     <img src='" . INFUSIONS . "clancash_panel/images/budget.png' alt='".$locale['ccp144']."'><a class='navi' href='ccp_budget.php'>".$locale['ccp144']."</a>\n";
+if (checkrights('CCP'))
+    echo"<img src='" . INFUSIONS . "clancash_panel/images/settings.png' alt='".$locale['ccp145']."'><a class='navi' href='ccp_settings_panel.php".$aidlink."'>".$locale['ccp145']."</a>\n";
 echo"</h4>\n</center>\n";
 
 ?>

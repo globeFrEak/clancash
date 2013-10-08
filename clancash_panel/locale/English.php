@@ -115,4 +115,6 @@ $locale['ccp200'] = "Paypal-Account not found!";
 $locale['ccp201'] = "Paypal-Email incorrect!";
 
 $locale['ccp999'] = "are u sure?";
+
+$locale['ccp_a000'] = "ClanCash - administration";
 ?>

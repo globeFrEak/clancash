@@ -91,8 +91,7 @@ if ((isset($_GET['del'])) != '') {
         echo $geloescht;
     } else {
         echo $ngeloescht;
-    }
-    tablebreak();
+    }   
 }
 
 if ((isset($_GET['edit'])) != '') {
@@ -133,15 +132,13 @@ if (isset($_POST['save'])) {
 	  paypal_cancel_url = '" . stripinput($paypal_cancel_url) . "',
 	  paypal_thanks_url = '" . stripinput($paypal_thanks_url) . "',
 	  paypal_beitrag_checked = '" . stripinput($paypal_beitrag_checked) . "'");
-        echo $gespeichert;
-        tablebreak();
+        echo $gespeichert;     
     }
 }
 
 if (isset($_POST['update'])) {
     if ($_POST['konto_id'] == '' || $_POST['name'] == '' || $_POST['inhaber'] == '' || $_POST['blz'] == '' || $_POST['zweck'] == '') {
-        echo $ngespeichert;
-        tablebreak();
+        echo $ngespeichert;        
     } else {
         dbquery("UPDATE " . DB_CCP_KONTEN . " SET
       konto_id = '" . stripinput($konto_id) . "',
@@ -169,11 +166,10 @@ if (isset($_POST['update'])) {
     $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_don_amount_2' WHERE subtype=2");
     $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_don_amount_3' WHERE subtype=3");
     $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_don_amount_4' WHERE subtype=4");
-    echo $gespeichert;
-    tablebreak();
+    echo $gespeichert; 
 }
 
-opentable($locale['ccp000']);
+opentable($locale['ccp_a000']);
 include_once "ccp_navigation.php";
 closetable();
 opentable($locale['ccp135']);

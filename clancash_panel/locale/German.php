@@ -115,4 +115,6 @@ $locale['ccp200'] = "Paypal-Konto konnte nicht erkannt werden!";
 $locale['ccp201'] = "Paypal-Email wurde falsch oder nicht vollständig eingegeben!";
 
 $locale['ccp999'] = "Wirklich löschen?";
+
+$locale['ccp_a000'] = "ClanKasse - Administration";
 ?>
