@@ -33,9 +33,9 @@ if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) 
 // Infusion general information
 $inf_title = $locale['ccp000'];
 $inf_version = $locale['ccp002'];
-$inf_developer = "RedDragon (v6) | globefreak (v7) | Sonic (v7.02) ";
-$inf_weburl = "http://www.bs-fusion.de";
-$inf_email = "reddragon@efc-funclan.de";
+$inf_developer = "RedDragon (v6) | globefreak & Sonic since v1.3 (v7)";
+$inf_weburl = "https://github.com/globeFrEak/clancash";
+$inf_email = "globefreak@cwclan.de";
 $inf_folder = "clancash_panel";
 $inf_description = $locale['ccp001'];
 

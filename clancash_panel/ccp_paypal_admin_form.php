@@ -21,16 +21,33 @@
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
   +---------------------------------------------------- */
-$data = dbarray(dbquery("SELECT * FROM " . DB_CCP_KONTEN . ""));
+//Get donation amounts from db...
+$get_donation_amounts = dbquery("SELECT subtype, value FROM " . DB_CCP_PAYPAL);
+while ($data = dbarray($get_donation_amounts)) {
+    switch ($data['subtype']) {
+        case 1:
+            $don_amount_value_1 = $data['value'];
+            break;
+        case 2:
+            $don_amount_value_2 = $data['value'];
+            break;
+        case 3:
+            $don_amount_value_3 = $data['value'];
+            break;
+        case 4:
+            $don_amount_value_4 = $data['value'];
+            break;
+    }
+}
 echo"	
   <tr>
   <td class='tbl1' align='center' width='50%'>" . $locale['ccp189'] . "</td>
     <td class='tbl1' align='left' width='50%'>
       <select name='paypal_beitrag_checked' class='textbox'>
-        <option" . ($data['paypal_beitrag_checked'] == 1 ? " selected" : "") . " value='1' style='text-align:center'>1</option>
-        <option" . ($data['paypal_beitrag_checked'] == 2 ? " selected" : "") . " value='2' style='text-align:center'>2</option>
-        <option" . ($data['paypal_beitrag_checked'] == 3 ? " selected" : "") . " value='3' style='text-align:center'>3</option>
-        <option" . ($data['paypal_beitrag_checked'] == 4 ? " selected" : "") . " value='4' style='text-align:center'>4</option>
+        <option " . ($ed_paypal_beitrag_checked == 1 ? "selected='selected'" : "") . " value='1' style='text-align:center'>1</option>
+        <option " . ($ed_paypal_beitrag_checked == 2 ? "selected='selected'" : "") . " value='2' style='text-align:center'>2</option>
+        <option " . ($ed_paypal_beitrag_checked == 3 ? "selected='selected'" : "") . " value='3' style='text-align:center'>3</option>
+        <option " . ($ed_paypal_beitrag_checked == 4 ? "selected='selected'" : "") . " value='4' style='text-align:center'>4</option>
       </select>
   </tr><tr>
     <td align='right'>&nbsp;</td>

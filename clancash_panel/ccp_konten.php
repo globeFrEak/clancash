@@ -268,52 +268,6 @@ if ($paypal != '0') {
     } else {
         $step = $_GET['step'];
     }
-
-//Start validation code here! JScript code to validate form fields.
-//include INFUSIONS."donation_manager_panel/includes/inc_jscript_validation_code.htm";
-
-    $get_config = dbquery("SELECT * FROM " . DB_CCP_PAYPAL);
-    while ($data = dbarray($get_config)) {
-        $check_show_amtcheck_1 = "";
-        $check_show_amtcheck_2 = "";
-        $check_show_amtcheck_3 = "";
-        $check_show_amtcheck_4 = "";
-
-        switch ($paypal_beitrag_checked) {
-            case 1:
-                $check_show_amtcheck_1 = "selected";
-                break;
-            case 2:
-                $check_show_amtcheck_2 = "selected";
-                break;
-            case 3:
-                $check_show_amtcheck_3 = "selected";
-                break;
-            case 4:
-                $check_show_amtcheck_4 = "selected";
-                break;
-        }
-    }
-
-//Get donation amounts from db...
-    $get_donation_amounts = dbquery("SELECT subtype, value FROM " . DB_CCP_PAYPAL);
-    while ($data = dbarray($get_donation_amounts)) {
-        switch ($data['subtype']) {
-            case 1:
-                $don_amount_value_1 = $data['value'];
-                break;
-            case 2:
-                $don_amount_value_2 = $data['value'];
-                break;
-            case 3:
-                $don_amount_value_3 = $data['value'];
-                break;
-            case 4:
-                $don_amount_value_4 = $data['value'];
-                break;
-        }
-    }
-
     include INFUSIONS . "clancash_panel/ccp_paypal_admin_form.php";
 }
 if ($edit != "") {
