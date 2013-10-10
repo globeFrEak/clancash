@@ -29,7 +29,6 @@ if (file_exists(INFUSIONS . "clancash_panel/locale/" . $settings['locale'] . ".p
 } else {
     include INFUSIONS . "clancash_panel/locale/English.php";
 }
-
 include_once INFUSIONS . "clancash_panel/ccp_functions.php";
 
 if (!checkgroup($set_member_id) && !checkgroup($set_admin_id))
@@ -42,7 +41,6 @@ $opengraph = (isset($_POST['view_jahr'])) ? "on" : "off";
 $box_img_konto = ($openkonten == "on" ? "off" : "on");
 $box_img_view = ($openview == "on" ? "off" : "on");
 $box_img_graph = ($opengraph == "on" ? "off" : "on");
-
 
 echo"<form name='zahlungen' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>
     <table class='tbl-border' cellpadding='1' width='100%'>
@@ -102,7 +100,6 @@ while ($data = dbarray($result)) {
     }
     echo"</tr>";
 }
-
 // Auslesen der Buchungen ohne User Bezug!!///
 $result = dbquery("SELECT a.id, a.kat_klartext FROM " . DB_CCP_KATEGORIEN . " AS a, " . DB_CCP_BUCHUNGEN . " AS b WHERE b.geloescht='0' AND a.id=b.kat_id AND a.id!='3' GROUP BY a.id ORDER BY a.id");
 if (dbrows($result) > 0) {

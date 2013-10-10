@@ -27,9 +27,9 @@ if (!isset($_GET['rowstart']) || !isNum($_GET['rowstart'])) {
 } else {
     $rowstart = $_GET['rowstart'];
 }
-if (dbrows(dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter")) == 0) echo $keintrag;
-else {
 $result = dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter ORDER BY jahr DESC, monat DESC, tag DESC LIMIT $rowstart,$b_per_page");
+$rows = dbrows($result);
+if ($rows > 0) {
 echo"<div><table class='tbl-border' width='100%'>";
 while ($data = dbarray($result)){
   $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2"); $i++;
@@ -58,8 +58,10 @@ echo"<tr>\n
       </tr>
     <tr style='height:1'><td colspan='5'></td></tr>";
 }
-echo "</table></div>";}
-$rows = dbrows(dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter"));
+echo "</table></div>";
+} else {
+    echo $keintrag;
+}
 echo "<div align='center' style='margin-top:5px;margin-bottom:5px;'>
 ".makePageNav($rowstart,$b_per_page,$rows,3,FUSION_SELF."?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&")."</div>\n";
 ?>

@@ -97,11 +97,10 @@ else
 echo"</tr><tr>
           <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td>
           </table></form><br>";
-if (dbrows(dbquery("SELECT * FROM " . DB_CCP_KATEGORIEN . " $filter")) == 0)
-    echo $keintrag;
-else {
-    echo "<table align='center' class='tbl-border' width='100%'>";
+
     $result = dbquery("SELECT * FROM " . DB_CCP_KATEGORIEN . " ORDER BY 2");
+if (dbrows($result) > 0) {
+    echo "<table align='center' class='tbl-border' width='100%'>";    
     while ($data = dbarray($result)) {
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         $i++;
@@ -117,6 +116,8 @@ else {
           ";
     }
     echo"</table>";
+} else {
+    echo $keintrag;
 }
 closetable();
 

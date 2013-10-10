@@ -204,11 +204,9 @@ opentable($locale['ccp_a000']);
 include_once "ccp_navigation.php";
 closetable();
 opentable($locale['ccp135']);
-if (dbrows(dbquery("SELECT * FROM " . DB_CCP_KONTEN)) == 0) {
-    echo $keintrag;
-} else {
+$result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
+if (dbrows($result) > 0) {
     echo"<table align='center' class='tbl-border' width='100%'>";
-    $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
     while ($data = dbarray($result)) {
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         $i++;
@@ -223,6 +221,8 @@ if (dbrows(dbquery("SELECT * FROM " . DB_CCP_KONTEN)) == 0) {
         echo"</td></tr>";
     }
     echo"</table>";
+} else {
+    echo $keintrag;
 }
 echo "<hr></hr>";
 echo"<form name='chasadmin' id='chasadmin' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>";

@@ -173,11 +173,9 @@ else
 echo"</tr><tr>
             <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td>
             </table></form><br>";
-if (dbrows(dbquery("SELECT * FROM " . DB_CCP_BUDGET)) == 0)
-    echo $keintrag;
-else {
+$data = dbarray(dbquery("SELECT SUM(bmonat) AS total FROM " . DB_CCP_BUDGET));
+if (dbrows($data) > 0) {
     echo"<table align='center' class='tbl-border' width='100%'>";
-    $data = dbarray(dbquery("SELECT SUM(bmonat) AS total FROM " . DB_CCP_BUDGET));
     $total_monat = round($data['total'], 2);
     $total_jahr = round($total_monat * 12, 2);
     echo"<tr>
@@ -221,6 +219,8 @@ else {
             <td class='$cell_color' align='center' width='30%'><a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'>" . $locale['ccp113'] . "</a><br><a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'>" . $locale['ccp114'] . "</a></td>
           </tr>";
     }
+} else {
+    echo $keintrag;
 }
 echo"</table>";
 closetable();
