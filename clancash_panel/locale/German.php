@@ -22,8 +22,8 @@
 +----------------------------------------------------*/
 // Infusion titles & description
 
-$locale['ccp000'] = "ClanKasse";
-$locale['ccp001'] = "Panel f&uuml;r die Verwaltung der Clankasse.";
+$locale['ccp000'] = "ClanCash";
+$locale['ccp001'] = "Panel f&uuml;r die Verwaltung der Clan- oder Vereins-kasse.";
 $locale['ccp002'] = "1.3";
 $locale['ccp003'] = "Spenden";
 
@@ -113,6 +113,9 @@ $locale['ccp198'] = "Clanbeitrag";
 $locale['ccp199'] = "Fehler";
 $locale['ccp200'] = "Paypal-Konto konnte nicht erkannt werden!";
 $locale['ccp201'] = "Paypal-Email wurde falsch oder nicht vollständig eingegeben!";
+
+$locale['ccp250'] = "Standard Konto";
+$locale['ccp251'] = "kein Konto gefunden!";
 
 $locale['ccp999'] = "Wirklich löschen?";
 

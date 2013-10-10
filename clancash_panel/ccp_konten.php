@@ -141,7 +141,7 @@ if ((isset($_GET['edit'])) != '') {
     $ed_paypal_submit_button = $update['paypal_submit_button'];
     $ed_paypal_cancel_url = $update['paypal_cancel_url'];
     $ed_paypal_thanks_url = $update['paypal_thanks_url'];
-    $ed_paypal_beitrag_checked = $update['paypal_beitrag_checked'];
+    $ed_paypal_beitrag_checked = $update['paypal_beitrag_checked'];    
 }
 
 if (isset($_POST['save'])) {
@@ -269,7 +269,6 @@ if ($paypal != '0') {
         </tr>
         <tr>
             <td class='tbl1' align='center'>" . $locale['ccp184'] . "</td>";
-
     echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypal();' id='paypal_btn' name='paypal_button' class='textbox paypal' value='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' maxlength='300' size='100'><img id='paypal_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
     echo"<tr>
             <td class='tbl1' align='center'>" . $locale['ccp185'] . "</td>";

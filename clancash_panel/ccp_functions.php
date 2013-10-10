@@ -34,6 +34,7 @@ $show_all = $data['member_show_all'];
 $show_names = $data['member_show_names'];
 $placeholder_name = $data['placeholder_name'];
 $paypal = $data['paypal'];
+$standard_konto = $data['standard_konto'];
 $gespeichert = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:green;'><b>" . $locale['ccp130'] . "</b></span></td></tr>\n</table>\n";
 $ngespeichert = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:red;'><b>" . $locale['ccp132'] . "</b></span></td></tr>\n</table>\n";
 $geloescht = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:green;'><b>" . $locale['ccp131'] . "</b></span></td></tr>\n</table>\n";

@@ -195,7 +195,7 @@ echo" </select></td>
         <option value=''>----</option>\n";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
 while ($data = dbarray($result)) {
-    echo "<option" . ($data['id'] == $ed_konto_id ? " selected" : "") . " value='" . $data['id'] . "'>" . $data['name'] . "</option>\n";
+    echo "<option" . ($data['id'] == $standard_konto ? " selected" : "") . " value='" . $data['id'] . "'>" . $data['name'] . "</option>\n";
 }
 echo" </select></td>
       </tr>

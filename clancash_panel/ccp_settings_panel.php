@@ -59,7 +59,8 @@ if (isset($_POST['save'])) {
                 member_show_all='" . stripinput((isset($_POST['member_show_all']) ? 1 : 0)) . "',
                 member_show_names='" . stripinput((isset($_POST['member_show_names']) ? 1 : 0)) . "',    
                 placeholder_name='" . stripinput($_POST['placeholder_name']) . "',
-                paypal='" . stripinput((isset($_POST['paypal']) ? 1 : 0)) . "'"
+                paypal='" . stripinput((isset($_POST['paypal']) ? 1 : 0)) . "',
+                standard_konto='" . stripinput($_POST['standard_konto']) . "'"
     );
     echo $gespeichert;
     echo "<br>";
@@ -102,7 +103,7 @@ while (list($key, $user_group) = each($user_groups)) {
 }
 echo"</select></td>
   </tr>";
-$data = dbarray(dbquery("SELECT * FROM " . DB_CCP_SETTINGS . ""));
+$data = dbarray(dbquery("SELECT *  FROM " . DB_CCP_SETTINGS . ""));
 echo"
   <tr>
   <td class='tbl1' align='center' width='50%'>" . $locale['ccp149'] . "</td>
@@ -127,6 +128,20 @@ echo"<input name='waehrung' class='textbox' style='width:40px; text-align:center
     </td>
   </tr>
   <tr>
+  <td class='tbl1' align='center' width='50%'>" . $locale['ccp250'] . "</td>
+    <td class='tbl1' align='center' width='50%'>";
+$result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
+if (dbrows($result) > 0) {
+    echo"<select name='standard_konto' class='textbox'>";
+    while ($data2 = dbarray($result)) {
+        echo "<option" . ($data['standard_konto'] == $data2['id'] ? " selected" : "") . " value='" . $data2['id'] . "'>" . $data2['name'] . "</option>\n";
+    }
+    echo"</select>";
+} else {
+    echo $locale['ccp251'];
+}
+echo"</td>
+  </tr>
   <td class='tbl1' align='center' width='50%'>" . $locale['ccp182'] . "</td>
     <td class='tbl1' align='center' width='50%'>";
 echo"<input type='checkbox' " . (($data['paypal'] == 1) ? "checked='checked'" : "") . " name='paypal' value='1' style='width:10px; text-align:center'>
