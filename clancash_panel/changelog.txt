@@ -6,6 +6,8 @@ ClanCash v1.3
 -neue Einstellungen: Mitglieder Namen verbergen Ja/Nein & Welcher Name angezeigt werden soll wenn Mitglieder Namen versteckt werden sollen
 -PHP Fusion Fehlerlog Einträge behoben
 -Icons
+-Paypal funktion pro Konto
+-PHP-Fusion v6 quellcode entfernt
 
 
 Clankasse v1.2

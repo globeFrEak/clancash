@@ -84,8 +84,7 @@ if (isset($_POST['save'])) {
         $ed_check_p = ($_POST['einaus'] > 0 ? "selected" : "");
         $ed_check_m = ($_POST['einaus'] < 0 ? "selected" : "");
         $edit = $_POST['id'];
-        echo $ngespeichert;
-        tablebreak();
+        echo $ngespeichert;        
     } else {
         $betrag = str_replace(',', '.', $_POST['betrag']);
         dbquery("INSERT " . DB_CCP_BUCHUNGEN . " SET
@@ -97,8 +96,7 @@ if (isset($_POST['save'])) {
       monat = '" . stripinput($_POST['monat']) . "',
       jahr = '" . stripinput($_POST['jahr']) . "',
       comment = '" . stripinput($_POST['comment']) . "'");
-        echo $gespeichert;
-        tablebreak();
+        echo $gespeichert;      
     }
 }
 
@@ -239,11 +237,9 @@ echo"</td>
         <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td>
       </tr></table></form>";
 
-tablebreak();
+
 include "ccp_filter.php";
-tablebreak();
 include "ccp_buchungen.php";
-closetable();
 include "ccp_copyright.php";
 require_once THEMES . "templates/footer.php";
 ?>

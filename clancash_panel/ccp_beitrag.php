@@ -126,5 +126,4 @@ if (dbrows($result) > 0) {
     }
 }
 echo"</table></form>";
-tablebreak();
 ?>

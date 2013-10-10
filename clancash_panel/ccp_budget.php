@@ -56,7 +56,6 @@ if ((isset($_GET['del'])) != '') {
     $del = $_GET['del'];
     dbquery("DELETE FROM " . DB_CCP_BUDGET . " WHERE ID='$del'");
     echo $geloescht;
-    tablebreak();
 }
 
 if ((isset($_GET['edit'])) != '') {
@@ -73,7 +72,6 @@ if ((isset($_GET['edit'])) != '') {
 if (isset($_POST['save'])) {
     if ($_POST['anzahl'] == '' || $_POST['betrag'] == '0' || $_POST['zweck'] == '' || $_POST['art'] == '') {
         echo $ngespeichert;
-        tablebreak();
         $ed_anzahl = $_POST['anzahl'];
         $ed_valuta = str_replace(',', '.', $_POST['betrag']);
         $ed_zweck = $_POST['zweck'];
@@ -100,14 +98,12 @@ if (isset($_POST['save'])) {
       art = '" . stripinput($_POST['art']) . "',
       bmonat = '" . stripinput($bmonat * $_POST['einaus']) . "'");
         echo $gespeichert;
-        tablebreak();
     }
 }
 
 if (isset($_POST['update'])) {
     if ($_POST['anzahl'] == '' || $_POST['betrag'] == '0' || $_POST['zweck'] == '' || $_POST['art'] == '') {
         echo $ngespeichert;
-        tablebreak();
         $ed_anzahl = $_POST['anzahl'];
         $ed_valuta = $_POST['betrag'];
         $ed_zweck = $_POST['zweck'];
@@ -133,7 +129,6 @@ if (isset($_POST['update'])) {
         art = '" . stripinput($_POST['art']) . "',
         bmonat = '" . stripinput($bmonat * $_POST['einaus']) . "' WHERE id='$ed_id'");
         echo $gespeichert;
-        tablebreak();
     }
 }
 opentable($locale['ccp_a000']);
