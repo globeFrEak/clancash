@@ -226,60 +226,60 @@ if (dbrows($result) > 0) {
 }
 echo "<hr></hr>";
 echo"<form name='chasadmin' id='chasadmin' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>";
-echo"<table align='center' class='tbl-border' width='100%'>";
+echo"<table class='tbl-border' width='100%'>";
 echo"<tr>
-            <td class='tbl1' align='center' width='30%'>" . $locale['ccp136'] . ":$required</td>
-            <td class='tbl1' align='center' width='70%'><input name='name' class='textbox' value='$ed_name' maxlength='15' size='16' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp136'] . ":$required</td>
+            <td class='tbl1'><input name='name' class='textbox' value='$ed_name' maxlength='15' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp137'] . ":$required</td>
-            <td class='tbl1' align='center'><input name='inhaber' class='textbox' value='$ed_inhaber' maxlength='40' size='41' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp137'] . ":$required</td>
+            <td class='tbl1'><input name='inhaber' class='textbox' value='$ed_inhaber' maxlength='40' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp138'] . ":$required</td>
-            <td class='tbl1' align='center'><input name='konto_id' class='textbox' value='$ed_konto_id' maxlength='15' size='16' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp138'] . ":$required</td>
+            <td class='tbl1'><input name='konto_id' class='textbox' value='$ed_konto_id' maxlength='15' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp139'] . ":$required</td>
-            <td class='tbl1' align='center'><input name='blz' class='textbox' value='$ed_blz' maxlength='10' size='11' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp139'] . ":$required</td>
+            <td class='tbl1'><input name='blz' class='textbox' value='$ed_blz' maxlength='10' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp140'] . ":</td>
-            <td class='tbl1' align='center'><input name='bank' class='textbox' value='$ed_bank' maxlength='40' size='41' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp140'] . ":</td>
+            <td class='tbl1'><input name='bank' class='textbox' value='$ed_bank' maxlength='40' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp156'] . ":$required</td>
-            <td class='tbl1' align='center'><input name='zweck' class='textbox' value='$ed_zweck' maxlength='54' size='55' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp156'] . ":$required</td>
+            <td class='tbl1'><input name='zweck' class='textbox' value='$ed_zweck' maxlength='54' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp141'] . ":</td>
-            <td class='tbl1' align='center'><input name='iban' class='textbox' value='$ed_iban' maxlength='34' size='35' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp141'] . ":</td>
+            <td class='tbl1'><input name='iban' class='textbox' value='$ed_iban' maxlength='34' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp142'] . ":</td>
-            <td class='tbl1' align='center'><input name='swift' class='textbox' value='$ed_swift' maxlength='11' size='12' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp142'] . ":</td>
+            <td class='tbl1'><input name='swift' class='textbox' value='$ed_swift' maxlength='11' style='width:100%;'></td>
         </tr>";
 if ($paypal != '0') {
     echo"<tr>
             <td class='tbl1' colspan='2' align='center'><h4>" . $locale['ccp188'] . "</h4></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center' width='30%'>" . $locale['ccp183'] . "</td>
-            <td class='tbl1' align='center' width='70%'><input name='paypal_email' id='paypal_email' class='textbox' value='$ed_paypal_email' maxlength='200' size='200' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp183'] . "</td>
+            <td class='tbl1'><input name='paypal_email' id='paypal_email' class='textbox' value='$ed_paypal_email' maxlength='200' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp184'] . "</td>";
-    echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypal();' id='paypal_btn' name='paypal_button' class='textbox paypal' value='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' maxlength='300' size='100'><img id='paypal_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
+            <td class='tbl1'>" . $locale['ccp184'] . "</td>";
+    echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypal();' id='paypal_btn' name='paypal_button' class='textbox paypal' value='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' maxlength='300' style='width:100%;'><img id='paypal_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
     echo"<tr>
-            <td class='tbl1' align='center'>" . $locale['ccp185'] . "</td>";
-    echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypalSubmit();' id='paypal_submit_btn' name='paypal_submit_button' class='textbox paypal' value='" . (($ed_paypal_submit_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_submit_button) . "' maxlength='300' size='100'><img id='paypal_submit_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
+            <td class='tbl1'>" . $locale['ccp185'] . "</td>";
+    echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypalSubmit();' id='paypal_submit_btn' name='paypal_submit_button' class='textbox paypal' value='" . (($ed_paypal_submit_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_submit_button) . "' maxlength='300' style='width:100%;'><img id='paypal_submit_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
     echo"<tr>
-            <td class='tbl1' align='center'>" . $locale['ccp186'] . "</td>
-            <td class='tbl1' align='center'><input name='paypal_cancel_url' class='textbox' value='$ed_paypal_cancel_url' maxlength='200' size='200' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp186'] . "</td>
+            <td class='tbl1'><input name='paypal_cancel_url' class='textbox' value='$ed_paypal_cancel_url' maxlength='200' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp187'] . "</td>
-            <td class='tbl1' align='center'><input name='paypal_thanks_url' class='textbox' value='$ed_paypal_thanks_url' maxlength='200' size='200' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp187'] . "</td>
+            <td class='tbl1'><input name='paypal_thanks_url' class='textbox' value='$ed_paypal_thanks_url' maxlength='200' style='width:100%;'></td>
         </tr>";
 
     if (!isset($_GET['step'])) {
