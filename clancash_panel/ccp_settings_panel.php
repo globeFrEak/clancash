@@ -170,6 +170,49 @@ echo"<input name='placeholder_name' class='textbox' style='width:150px; text-ali
   </tr></table></form>";
 
 closetable();
+
+//// Testsequenz für Versionsüberprüfung ////
+$ccp_config = dbarray(dbquery("SELECT * FROM " . DB_CCP_SETTINGS));
+opentable($locale['ccp300']);
+
+$ausgabe = '';
+    if(function_exists('fsockopen'))
+    { 
+      $version_new = latest_ccp_version();
+      if(version_compare($version_new, $ccp_config['version'], '<=') AND $version_new > 0)
+      {
+	  $ausgabe = "
+	  <table cellpadding='0' cellspacing='1'>
+	  <tr>
+	  <td><img src='".INFUSIONS."clancash_panel/images/version.gif' alt='up to date' /></td>
+	  <td><span style=\"font-weight: bold; color: #1bdc16;\">".$locale['ccp303'].": ".$ccp_config['version']."</span></td>
+	  </tr>
+	  </table>";
+      } else {
+        if (!empty($version_new))
+        {
+	$ausgabe = "
+	<table cellpadding='0' cellspacing='1'>
+	<tr>
+	<td><img src='".INFUSIONS."clancash_panel/images/version_old.gif' alt='old version' /></td>
+	<td><span style='font-weight: bold; color: red;'>".$locale['ccp302'].": ".$ccp_config['version']."</span><br />
+	<span style='font-weight: bold; color: #1bdc16;'>".$locale['ccp301'].": ".$version_new."</span><br />
+	<span style='font-weight: bold;'>".$locale['ccp304'].": </span><a href='http://germanys-united-legends.de/downloads.php' target='_blank' title='Germanys United Legends'><span style='font-weight: bold;'>http://germanys-united-legends.de</span></a></td>
+	</tr>
+	</table>";
+       }
+      }
+    } 
+	if (empty($version_new)) {
+	$ausgabe = "<br /><span style='font-weight: bold; color: red;'>".$locale['ccp305']."!<br /></span><span style='font-weight: bold;'>".$locale['ccp304']."</span> <a href='http://germanys-united-legends.de/downloads.php' target='_blank' title='Germanys United Legends'><span style='font-weight: bold;'>http://germanys-united-legends.de</span></a><br /><br />";
+    }
+
+echo "<div align='center'>".$ausgabe."</div>";
+
+//// Testsequenz für Datenbankupdate ////
+require_once INFUSIONS."clancash_panel/update/ccp_update.php";
+//// Testsequenz für Datenbankupdate Ende////
+closetable();
 require_once "ccp_copyright.php";
 require_once THEMES . "templates/footer.php";
 ?>
