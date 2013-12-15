@@ -26,6 +26,8 @@ $locale['ccp000'] = "ClanCash";
 $locale['ccp001'] = "Panel for manage your clan cashflow.";
 $locale['ccp002'] = "1.3";
 $locale['ccp003'] = "donation";
+$locale['ccp004'] = "income";
+$locale['ccp005'] = "expenditure";
 
 $locale['ccp100'] = "Administration";
 $locale['ccp101'] = "date:";
@@ -116,6 +118,19 @@ $locale['ccp201'] = "Paypal-Email incorrect!";
 
 $locale['ccp250'] = "primary account";
 $locale['ccp251'] = "no account found!";
+
+$locale['ccp300'] = "Version check";
+$locale['ccp301'] = "Latest version";
+$locale['ccp302'] = "Installed version";
+$locale['ccp303'] = "Your version of the Clancash is the current version";
+$locale['ccp304'] = "Downloadlink";
+$locale['ccp305'] = "The automatic version checking is not possible at the moment!<br>Possibly the function fsockopen is not enabled on your webserver!<br>Please click on the following link to a manual version check out";
+$locale['ccp306'] = "Database update is available";
+$locale['ccp307'] = "OK";
+$locale['ccp308'] = "Error";
+$locale['ccp309'] = "Errors occurred during the update process";
+$locale['ccp310'] = "update successful";
+$locale['ccp311'] = "back";
 
 $locale['ccp999'] = "are u sure?";
 
