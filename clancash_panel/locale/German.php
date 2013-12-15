@@ -26,6 +26,8 @@ $locale['ccp000'] = "ClanCash";
 $locale['ccp001'] = "Panel f&uuml;r die Verwaltung der Clan- oder Vereins-kasse.";
 $locale['ccp002'] = "1.3";
 $locale['ccp003'] = "Spenden";
+$locale['ccp004'] = "Einnahmen";
+$locale['ccp005'] = "Ausgaben";
 
 $locale['ccp100'] = "Verwaltung";
 $locale['ccp101'] = "Datum";
@@ -116,6 +118,19 @@ $locale['ccp201'] = "Paypal-Email wurde falsch oder nicht vollständig eingegebe
 
 $locale['ccp250'] = "Standard Konto";
 $locale['ccp251'] = "kein Konto gefunden!";
+
+$locale['ccp300'] = "Versionspr&uuml;fung";
+$locale['ccp301'] = "Aktuellste Version";
+$locale['ccp302'] = "Installierte Version";
+$locale['ccp303'] = "Ihre Version der ClanKasse ist die aktuelle Version";
+$locale['ccp304'] = "Downloadlink";
+$locale['ccp305'] = "Die automatische Versionspr&uuml;fung ist zur Zeit nicht m&ouml;glich!<br>Eventuell ist die Funktion fsockopen auf Ihrem Webserver nicht aktiviert! <br> Bitte klicken Sie auf den nachfolgenden Link um eine manuelle Versionspr&uuml;fung durchzuf&uuml;hren";
+$locale['ccp306'] = "Datenbank-Update verf&uuml;gbar";
+$locale['ccp307'] = "OK";
+$locale['ccp308'] = "Fehler";
+$locale['ccp309'] = "Es sind Fehler w&auml;hrend des Update-Vorgangs aufgetreten";
+$locale['ccp310'] = "Update erfolgreich";
+$locale['ccp311'] = "zur&uuml;ck";
 
 $locale['ccp999'] = "Wirklich löschen?";
 
