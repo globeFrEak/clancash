@@ -222,7 +222,6 @@ if (dbrows($data) > 0) {
 } else {
     echo $keintrag;
 }
-echo"</table>";
 closetable();
 require_once "ccp_copyright.php";
 require_once THEMES . "templates/footer.php";
