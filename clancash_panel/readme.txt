@@ -35,8 +35,7 @@ von v1.2 --> v1.3
 - Kopiere den kompletten Inhalt in den Infusions Ordner
 - Gehe in das Adminmenü der ClanKasse unter Einstellungen und klicke auf den Link: "Datenbank-Update verfügbar".
 
-Hinweis: Während des Updates könnten einige "Fehler" in den Fehlerlog von php-fusion geschrieben werden, diese 
-können nach erfolgtem Update gelöscht werden und treten nicht erneut auf! 
+Hinweis: Während des Updates könnten einige "Fehler" in den Fehlerlog von php-fusion geschrieben werden, diese können nach erfolgtem Update gelöscht werden und treten nicht erneut auf! 
 
 Module:
 Buchungen - Erstellen/Löschen und Editieren von Buchungsvorgängen (Zugang: Kassenwart : Superadmin)
