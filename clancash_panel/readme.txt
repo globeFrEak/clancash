@@ -1,34 +1,24 @@
-/*=============================================================*\   
-|| ########################################################### ||   
-|| #        BS-Fusion - Content Management System            # ||   
-|| #                    Version 1.x                          # ||   
-|| # ------------------------------------------------------- # ||   
-|| # Copyright ©2009 BS-Fusion All rights reserved.          # ||   
-|| # Author: Manuel Kurz                                     # ||   
-|| # ------------------------------------------------------- # ||   
-|| # This program is released as open source software under  # ||   
-|| # the Affero GPL license (version 3).                     # ||   
-|| # License: http://www.gnu.org/licenses/agpl-3.0.html.     # ||   
-|| # Removal of this copyright header is strictly prohibited # ||   
-|| # without written permission from the original author(s). # ||   
-|| # -------- BS-FUSION IS AN OPEN SOURCE SOFTWARE --------- # ||   
-|| #    http://www.bs-fusion.de | http://www.bsfusion.de     # ||   
-|| # ------------------------------------------------------- # ||   
-|| # Infusion: Clankasse                                     # ||   
-|| # Version: 1.2                                            # ||   
-|| # Autor: RedDragon                                        # ||
-|| # Homepage: http://www.bs-fusion.de                       # ||
-|| #                                                         # ||
-|| # Umgeschrieben auf PHP-Fusion 7.x von globeFrEak         # ||
-|| # Homepage: http://www.cwclan.de                          # || 
-|| # Email: globefreak@cwclan.de                             # ||
-|| #                                                         # ||
-|| # Überarbeitet für PHP-Fusion 7.02 von Sonic              # ||
-|| # Homepage: http://www.germanys-united-legends.de         # ||
-|| #                                                         # ||     
-|| # File: readme.txt                                        # ||   
-|| ########################################################### ||   
-\*=============================================================*/   
+﻿ +--------------------------------------------------------------+
+ | PHP-Fusion 7 Content Management System             		|
+ +--------------------------------------------------------------+
+ | Copyright © 2002 - 2013 Nick Jones                 		|
+ | http://www.php-fusion.co.uk/                       		|
+ +--------------------------------------------------------------+
+ | Infusion: ClanCash                                 		|
+ | Filename: ccp_admin_panel.php                      		|
+ | Author:                                            		|
+ | RedDragon(v6) 	http://www.efc-funclan.de      		|
+ | globeFrEak (v7) 	http://www.cwclan.de           		|
+ | Sonic (v7.02)	http://www.germanys-united-legends.de 	|
+ +--------------------------------------------------------------+
+ | This program is released as free software under the		|
+ | Affero GPL license. You can redistribute it and/or		|
+ | modify it under the terms of this license which you		|
+ | can read by viewing the included agpl.txt or online		|
+ | at www.gnu.org/licenses/agpl.html. Removal of this		|
+ | copyright header is strictly prohibited without		|
+ | written permission from the original author(s).		|
+ +--------------------------------------------------------------+
 
 Installation:
 -Kopiere den kompletten Inhalt in den Infusions Ordner
