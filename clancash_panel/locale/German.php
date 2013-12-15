@@ -131,6 +131,7 @@ $locale['ccp308'] = "Fehler";
 $locale['ccp309'] = "Es sind Fehler w&auml;hrend des Update-Vorgangs aufgetreten";
 $locale['ccp310'] = "Update erfolgreich";
 $locale['ccp311'] = "zur&uuml;ck";
+$locale['ccp312'] = "Aktuellste Version auf github.com";
 
 $locale['ccp999'] = "Wirklich löschen?";
 

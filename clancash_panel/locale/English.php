@@ -131,6 +131,7 @@ $locale['ccp308'] = "Error";
 $locale['ccp309'] = "Errors occurred during the update process";
 $locale['ccp310'] = "update successful";
 $locale['ccp311'] = "back";
+$locale['ccp312'] = "Latest version on github.com";
 
 $locale['ccp999'] = "are u sure?";
 
