@@ -2,7 +2,7 @@
 /* ---------------------------------------------------+
   | PHP-Fusion 7 Content Management System
   +----------------------------------------------------+
-  | Copyright © 2002 - 2013 Nick Jones
+  | Copyright ï¿½ 2002 - 2013 Nick Jones
   | http://www.php-fusion.co.uk/
   |----------------------------------------------------+
   | Infusion: ClanCash
@@ -57,17 +57,6 @@ function dbquery_ccp_update($query) {
 
 opentable($locale['ccp306'].": v1.2 => v1.3");
 
-//-----------
-
-
-// Fix for clancash_panel, when PHP-Fusion Version is updated from 6.01.xx to 7.00
-/*$result = dbquery("SELECT * FROM ".DB_USERS." WHERE user_level='103'");
-while ($data = dbarray($result)) {
-if(!in_array("CCP", explode(".", $data['user_rights']))){
-	$mysql[] = "UPDATE ".DB_USERS." SET user_rights='".$data['user_rights'].".CCP' WHERE user_id='".$data['user_id']."'";
-}
-}
-*/
 $mysql[] = "ALTER TABLE ".DB_CCP_SETTINGS." ADD member_show_names BOOL NOT NULL";
 $mysql[] = "ALTER TABLE ".DB_CCP_SETTINGS." ADD placeholder_name varchar(15) default 'xxxxx'";
 $mysql[] = "ALTER TABLE ".DB_CCP_SETTINGS." ADD paypal BOOL NOT NULL";
@@ -99,19 +88,13 @@ $mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('2','Bet
 $mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('3','Betrag', '3', '15.00')";
 $mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('4','Betrag', '4', '20.00')";
 
-$mysql[] = "INSERT ".DB_CCP_KATEGORIEN." (id, kat_klartext) VALUES ('1','" . $locale['ccp003'] . "')";
-$mysql[] = "INSERT ".DB_CCP_KATEGORIEN." (id, kat_klartext) VALUES ('2','" . $locale['ccp004'] . "')";
-$mysql[] = "INSERT ".DB_CCP_KATEGORIEN." (id, kat_klartext) VALUES ('3','" . $locale['ccp005'] . "')";
-
 $mysql[] = "UPDATE ".DB_INFUSIONS." SET inf_version='1.3' WHERE inf_folder='clancash_panel'";
 
+//----------- Muss noch gefixt werden! -----------//
 $inf_adminpanel[1] = array(
-    "title" => $locale['ccp000'],
     "image" => "../infusions/clancash_panel/images/admin.gif",
-    "panel" => "ccp_settings_panel.php",
-    "rights" => "CCP"
 );
-//-----------
+//-----------------------------------------------//
 
 $errors = 0;
 foreach($mysql as $query) {
