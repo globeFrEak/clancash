@@ -8,6 +8,8 @@ ClanCash v1.3
 -Icons
 -Paypal funktion pro Konto
 -PHP-Fusion v6 quellcode entfernt
+-Versionsprüfung ab jetzt verfügbar
+-Updatefunktion für vorhergehende Versionen des Clancashpanels (für php-fusion 7.02.XX)
 
 
 Clankasse v1.2
