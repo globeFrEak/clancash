@@ -217,7 +217,7 @@ if (dbrows($data) > 0) {
             <td class='$cell_color' align='center' width='10%'>$bjahr&nbsp;$set_symbol</td>
             <td class='$cell_color' align='center' width='30%'><a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'>" . $locale['ccp113'] . "</a><br><a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'>" . $locale['ccp114'] . "</a></td>
           </tr>";
-    }
+    } echo "</table>";
 } else {
     echo $keintrag;
 }
