@@ -172,8 +172,9 @@ else
 echo"</tr><tr>
             <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td>
             </table></form><br>";
-$data = dbarray(dbquery("SELECT SUM(bmonat) AS total FROM " . DB_CCP_BUDGET));
-if (dbrows($data) > 0) {
+$query = dbquery("SELECT SUM(bmonat) AS total FROM " . DB_CCP_BUDGET);
+if (dbrows($query) > 0) {
+    $data = dbarray($query);
     echo"<table align='center' class='tbl-border' width='100%'>";
     $total_monat = round($data['total'], 2);
     $total_jahr = round($total_monat * 12, 2);
