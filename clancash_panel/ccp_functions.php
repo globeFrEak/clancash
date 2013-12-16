@@ -70,30 +70,4 @@ function VerifyMail($mail) {
         return true;
     }
 }
-
-//// Testsequenz für Updateüberprüfung ////
-function latest_ccp_version()
-{
-	$url = "http://germanys-united-legends.de/version/phpfusion_ccp.txt";
-	$url_p = @parse_url($url);
-	$host = $url_p['host'];
-	$port = isset($url_p['port']) ? $url_p['port'] : 80;
-
-	$fp = @fsockopen($url_p['host'], $port, $errno, $errstr, 5);
-	if(!$fp) return false;
-
-	@fputs($fp, 'GET '.$url_p['path'].' HTTP/1.1'.chr(10));
-	@fputs($fp, 'HOST: '.$url_p['host'].chr(10));
-	@fputs($fp, 'Connection: close'.chr(10).chr(10));
-
-	$response = @fgets($fp, 1024);
-	$content = @fread($fp,1024);
-	$content = preg_replace("#(.*?)text/plain(.*?)$#is","$2",$content);
-	@fclose ($fp);
-
-	$content = preg_replace("/X-Pad: avoid browser bug/si", "", $content);
-
-	if(preg_match("#404#",$response)) return false;
-	else return trim($content);
-}
 ?>
