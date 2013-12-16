@@ -1,25 +1,26 @@
 <?php
-/*--------------------------------------------------------------+
- | PHP-Fusion 7 Content Management System             			|
- +--------------------------------------------------------------+
- | Copyright © 2002 - 2013 Nick Jones                 			|
- | http://www.php-fusion.co.uk/                       			|
- +--------------------------------------------------------------+
- | Infusion: ClanCash                                 			|
- | Filename: ccp_admin_panel.php                      			|
- | Author:                                            			|
- | RedDragon(v6) 	    http://www.efc-funclan.de      			|
- | globeFrEak (v7) 		http://www.cwclan.de           			|
- | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
- +--------------------------------------------------------------+
- | This program is released as free software under the			|
- | Affero GPL license. You can redistribute it and/or			|
- | modify it under the terms of this license which you			|
- | can read by viewing the included agpl.txt or online			|
- | at www.gnu.org/licenses/agpl.html. Removal of this			|
- | copyright header is strictly prohibited without				|
- | written permission from the original author(s).				|
- +--------------------------------------------------------------*/
+
+/* --------------------------------------------------------------+
+  | PHP-Fusion 7 Content Management System             			|
+  +--------------------------------------------------------------+
+  | Copyright © 2002 - 2013 Nick Jones                 			|
+  | http://www.php-fusion.co.uk/                       			|
+  +--------------------------------------------------------------+
+  | Infusion: ClanCash                                 			|
+  | Filename: ccp_admin_panel.php                      			|
+  | Author:                                            			|
+  | RedDragon(v6) 	    http://www.efc-funclan.de      			|
+  | globeFrEak (v7) 		http://www.cwclan.de           			|
+  | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+  +--------------------------------------------------------------+
+  | This program is released as free software under the			|
+  | Affero GPL license. You can redistribute it and/or			|
+  | modify it under the terms of this license which you			|
+  | can read by viewing the included agpl.txt or online			|
+  | at www.gnu.org/licenses/agpl.html. Removal of this			|
+  | copyright header is strictly prohibited without				|
+  | written permission from the original author(s).				|
+  +-------------------------------------------------------------- */
 require_once "../../maincore.php";
 require_once THEMES . "templates/admin_header.php";
 include INFUSIONS . "clancash_panel/infusion_db.php";
@@ -71,7 +72,7 @@ if ((isset($_GET['delcom'])) != '') {
 
 if (isset($_POST['save'])) {
 
-    if ($_POST['kategorie'] == '' || $_POST['betrag'] == '00.00' || $_POST['betrag'] == '' || $_POST['tag'] == '' || $_POST['monat'] == '' || $_POST['jahr'] == '') {
+    if ($_POST['kategorie'] == '' || $_POST['betrag'] == '00.00' || $_POST['betrag'] == '' || $_POST['tag'] == '' || $_POST['monat'] == '' || $_POST['jahr'] == '' || $_POST['konto_id'] == '') {
         $ed_valuta = $_POST['betrag'];
         $ed_comment = $_POST['comment'];
         $ed_tag = $_POST['tag'];
@@ -83,7 +84,7 @@ if (isset($_POST['save'])) {
         $ed_check_p = ($_POST['einaus'] > 0 ? "selected" : "");
         $ed_check_m = ($_POST['einaus'] < 0 ? "selected" : "");
         $edit = $_POST['id'];
-        echo $ngespeichert;        
+        echo $ngespeichert;
     } else {
         $betrag = str_replace(',', '.', $_POST['betrag']);
         dbquery("INSERT " . DB_CCP_BUCHUNGEN . " SET
@@ -95,12 +96,12 @@ if (isset($_POST['save'])) {
       monat = '" . stripinput($_POST['monat']) . "',
       jahr = '" . stripinput($_POST['jahr']) . "',
       comment = '" . stripinput($_POST['comment']) . "'");
-        echo $gespeichert;      
+        echo $gespeichert;
     }
 }
 
 if (isset($_POST['update'])) {
-    if ($_POST['kategorie'] == '' || $_POST['betrag'] == '00.00' || $_POST['betrag'] == '' || $_POST['tag'] == '' || $_POST['monat'] == '' || $_POST['jahr'] == '') {
+    if ($_POST['kategorie'] == '' || $_POST['betrag'] == '00.00' || $_POST['betrag'] == '' || $_POST['tag'] == '' || $_POST['monat'] == '' || $_POST['jahr'] == '' || $_POST['konto_id'] == '') {
         $ed_valuta = $_POST['betrag'];
         $ed_comment = $_POST['comment'];
         $ed_tag = $_POST['tag'];
@@ -112,7 +113,7 @@ if (isset($_POST['update'])) {
         $ed_check_p = ($_POST['einaus'] > 0 ? "selected" : "");
         $ed_check_m = ($_POST['einaus'] < 0 ? "selected" : "");
         $edit = $_POST['id'];
-        echo $ngespeichert;        
+        echo $ngespeichert;
     } else {
         $betrag = str_replace(',', '.', $_POST['betrag']);
         dbquery("UPDATE " . DB_CCP_BUCHUNGEN . " SET
@@ -124,7 +125,7 @@ if (isset($_POST['update'])) {
       monat = '" . stripinput($_POST['monat']) . "',
       jahr = '" . stripinput($_POST['jahr']) . "',
       comment = '" . stripinput($_POST['comment']) . "' WHERE id='$id'");
-        echo $gespeichert;        
+        echo $gespeichert;
     }
 }
 opentable($locale['ccp_a000']);
@@ -188,15 +189,20 @@ echo" </select></td>
         <td class='tbl1' style='width:70%' ><input type='text' name='comment' class='textbox' value='$ed_comment' style='width:95%; maxlenght:40;'></td>
       </tr>
       <tr>
-        <td  class='tbl1' style='text-align: center; width:30%;'>" . $locale['ccp106'] . "</td>
-        <td  class='tbl1' style='width:70%'>
-         <select name='konto_id' class='textbox' style='width:145;'>\n
-        <option value=''>----</option>\n";
+        <td  class='tbl1' style='text-align: center; width:30%;'>" . $locale['ccp106'] . ":$required</td>
+        <td  class='tbl1' style='width:70%'>";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
-while ($data = dbarray($result)) {
-    echo "<option" . ($data['id'] == $standard_konto ? " selected" : "") . " value='" . $data['id'] . "'>" . $data['name'] . "</option>\n";
+if (dbrows() > 0) {
+    echo "<select name='konto_id' class='textbox' style='width:145;'>\n
+        <option value=''>----</option>\n";
+    while ($data = dbarray($result)) {
+        echo "<option" . ($data['id'] == $standard_konto ? " selected" : "") . " value='" . $data['id'] . "'>" . $data['name'] . "</option>\n";
+    }
+    echo "</select>";
+} else {
+    echo "<a href='" . BASEDIR . "infusions/clancash_panel/ccp_konten.php'>".$locale['ccp251']."</a>";
 }
-echo" </select></td>
+echo"</td>
       </tr>
       <tr>
         <td class='tbl1' style='text-align: center; width:30%;'>" . $locale['ccp107'] . "</td>
