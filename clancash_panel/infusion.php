@@ -137,14 +137,6 @@ $inf_droptable[6] = DB_CCP_PAYPAL;
 
 $inf_insertdbrow[1] = DB_CCP_SETTINGS . " SET cashadmin_groupid='103', member_groupid='101', zeilen='15', waehrung='€', member_show_all='1', member_show_names='0', placeholder_name='xxxxx', paypal='1', version='" . $locale['ccp002'] . "'";
 
-$inf_insertdbrow[1] = "";
-
-$inf_adminpanel[1] = array(
-    "title" => $locale['ccp000'], 
-    "image" => "../infusions/clancash_panel/images/admin.gif",
-    "panel" => "ccp_settings_panel.php", 
-    "rights" => "CCP");
-
 $inf_insertdbrow[2] = DB_CCP_KATEGORIEN . " VALUES ('1','" . $locale['ccp003'] . "')";  
 $inf_insertdbrow[3] = DB_CCP_KATEGORIEN . " VALUES ('2','" . $locale['ccp004'] . "')";
 $inf_insertdbrow[4] = DB_CCP_KATEGORIEN . " VALUES ('3','" . $locale['ccp005'] . "')";
@@ -158,5 +150,6 @@ $inf_adminpanel[1] = array(
     "title" => $locale['ccp000'],
     "image" => "../infusions/clancash_panel/images/admin.gif",
     "panel" => "ccp_settings_panel.php",
-    "rights" => "CCP");
+    "rights" => "CCP"
+);
 ?>
