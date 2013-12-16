@@ -22,16 +22,18 @@
 
 ClanCash v1.3
 -------------
--bessere und richtige Anzeige der Beträge (Bsp: 3.000,50)
+-Bessere und richtige Anzeige der Beträge (Bsp: 3.000,50)
 -Übersicht: Beitragsübersicht,Einnahmen/Ausgaben,Kontokontakt können nun direkt zum Öffnen der Tabs angeklickt werden
 -Datenbankabfragen optimiert
--neue Einstellungen: Mitglieder Namen verbergen Ja/Nein & Welcher Name angezeigt werden soll wenn Mitglieder Namen versteckt werden sollen
+-Neue Einstellungen: Mitglieder Namen verbergen Ja/Nein und was angezeigt werden soll, wenn Mitglieder Namen nicht sichtbar sind
 -PHP Fusion Fehlerlog Einträge behoben
 -Icons
--Paypal funktion pro Konto
+-Buchungen sind ohne Kontoauswahl nun nicht mehr möglich
+-IBAN und SWIFT sind nun Pflichtfelder
+-Paypal-Funktion pro Konto
 -PHP-Fusion v6 quellcode entfernt
 -Versionsprüfung ab jetzt verfügbar
--Updatefunktion für vorhergehende Versionen des Clancashpanels (für php-fusion 7.02.XX)
+-Updatefunktion für vorhergehende Versionen des Clancashpanels (Achtung! nur für php-fusion ab v7.02.XX)
 
 
 Clankasse v1.2
