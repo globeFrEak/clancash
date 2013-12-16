@@ -101,6 +101,7 @@ member_show_names BOOL NOT NULL,
 placeholder_name varchar(15) default 'xxxxx',
 paypal BOOL NOT NULL,
 standard_konto int(11) default '1',
+version VARCHAR(20) NOT NULL,
 PRIMARY KEY  (id)
 )ENGINE=MyISAM;";
 
@@ -134,7 +135,7 @@ $inf_droptable[4] = DB_CCP_KONTEN;
 $inf_droptable[5] = DB_CCP_SETTINGS;
 $inf_droptable[6] = DB_CCP_PAYPAL;
 
-$inf_insertdbrow[1] = DB_CCP_SETTINGS . " SET cashadmin_groupid='103', member_groupid='101', zeilen='15', waehrung='€', member_show_all='1', member_show_names='0', placeholder_name='xxxxx', paypal='1'";
+$inf_insertdbrow[1] = DB_CCP_SETTINGS . " SET cashadmin_groupid='103', member_groupid='101', zeilen='15', waehrung='€', member_show_all='1', member_show_names='0', placeholder_name='xxxxx', paypal='1', version='" . $locale['ccp002'] . "'";
 $inf_insertdbrow[2] = DB_CCP_KATEGORIEN . " SET kat_klartext='" . $locale['ccp003'] . "'";
 $inf_insertdbrow[3] = DB_CCP_PAYPAL . " VALUES ('1','Betrag', '1', '5.00')";
 $inf_insertdbrow[4] = DB_CCP_PAYPAL . " VALUES ('2','Betrag', '2', '10.00')";
