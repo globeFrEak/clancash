@@ -192,7 +192,7 @@ echo" </select></td>
         <td  class='tbl1' style='text-align: center; width:30%;'>" . $locale['ccp106'] . ":$required</td>
         <td  class='tbl1' style='width:70%'>";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
-if (dbrows() > 0) {
+if (dbrows($result) > 0) {
     echo "<select name='konto_id' class='textbox' style='width:145;'>\n
         <option value=''>----</option>\n";
     while ($data = dbarray($result)) {
