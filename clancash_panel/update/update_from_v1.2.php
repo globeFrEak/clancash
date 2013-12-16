@@ -89,10 +89,8 @@ $mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('3','Bet
 $mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('4','Betrag', '4', '20.00')";
 
 $mysql[] = "UPDATE ".DB_INFUSIONS." SET inf_version='1.3' WHERE inf_folder='clancash_panel'";
-
-$inf_adminpanel[1] = array(
-    "image" => "ccp_admin_logo.gif",
-);
+						
+$mysql[] = "UPDATE" .DB_ADMIN. " SET admin_image = '../infusions/clancash_panel/images/admin.gif' WHERE admin_rights='CCP'";
 
 $errors = 0;
 foreach($mysql as $query) {
