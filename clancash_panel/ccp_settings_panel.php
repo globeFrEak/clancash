@@ -171,14 +171,12 @@ echo"<input name='placeholder_name' class='textbox' style='width:150px; text-ali
 closetable();
 
 //// Testsequenz für Versionsüberprüfung ////
+include_once INFUSIONS."clancash_panel/ccp_versionschecker.php";
 $ccp_config = dbarray(dbquery("SELECT * FROM " . DB_CCP_SETTINGS));
 opentable($locale['ccp300']);
 
 $ausgabe = '';
-    if(function_exists('fsockopen'))
-    { 
-      $version_new = latest_ccp_version();
-      if(version_compare($version_new, $ccp_config['version'], '<=') AND $version_new > 0)
+      if(version_compare($new_version, $ccp_config['version'], '<=') AND $new_version > 0)
       {
 	  $ausgabe = "
 	  <table cellpadding='0' cellspacing='1'>
@@ -187,25 +185,24 @@ $ausgabe = '';
 	  <td><span style=\"font-weight: bold; color: #1bdc16;\">".$locale['ccp303'].": ".$ccp_config['version']."</span></td>
 	  </tr>
 	  </table>";
-      } else {
-        if (!empty($version_new))
+      } 
+	  else {
+        if (!empty($new_version))
         {
 	$ausgabe = "
 	<table cellpadding='0' cellspacing='1'>
 	<tr>
 	<td><img src='".INFUSIONS."clancash_panel/images/version_old.gif' alt='old version' /></td>
 	<td><span style='font-weight: bold; color: red;'>".$locale['ccp302'].": ".$ccp_config['version']."</span><br />
-	<span style='font-weight: bold; color: #1bdc16;'>".$locale['ccp301'].": ".$version_new."</span><br />
+	<span style='font-weight: bold; color: #1bdc16;'>".$locale['ccp301'].": ".$new_version."</span><br />
 	<span style='font-weight: bold;'>".$locale['ccp304'].": </span><a href='https://github.com/globeFrEak/clancash/releases' target='_blank' title='".$locale['ccp312']."'><span style='font-weight: bold;'>".$locale['ccp312']."</span></a></td>
 	</tr>
 	</table>";
        }
       }
-    } 
-	if (empty($version_new)) {
+	if (empty($new_version)) {
 	$ausgabe = "<br /><span style='font-weight: bold; color: red;'>".$locale['ccp305']."!<br /></span><span style='font-weight: bold;'>".$locale['ccp304']."</span> <a href='https://github.com/globeFrEak/clancash/releases' target='_blank' title='".$locale['ccp312']."'><span style='font-weight: bold;'>".$locale['ccp312']."</span></a><br /><br />";
     }
-
 echo "<div align='center'>".$ausgabe."</div>";
 
 //// Testsequenz für Datenbankupdate ////
@@ -213,5 +210,5 @@ require_once INFUSIONS."clancash_panel/update/ccp_update.php";
 //// Testsequenz für Datenbankupdate Ende////
 closetable();
 require_once "ccp_copyright.php";
-require_once THEMES . "templates/footer.php";
+require_once THEMES."templates/footer.php";
 ?>

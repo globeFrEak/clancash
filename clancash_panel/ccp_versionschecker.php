@@ -54,10 +54,10 @@ function getTag($use, $url) {
 
 if (cURLcheck()) {
     $url = "https://api.github.com/repos/globeFrEak/clancash/releases";
-    echo cURLcheck();
-    echo "<br>";
+    //echo cURLcheck(); 					// Ausgabe des cURLcheck
+    //echo "<br>";							// Ausgabe Zeilenumbruch
     $file_content = getTag(cURLcheck(), $url);
-    $version = $file_content['0']['tag_name'];
-    echo $file_content['0']['tag_name'];
+    $new_version = $file_content['0']['tag_name'];
+    //echo $file_content['0']['tag_name']; // Ausgabe der Versionsnummer
 }
 ?>
