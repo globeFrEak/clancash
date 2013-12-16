@@ -143,7 +143,7 @@ $inf_insertdbrow[6] = DB_CCP_PAYPAL . " VALUES ('4','Betrag', '4', '20.00')";
 
 $inf_adminpanel[1] = array(
     "title" => $locale['ccp000'],
-    "image" => "../infusions/clancash_panel/images/admin.gif",
+    "image" => "ccp_admin_logo.gif",
     "panel" => "ccp_settings_panel.php",
     "rights" => "CCP"
 );

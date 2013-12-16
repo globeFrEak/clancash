@@ -90,11 +90,9 @@ $mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('4','Bet
 
 $mysql[] = "UPDATE ".DB_INFUSIONS." SET inf_version='1.3' WHERE inf_folder='clancash_panel'";
 
-//----------- Muss noch gefixt werden! -----------//
 $inf_adminpanel[1] = array(
-    "image" => "../infusions/clancash_panel/images/admin.gif",
+    "image" => "ccp_admin_logo.gif",
 );
-//-----------------------------------------------//
 
 $errors = 0;
 foreach($mysql as $query) {
