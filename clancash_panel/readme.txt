@@ -78,8 +78,8 @@ Einstellungen:
 -->Angabe der lokalen Währung
 -->Checkbox, ob die Beitragszahler aller Buchungen sehen dürfen,
    oder ob sie nur allgeimene und ihre eigenen sehen dürfen.
--->Bei Verwendung mehrerer Konten Wahl des Standartkontos (für Paypalzahlungen)
+-->Bei Verwendung mehrerer Konten Wahl des Standardkontos (für Paypalzahlungen)
 -->Paypal-Funktion aktivieren
 -->Auswahl ob die Buchungen für alle Mitglieder sichtbar sind -> wenn ja ->
 -->Auswahl ob die Benutzernamen der Beitragszahler angezeigt werden sollen -> wenn nein ->
--->Auswahl was anstelle der Benutzernamen angezeigt werden soll Standart = "XXXXX"
+-->Auswahl was anstelle der Benutzernamen angezeigt werden soll Standard = "XXXXX"
