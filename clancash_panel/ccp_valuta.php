@@ -90,7 +90,7 @@ while ($data = dbarray($result)) {
               <td align='left'><br>&nbsp;" . $data['zweck'] . "</td>
             </tr>
             </table><br>";
-    if ($paypal != '0') {
+    if ($paypal != '0' && $data['paypal_email'] != '') {
         echo" <a href='" . INFUSIONS . "clancash_panel/ccp_paypal.php?id=" . $data['id'] . "'><img src='" . $data['paypal_button'] . "' border='0'></a>";
     }
 }
