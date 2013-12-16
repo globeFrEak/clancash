@@ -144,7 +144,7 @@ if ((isset($_GET['edit'])) != '') {
 }
 
 if (isset($_POST['save'])) {
-    if ($_POST['konto_id'] == '' || $_POST['name'] == '' || $_POST['inhaber'] == '' || $_POST['blz'] == '' || $_POST['zweck'] == '') {
+    if ($_POST['konto_id'] == '' || $_POST['name'] == '' || $_POST['inhaber'] == '' || $_POST['blz'] == '' || $_POST['iban'] == '' || $_POST['swift'] == '' || $_POST['bank'] == '' || $_POST['zweck'] == '') {
         echo $ngespeichert;
     } else {
         dbquery("INSERT " . DB_CCP_KONTEN . " SET
@@ -167,7 +167,7 @@ paypal_beitrag_checked = '" . stripinput($paypal_beitrag_checked) . "'");
 }
 
 if (isset($_POST['update'])) {
-    if ($_POST['konto_id'] == '' || $_POST['name'] == '' || $_POST['inhaber'] == '' || $_POST['blz'] == '' || $_POST['zweck'] == '') {
+    if ($_POST['konto_id'] == '' || $_POST['name'] == '' || $_POST['inhaber'] == '' || $_POST['blz'] == '' || $_POST['iban'] == '' || $_POST['swift'] == '' || $_POST['bank'] == '' || $_POST['zweck'] == '') {
         echo $ngespeichert;
     } else {
         dbquery("UPDATE " . DB_CCP_KONTEN . " SET
@@ -243,7 +243,7 @@ echo"<tr>
             <td class='tbl1'><input name='blz' class='textbox' value='$ed_blz' maxlength='10' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1'>" . $locale['ccp140'] . ":</td>
+            <td class='tbl1'>" . $locale['ccp140'] . ":$required</td>
             <td class='tbl1'><input name='bank' class='textbox' value='$ed_bank' maxlength='40' style='width:100%;'></td>
         </tr>
         <tr>
@@ -251,11 +251,11 @@ echo"<tr>
             <td class='tbl1'><input name='zweck' class='textbox' value='$ed_zweck' maxlength='54' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1'>" . $locale['ccp141'] . ":</td>
+            <td class='tbl1'>" . $locale['ccp141'] . ":$required</td>
             <td class='tbl1'><input name='iban' class='textbox' value='$ed_iban' maxlength='34' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1'>" . $locale['ccp142'] . ":</td>
+            <td class='tbl1'>" . $locale['ccp142'] . ":$required</td>
             <td class='tbl1'><input name='swift' class='textbox' value='$ed_swift' maxlength='11' style='width:100%;'></td>
         </tr>";
 if ($paypal != '0') {
