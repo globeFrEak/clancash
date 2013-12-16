@@ -1,13 +1,54 @@
-changelog Clankasse v1.2
+ +--------------------------------------------------------------+
+ | PHP-Fusion 7 Content Management System             		|
+ +--------------------------------------------------------------+
+ | Copyright © 2002 - 2013 Nick Jones                 		|
+ | http://www.php-fusion.co.uk/                       		|
+ +--------------------------------------------------------------+
+ | Infusion: ClanCash                                 		|
+ | Filename: ccp_admin_panel.php                      		|
+ | Author:                                            		|
+ | RedDragon(v6) 	http://www.efc-funclan.de      		|
+ | globeFrEak (v7) 	http://www.cwclan.de           		|
+ | Sonic (v7.02)	http://www.germanys-united-legends.de 	|
+ +--------------------------------------------------------------+
+ | This program is released as free software under the		|
+ | Affero GPL license. You can redistribute it and/or		|
+ | modify it under the terms of this license which you		|
+ | can read by viewing the included agpl.txt or online		|
+ | at www.gnu.org/licenses/agpl.html. Removal of this		|
+ | copyright header is strictly prohibited without		|
+ | written permission from the original author(s).		|
+ +--------------------------------------------------------------+
 
+ClanCash v1.3
+-------------
+-Bessere und richtige Anzeige der Beträge (Bsp: 3.000,50)
+-Übersicht: Beitragsübersicht,Einnahmen/Ausgaben,Kontokontakt können nun direkt zum Öffnen der Tabs angeklickt werden
+-Datenbankabfragen optimiert
+-Neue Einstellungen: Mitglieder Namen verbergen Ja/Nein und was angezeigt werden soll, wenn Mitglieder Namen nicht sichtbar sind
+-PHP Fusion Fehlerlog Einträge behoben
+-Icons
+-Buchungen sind ohne Kontoauswahl nun nicht mehr möglich
+-IBAN und SWIFT sind nun Pflichtfelder
+-Paypal-Funktion pro Konto
+-PHP-Fusion v6 quellcode entfernt
+-Versionsprüfung ab jetzt verfügbar
+-Updatefunktion für vorhergehende Versionen des Clancashpanels (Achtung! nur für php-fusion ab v7.02.XX)
+
+
+Clankasse v1.2
+--------------
 -Umschreibung für PHP-FUSION v7.02
 -Konten lassen sich bearbeiten --- löschen
 -Kategorien lassen sich bearbeiten --- löschen
 -Buchungen lassen sich bearbeiten --- löschen
 -Member dürfen alle Buchungen sehen ja - nein (checkbox)
  > Wenn ja sind Einnahmen/Ausgaben auch als Flipbox mit Usernamen sichtbar
- > wenn nein sind nur eigene Zahlungen und Buchungen die keinem Benutzer zugeordnet sind sichtbar, keine Anzeige des Kontostand
--Kassenadmins lassen sich auch aus Benutzergruppen erstellen, auch wenn sie "nur" Member sind, mit voller Zugriffsberechtigung außer auf die settings.php
+ > wenn nein sind nur eigene Zahlungen und Buchungen die keinem Benutzer zugeordnet 
+ > sind sichtbar
+ > keine Anzeige des Kontostand
+-Kassenadmins lassen sich auch aus Benutzergruppen erstellen mit voller 
+ > Zugriffsberechtigung außer auf die settings.php
 -Variablenzuweisung neu gesetzt
 -Änderung des Datenbankzugriffes von ".$prefix" auf ".DB_"
 -Überarbeitung des copyrights mit namentlicher Erwähnung aller Authoren

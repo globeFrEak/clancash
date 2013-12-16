@@ -1,26 +1,29 @@
 <?php
-/*---------------------------------------------------+
-| PHP-Fusion 7 Content Management System
-+----------------------------------------------------+
-| Copyright © 2002 - 2013 Nick Jones
-| http://www.php-fusion.co.uk/
-|----------------------------------------------------+
-| Infusion: Clankasse
-| Filename: ccp_admin_panel.php
-| Author: 
-| RedDragon(v6) 	http://www.efc-funclan.de
-| globeFrEak (v7) 	http://www.cwclan.de
-| Sonic (v7.02)		http://www.germanys-united-legends.de
-+----------------------------------------------------+
-| This program is released as free software under the
-| Affero GPL license. You can redistribute it and/or
-| modify it under the terms of this license which you
-| can read by viewing the included agpl.txt or online
-| at www.gnu.org/licenses/agpl.html. Removal of this
-| copyright header is strictly prohibited without
-| written permission from the original author(s).
-+----------------------------------------------------*/
-if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");   
+/*--------------------------------------------------------------+
+ | PHP-Fusion 7 Content Management System             			|
+ +--------------------------------------------------------------+
+ | Copyright © 2002 - 2013 Nick Jones                 			|
+ | http://www.php-fusion.co.uk/                       			|
+ +--------------------------------------------------------------+
+ | Infusion: ClanCash                                 			|
+ | Filename: ccp_admin_panel.php                      			|
+ | Author:                                            			|
+ | RedDragon(v6) 	    http://www.efc-funclan.de      			|
+ | globeFrEak (v7) 		http://www.cwclan.de           			|
+ | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+ +--------------------------------------------------------------+
+ | This program is released as free software under the			|
+ | Affero GPL license. You can redistribute it and/or			|
+ | modify it under the terms of this license which you			|
+ | can read by viewing the included agpl.txt or online			|
+ | at www.gnu.org/licenses/agpl.html. Removal of this			|
+ | copyright header is strictly prohibited without				|
+ | written permission from the original author(s).				|
+ +--------------------------------------------------------------*/
+if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!"); 
+
+//vars
+$fzeichen = "-";
 
 if (((isset($_POST['filter_jahr'])) || (isset($_POST['filter_monat'])) || (isset($_POST['filter_user'])) || (isset($_POST['filter_cat'])) || (isset($_POST['filter_konto'])) || (isset($_GET['year'])) || (isset($_GET['month'])) || (isset($_GET['user'])) || (isset($_GET['cat'])) || (isset($_GET['account']))) && !(isset($_POST['reset'])))
   {
@@ -58,11 +61,10 @@ $filter1 = ($filter2 != '' || $filter3 != '' || $filter4 != '' || $filter5 != ''
 $filter = "$filter1$filter2$and1$filter3$and2$filter4$and3$filter5$and4$filter6$and5$filter7";
 $and = ($filter == '' && $is_admin == 1 ? "WHERE geloescht='0'" : "AND geloescht='0'");
 $data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM ".DB_CCP_BUCHUNGEN." $filter1$filter2$and1$filter3$and2$filter4$and3$filter5$and4$filter6$and5$filter7 $and"));
-($data['summe'] >= 0 ? $fzeichen = "" : "-");
 
 $fsumme = round($data['summe'],2);
 $fsumme = number_format($fsumme,2,',','.');
-$fvaluta = "$fzeichen$fsumme $set_symbol";
+$fvaluta = $fsumme."&nbsp;".$set_symbol;
 //echo "$filter";   //Filter debugging
 echo "<form name='filter' method='post' enctype='multipart/form-data' action='".FUSION_SELF."'>
       <div>
@@ -132,9 +134,13 @@ echo "<form name='filter' method='post' enctype='multipart/form-data' action='".
                   <input type='hidden' name='filter_cat' value='all'>\n
                   <input type='hidden' name='filter_konto' value='all'>\n
                   <td width='60%' class='tbl1'>&nbsp;</td>";
-        echo"
-        <td align='center'><input type='submit' name='reset' class='button' style='width:75' value='".$locale['ccp129']."'></td>
-      </tr>
+
+if ((isset($_POST['reset']))){
+echo "<td align='center'></td>";   
+} elseif ((isset($_POST['filter_jahr'])) || (isset($_POST['filter_monat'])) || (isset($_POST['filter_user'])) || (isset($_POST['filter_cat'])) || (isset($_POST['filter_konto']))) {
+echo "<td align='center'><input type='submit' name='reset' class='button' style='width:75' value='".$locale['ccp129']."'></td>";    
+}
+echo "</tr>
       </table>
       </div></form>";
 ?>

@@ -1,37 +1,35 @@
 <?php
-/*---------------------------------------------------+
-| PHP-Fusion 7 Content Management System
-+----------------------------------------------------+
-| Copyright © 2002 - 2013 Nick Jones
-| http://www.php-fusion.co.uk/
-|----------------------------------------------------+
-| Infusion: Clankasse
-| Filename: ccp_admin_panel.php
-| Author: 
-| RedDragon(v6) 	http://www.efc-funclan.de
-| globeFrEak (v7) 	http://www.cwclan.de
-| Sonic (v7.02)		http://www.germanys-united-legends.de
-+----------------------------------------------------+
-| This program is released as free software under the
-| Affero GPL license. You can redistribute it and/or
-| modify it under the terms of this license which you
-| can read by viewing the included agpl.txt or online
-| at www.gnu.org/licenses/agpl.html. Removal of this
-| copyright header is strictly prohibited without
-| written permission from the original author(s).
-+----------------------------------------------------*/
+/*--------------------------------------------------------------+
+ | PHP-Fusion 7 Content Management System             			|
+ +--------------------------------------------------------------+
+ | Copyright © 2002 - 2013 Nick Jones                 			|
+ | http://www.php-fusion.co.uk/                       			|
+ +--------------------------------------------------------------+
+ | Infusion: ClanCash                                 			|
+ | Filename: ccp_admin_panel.php                      			|
+ | Author:                                            			|
+ | RedDragon(v6) 	    http://www.efc-funclan.de      			|
+ | globeFrEak (v7) 		http://www.cwclan.de           			|
+ | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+ +--------------------------------------------------------------+
+ | This program is released as free software under the			|
+ | Affero GPL license. You can redistribute it and/or			|
+ | modify it under the terms of this license which you			|
+ | can read by viewing the included agpl.txt or online			|
+ | at www.gnu.org/licenses/agpl.html. Removal of this			|
+ | copyright header is strictly prohibited without				|
+ | written permission from the original author(s).				|
+ +--------------------------------------------------------------*/
 if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");
 
-if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) {
-    include INFUSIONS."clancash_panel/locale/".$settings['locale'].".php";
+if (!isset($_GET['rowstart']) || !isNum($_GET['rowstart'])) {
+    $rowstart = 0;
 } else {
-    include INFUSIONS."clancash_panel/locale/English.php";
+    $rowstart = $_GET['rowstart'];
 }
-
-if (!isset($rowstart) || !isNum($rowstart)) $rowstart = 0;
-if (dbrows(dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter")) == 0) echo $keintrag;
-else {
 $result = dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter ORDER BY jahr DESC, monat DESC, tag DESC LIMIT $rowstart,$b_per_page");
+$rows = dbrows($result);
+if ($rows > 0) {
 echo"<div><table class='tbl-border' width='100%'>";
 while ($data = dbarray($result)){
   $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2"); $i++;
@@ -60,8 +58,10 @@ echo"<tr>\n
       </tr>
     <tr style='height:1'><td colspan='5'></td></tr>";
 }
-echo "</table></div>";}
-$rows = dbrows(dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter"));
+echo "</table></div>";
+} else {
+    echo $keintrag;
+}
 echo "<div align='center' style='margin-top:5px;margin-bottom:5px;'>
 ".makePageNav($rowstart,$b_per_page,$rows,3,FUSION_SELF."?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&")."</div>\n";
 ?>

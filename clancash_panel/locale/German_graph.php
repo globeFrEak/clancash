@@ -20,9 +20,12 @@
  | copyright header is strictly prohibited without				|
  | written permission from the original author(s).				|
  +--------------------------------------------------------------*/
-echo "<br><center>
-    <span style=color:black;font-size:12px>&copy;2010 
-    <a href='http://www.efc-funclan.de'>RedDragon</a> <br>     
-    &uuml;berarbeitet von <a href='http://www.germanys-united-legends.de'>Sonic</a> und <a href='http://www.cwclan.de'>globeFrEak</a> 2013 f&uuml;r PHP-FUSION (v7.02) <br> 
-    ClanCash Panel V" . $locale['ccp002'] . "</span></center>";
+// Create and populate the pData object
+ $MyData = new pData();  
+ $MyData->addPoints($totalein,"Einnahmen");
+ $MyData->addPoints($totalaus,"Ausgaben"); 
+ $MyData->setAxisName(0,"Ein-/Ausgaben");
+ $MyData->addPoints(array('Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'),"Monate");
+ $MyData->setSerieDescription("Monate","Monat");
+ $MyData->setAbscissa("Monate");
 ?>

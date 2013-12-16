@@ -2,7 +2,7 @@
 /*--------------------------------------------------------------+
  | PHP-Fusion 7 Content Management System             			|
  +--------------------------------------------------------------+
- | Copyright Â© 2002 - 2013 Nick Jones                 			|
+ | Copyright © 2002 - 2013 Nick Jones                 			|
  | http://www.php-fusion.co.uk/                       			|
  +--------------------------------------------------------------+
  | Infusion: ClanCash                                 			|
@@ -20,9 +20,12 @@
  | copyright header is strictly prohibited without				|
  | written permission from the original author(s).				|
  +--------------------------------------------------------------*/
-echo "<br><center>
-    <span style=color:black;font-size:12px>&copy;2010 
-    <a href='http://www.efc-funclan.de'>RedDragon</a> <br>     
-    &uuml;berarbeitet von <a href='http://www.germanys-united-legends.de'>Sonic</a> und <a href='http://www.cwclan.de'>globeFrEak</a> 2013 f&uuml;r PHP-FUSION (v7.02) <br> 
-    ClanCash Panel V" . $locale['ccp002'] . "</span></center>";
+// Create and populate the pData object
+ $MyData = new pData(); 
+ $MyData->addPoints($totalein,"income");
+ $MyData->addPoints($totalaus,"to spend"); 
+ $MyData->setAxisName(0,"income/expenditure");
+ $MyData->addPoints(array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'),"months");
+ $MyData->setSerieDescription("months","month");
+ $MyData->setAbscissa("months");
 ?>

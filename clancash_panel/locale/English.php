@@ -1,30 +1,33 @@
 <?php
-/*---------------------------------------------------+
-| PHP-Fusion 7 Content Management System
-+----------------------------------------------------+
-| Copyright © 2002 - 2013 Nick Jones
-| http://www.php-fusion.co.uk/
-|----------------------------------------------------+
-| Infusion: Clankasse
-| Filename: ccp_admin_panel.php
-| Author: 
-| RedDragon(v6) 	http://www.efc-funclan.de
-| globeFrEak (v7) 	http://www.cwclan.de
-| Sonic (v7.02)		http://www.germanys-united-legends
-+----------------------------------------------------+
-| This program is released as free software under the
-| Affero GPL license. You can redistribute it and/or
-| modify it under the terms of this license which you
-| can read by viewing the included agpl.txt or online
-| at www.gnu.org/licenses/agpl.html. Removal of this
-| copyright header is strictly prohibited without
-| written permission from the original author(s).
-+----------------------------------------------------*/
+/*--------------------------------------------------------------+
+ | PHP-Fusion 7 Content Management System             			|
+ +--------------------------------------------------------------+
+ | Copyright Â© 2002 - 2013 Nick Jones                 			|
+ | http://www.php-fusion.co.uk/                       			|
+ +--------------------------------------------------------------+
+ | Infusion: ClanCash                                 			|
+ | Filename: ccp_admin_panel.php                      			|
+ | Author:                                            			|
+ | RedDragon(v6) 	    http://www.efc-funclan.de      			|
+ | globeFrEak (v7) 		http://www.cwclan.de           			|
+ | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+ +--------------------------------------------------------------+
+ | This program is released as free software under the			|
+ | Affero GPL license. You can redistribute it and/or			|
+ | modify it under the terms of this license which you			|
+ | can read by viewing the included agpl.txt or online			|
+ | at www.gnu.org/licenses/agpl.html. Removal of this			|
+ | copyright header is strictly prohibited without				|
+ | written permission from the original author(s).				|
+ +--------------------------------------------------------------*/
 // Infusion titles & description
 
-$locale['ccp000'] = "Clancash";
+$locale['ccp000'] = "ClanCash";
 $locale['ccp001'] = "Panel for manage your clan cashflow.";
-$locale['ccp002'] = "1.2";
+$locale['ccp002'] = "1.3";
+$locale['ccp003'] = "donation";
+$locale['ccp004'] = "income";
+$locale['ccp005'] = "expenditure";
 
 $locale['ccp100'] = "Administration";
 $locale['ccp101'] = "date:";
@@ -89,8 +92,48 @@ $locale['ccp159'] = "Members can see hole cashflow";
 $locale['ccp160'] = "permanently delete";
 $locale['ccp161'] = "income/expenditure";
 $locale['ccp162'] = "You have got to be logged in to shown more details";
+
+$locale['ccp180'] = "Members can see names";
+$locale['ccp181'] = "Display name when 'Members can see names' disabled";
+$locale['ccp182'] = "Use Paypal-Function?";
+$locale['ccp183'] = "Paypal-mailadress";
+$locale['ccp184'] = "Paypal-button";
+$locale['ccp185'] = "Paypal-submit-button";
+$locale['ccp186'] = "Paypal-cancel-url";
+$locale['ccp187'] = "Paypal-thank you-url";
+$locale['ccp188'] = "Paypal-settings";
+$locale['ccp189'] = "Select standard amount";
+$locale['ccp190'] = "Amount management";
+$locale['ccp191'] = "Enter the amount for example: 10.00";
+$locale['ccp192'] = "The adress must start with  http://... ";
+$locale['ccp193'] = "Number";
+$locale['ccp194'] = "Amount";
+$locale['ccp195'] = "Name";
+$locale['ccp196'] = "Pay per Paypal";
+$locale['ccp197'] = "Use the amunt and continue";
+$locale['ccp198'] = "Clanamount";
+$locale['ccp199'] = "error";
+$locale['ccp200'] = "Paypal-Account not found!";
+$locale['ccp201'] = "Paypal-Email incorrect!";
+
+$locale['ccp250'] = "primary account";
+$locale['ccp251'] = "no account found!";
+
+$locale['ccp300'] = "Version check";
+$locale['ccp301'] = "Latest version";
+$locale['ccp302'] = "Installed version";
+$locale['ccp303'] = "Your version of the Clancash is the current version";
+$locale['ccp304'] = "Downloadlink";
+$locale['ccp305'] = "The automatic version checking is not possible at the moment!<br>Please click on the following link to a manual version check out";
+$locale['ccp306'] = "Database update is available";
+$locale['ccp307'] = "OK";
+$locale['ccp308'] = "Error";
+$locale['ccp309'] = "Errors occurred during the update process";
+$locale['ccp310'] = "update successful";
+$locale['ccp311'] = "back";
+$locale['ccp312'] = "Latest version on github.com";
+
 $locale['ccp999'] = "are u sure?";
+
+$locale['ccp_a000'] = "ClanCash - administration";
 ?>
-
-
-

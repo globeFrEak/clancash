@@ -20,9 +20,18 @@
  | copyright header is strictly prohibited without				|
  | written permission from the original author(s).				|
  +--------------------------------------------------------------*/
-echo "<br><center>
-    <span style=color:black;font-size:12px>&copy;2010 
-    <a href='http://www.efc-funclan.de'>RedDragon</a> <br>     
-    &uuml;berarbeitet von <a href='http://www.germanys-united-legends.de'>Sonic</a> und <a href='http://www.cwclan.de'>globeFrEak</a> 2013 f&uuml;r PHP-FUSION (v7.02) <br> 
-    ClanCash Panel V" . $locale['ccp002'] . "</span></center>";
+
+if (!checkrights("CCP") || !defined("iAUTH") || !isset($_GET['aid']) || $_GET['aid'] != iAUTH) redirect("../../login.php");
+
+switch ($ccp_version): 
+
+	case false:
+	echo "<tr><td colspan='4' class='tbl1'><a href='".INFUSIONS."clancash_panel/update/update_from_v1.2.php".$aidlink."'>".$locale['ccp306'].": 1.2 => 1.3</a></td></tr>";
+	break;
+	
+	default :
+	$uptodate = 1;
+	
+endswitch;
+
 ?>
