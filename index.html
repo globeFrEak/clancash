@@ -1,80 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
 <html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Clancash : ClanCash Panel for PHP-Fusion 7.02.X" />
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+  <title>Clancash</title>
+  <meta name="description" content="ClanCash Panel for PHP-Fusion 7.02.X">
 
-    <title>Clancash</title>
-  </head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <body>
+</head>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/globeFrEak/clancash">View on GitHub</a>
+<body>
 
-          <h1 id="project_title">Clancash</h1>
-          <h2 id="project_tagline">ClanCash Panel for PHP-Fusion 7.02.X</h2>
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Clancash</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">ClanCash Panel for PHP-Fusion 7.02.X</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/globeFrEak/clancash/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/globeFrEak/clancash/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/globeFrEak/clancash" class="code">View Clancash on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h3>
+<a name="kassenscript--panel-f%C3%BCr-php-fusion-v702xx" class="anchor" href="#kassenscript--panel-f%C3%BCr-php-fusion-v702xx"><span class="octicon octicon-link"></span></a>KassenScript + Panel für PHP-Fusion v7.02.XX</h3>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/globeFrEak/clancash/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/globeFrEak/clancash/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+<p>Einfaches Kassenscript mit Panel um die Finanzen im Blick zu haben. </p>
+
+<p>Diese Infusion wurde von RedDragon für PHP-Fusion v6 entwickelt.
+Wir (<a href="https://github.com/globefreak" class="user-mention">@globefreak</a> und <a href="https://github.com/GUL-Sonic" class="user-mention">@GUL-Sonic</a>) haben die Infusion auf v7 Portiert und einige Änderungen und Verbesserungen vorgenommen.</p>
+
+<h2>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog:</h2>
+
+<p><strong>ClanCash v1.3:</strong></p>
+
+<ul>
+<li>bessere und richtige Anzeige der Beträge (Bsp: 3.000,50)</li>
+<li>Übersicht: Beitragsübersicht,Einnahmen/Ausgaben,Kontokontakt können nun direkt zum Öffnen der Tabs angeklickt werden</li>
+<li>Datenbankabfragen optimiert</li>
+<li>neue Einstellungen: Mitglieder Namen verbergen Ja/Nein &amp; Welcher Name angezeigt werden soll wenn Mitglieder Namen versteckt werden sollen</li>
+<li>PHP Fusion Fehlerlog Einträge behoben</li>
+<li>Icons</li>
+<li>Paypal funktion pro Konto</li>
+<li>PHP-Fusion v6 quellcode entfernt</li>
+<li>Versionsprüfung ab jetzt verfügbar</li>
+<li>Updatefunktion für vorhergehende Versionen des ClanCash Panels (für php-fusion 7.02.XX)</li>
+</ul><p><strong>Clankasse v1.2:</strong></p>
+
+<ul>
+<li>Konvertierung für PHP-FUSION v7.02</li>
+<li>Konten lassen sich bearbeiten --- löschen</li>
+<li>Kategorien lassen sich bearbeiten --- löschen</li>
+<li>Buchungen lassen sich bearbeiten --- löschen</li>
+<li>Member dürfen alle Buchungen sehen ja - nein (checkbox)
+
+<ul>
+<li>Wenn ja sind Einnahmen/Ausgaben auch als Flipbox mit Usernamen sichtbar</li>
+<li>wenn nein sind nur eigene Zahlungen und Buchungen die keinem Benutzer zugeordnet </li>
+<li>sind sichtbar</li>
+<li>keine Anzeige des Kontostand</li>
+</ul>
+</li>
+<li>Kassenadmins lassen sich auch aus Benutzergruppen erstellen mit voller 
+
+<ul>
+<li>Zugriffsberechtigung außer auf die settings.php</li>
+</ul>
+</li>
+<li>Variablenzuweisung neu gesetzt</li>
+<li>Änderung des Datenbankzugriffes von ".$prefix" auf ".DB_"</li>
+<li>Überarbeitung des copyrights mit namentlicher Erwähnung aller Authoren</li>
+</ul>
+        </article>
+      </div>
     </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/globeFrEak" class="avatar"><img src="https://2.gravatar.com/avatar/1ad1192c174f3f9e020e01100f192019?d=https%3A%2F%2Fidenticons.github.com%2Faefd5c74ca549c93d888de423e801b08.png&amp;r=x&amp;s=60" width="48" height="48"/></a> <a href="https://github.com/globeFrEak">globeFrEak</a> maintains <a href="https://github.com/globeFrEak/clancash">Clancash</a></p>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/globeFrEak/clancash/tarball/master" class="tar">tar</a><a href="https://github.com/globeFrEak/clancash/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
 
-<pre><code>$ cd globeFrEak/clancash
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.
-(<a href="https://github.com/GUL-Sonic" class="user-mention">@GUL-Sonic</a>)</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Clancash maintained by <a href="https://github.com/globeFrEak">globeFrEak</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+  
+</body>
 </html>
