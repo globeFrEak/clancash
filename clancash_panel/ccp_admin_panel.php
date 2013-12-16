@@ -22,7 +22,7 @@
   | written permission from the original author(s).				|
   +-------------------------------------------------------------- */
 require_once "../../maincore.php";
-require_once THEMES . "templates/admin_header.php";
+require_once THEMES . "templates/header.php";
 include INFUSIONS . "clancash_panel/infusion_db.php";
 
 if (file_exists(INFUSIONS . "clancash_panel/locale/" . $settings['locale'] . ".php")) {
@@ -242,7 +242,7 @@ echo"</td>
         <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td>
       </tr></table></form>";
 
-
+closetable();
 include "ccp_filter.php";
 include "ccp_buchungen.php";
 include "ccp_copyright.php";
