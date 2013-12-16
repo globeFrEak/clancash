@@ -23,7 +23,7 @@
 
 if (!checkrights("CCP") || !defined("iAUTH") || !isset($_GET['aid']) || $_GET['aid'] != iAUTH) redirect("../../login.php");
 
-switch ($ccp_config['version']): 
+switch ($ccp_version): 
 
 	case false:
 	echo "<tr><td colspan='4' class='tbl1'><a href='".INFUSIONS."clancash_panel/update/update_from_v1.2.php".$aidlink."'>".$locale['ccp306'].": 1.2 => 1.3</a></td></tr>";

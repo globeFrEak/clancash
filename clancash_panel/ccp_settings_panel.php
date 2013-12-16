@@ -1,25 +1,26 @@
 <?php
-/*--------------------------------------------------------------+
- | PHP-Fusion 7 Content Management System             			|
- +--------------------------------------------------------------+
- | Copyright © 2002 - 2013 Nick Jones                 			|
- | http://www.php-fusion.co.uk/                       			|
- +--------------------------------------------------------------+
- | Infusion: ClanCash                                 			|
- | Filename: ccp_admin_panel.php                      			|
- | Author:                                            			|
- | RedDragon(v6) 	    http://www.efc-funclan.de      			|
- | globeFrEak (v7) 		http://www.cwclan.de           			|
- | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
- +--------------------------------------------------------------+
- | This program is released as free software under the			|
- | Affero GPL license. You can redistribute it and/or			|
- | modify it under the terms of this license which you			|
- | can read by viewing the included agpl.txt or online			|
- | at www.gnu.org/licenses/agpl.html. Removal of this			|
- | copyright header is strictly prohibited without				|
- | written permission from the original author(s).				|
- +--------------------------------------------------------------*/
+
+/* --------------------------------------------------------------+
+  | PHP-Fusion 7 Content Management System             			|
+  +--------------------------------------------------------------+
+  | Copyright © 2002 - 2013 Nick Jones                 			|
+  | http://www.php-fusion.co.uk/                       			|
+  +--------------------------------------------------------------+
+  | Infusion: ClanCash                                 			|
+  | Filename: ccp_admin_panel.php                      			|
+  | Author:                                            			|
+  | RedDragon(v6) 	    http://www.efc-funclan.de      			|
+  | globeFrEak (v7) 		http://www.cwclan.de           			|
+  | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+  +--------------------------------------------------------------+
+  | This program is released as free software under the			|
+  | Affero GPL license. You can redistribute it and/or			|
+  | modify it under the terms of this license which you			|
+  | can read by viewing the included agpl.txt or online			|
+  | at www.gnu.org/licenses/agpl.html. Removal of this			|
+  | copyright header is strictly prohibited without				|
+  | written permission from the original author(s).				|
+  +-------------------------------------------------------------- */
 require_once "../../maincore.php";
 require_once THEMES . "templates/admin_header.php";
 include INFUSIONS . "clancash_panel/infusion_db.php";
@@ -171,44 +172,40 @@ echo"<input name='placeholder_name' class='textbox' style='width:150px; text-ali
 closetable();
 
 //// Testsequenz für Versionsüberprüfung ////
-include_once INFUSIONS."clancash_panel/ccp_versionschecker.php";
-$ccp_config = dbarray(dbquery("SELECT * FROM " . DB_CCP_SETTINGS));
+include_once INFUSIONS . "clancash_panel/ccp_versionschecker.php";
 opentable($locale['ccp300']);
 
 $ausgabe = '';
-      if(version_compare($new_version, $ccp_config['version'], '<=') AND $new_version > 0)
-      {
-	  $ausgabe = "
+if (version_compare($new_version, $ccp_version, '<=') AND $new_version > 0) {
+    $ausgabe = "
 	  <table cellpadding='0' cellspacing='1'>
 	  <tr>
-	  <td><img src='".INFUSIONS."clancash_panel/images/version.gif' alt='up to date' /></td>
-	  <td><span style=\"font-weight: bold; color: #1bdc16;\">".$locale['ccp303'].": ".$ccp_config['version']."</span></td>
+	  <td><img src='" . INFUSIONS . "clancash_panel/images/version.gif' alt='up to date' /></td>
+	  <td><span style=\"font-weight: bold; color: #1bdc16;\">" . $locale['ccp303'] . ": " . $ccp_version . "</span></td>
 	  </tr>
 	  </table>";
-      } 
-	  else {
-        if (!empty($new_version))
-        {
-	$ausgabe = "
+} else {
+    if (!empty($new_version)) {
+        $ausgabe = "
 	<table cellpadding='0' cellspacing='1'>
 	<tr>
-	<td><img src='".INFUSIONS."clancash_panel/images/version_old.gif' alt='old version' /></td>
-	<td><span style='font-weight: bold; color: red;'>".$locale['ccp302'].": ".$ccp_config['version']."</span><br />
-	<span style='font-weight: bold; color: #1bdc16;'>".$locale['ccp301'].": ".$new_version."</span><br />
-	<span style='font-weight: bold;'>".$locale['ccp304'].": </span><a href='https://github.com/globeFrEak/clancash/releases' target='_blank' title='".$locale['ccp312']."'><span style='font-weight: bold;'>".$locale['ccp312']."</span></a></td>
+	<td><img src='" . INFUSIONS . "clancash_panel/images/version_old.gif' alt='old version' /></td>
+	<td><span style='font-weight: bold; color: red;'>" . $locale['ccp302'] . ": " . $ccp_version . "</span><br />
+	<span style='font-weight: bold; color: #1bdc16;'>" . $locale['ccp301'] . ": " . $new_version . "</span><br />
+	<span style='font-weight: bold;'>" . $locale['ccp304'] . ": </span><a href='https://github.com/globeFrEak/clancash/releases' target='_blank' title='" . $locale['ccp312'] . "'><span style='font-weight: bold;'>" . $locale['ccp312'] . "</span></a></td>
 	</tr>
 	</table>";
-       }
-      }
-	if (empty($new_version)) {
-	$ausgabe = "<br /><span style='font-weight: bold; color: red;'>".$locale['ccp305']."!<br /></span><span style='font-weight: bold;'>".$locale['ccp304']."</span> <a href='https://github.com/globeFrEak/clancash/releases' target='_blank' title='".$locale['ccp312']."'><span style='font-weight: bold;'>".$locale['ccp312']."</span></a><br /><br />";
     }
-echo "<div align='center'>".$ausgabe."</div>";
+}
+if (empty($new_version)) {
+    $ausgabe = "<br /><span style='font-weight: bold; color: red;'>" . $locale['ccp305'] . "!<br /></span><span style='font-weight: bold;'>" . $locale['ccp304'] . "</span> <a href='https://github.com/globeFrEak/clancash/releases' target='_blank' title='" . $locale['ccp312'] . "'><span style='font-weight: bold;'>" . $locale['ccp312'] . "</span></a><br /><br />";
+}
+echo "<div align='center'>" . $ausgabe . "</div>";
 
 //// Testsequenz für Datenbankupdate ////
-require_once INFUSIONS."clancash_panel/update/ccp_update.php";
+require_once INFUSIONS . "clancash_panel/update/ccp_update.php";
 //// Testsequenz für Datenbankupdate Ende////
 closetable();
 require_once "ccp_copyright.php";
-require_once THEMES."templates/footer.php";
+require_once THEMES . "templates/footer.php";
 ?>

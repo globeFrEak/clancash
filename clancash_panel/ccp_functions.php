@@ -51,6 +51,7 @@ $ed_jahr = date('Y');
 $ed_kat = "0";
 $ed_user_id = "0";
 $ed_check_p = "selected ";
+$ccp_version = $data['version'];
 
 $data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM " . DB_CCP_BUCHUNGEN . " WHERE geloescht='0'"));
 $summe = round($data['summe'], 2);
