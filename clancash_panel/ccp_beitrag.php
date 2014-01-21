@@ -1,25 +1,26 @@
 <?php
-/*--------------------------------------------------------------+
- | PHP-Fusion 7 Content Management System             			|
- +--------------------------------------------------------------+
- | Copyright © 2002 - 2013 Nick Jones                 			|
- | http://www.php-fusion.co.uk/                       			|
- +--------------------------------------------------------------+
- | Infusion: ClanCash                                 			|
- | Filename: ccp_admin_panel.php                      			|
- | Author:                                            			|
- | RedDragon(v6) 	    http://www.efc-funclan.de      			|
- | globeFrEak (v7) 		http://www.cwclan.de           			|
- | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
- +--------------------------------------------------------------+
- | This program is released as free software under the			|
- | Affero GPL license. You can redistribute it and/or			|
- | modify it under the terms of this license which you			|
- | can read by viewing the included agpl.txt or online			|
- | at www.gnu.org/licenses/agpl.html. Removal of this			|
- | copyright header is strictly prohibited without				|
- | written permission from the original author(s).				|
- +--------------------------------------------------------------*/
+
+/* --------------------------------------------------------------+
+  | PHP-Fusion 7 Content Management System             			|
+  +--------------------------------------------------------------+
+  | Copyright © 2002 - 2013 Nick Jones                 			|
+  | http://www.php-fusion.co.uk/                       			|
+  +--------------------------------------------------------------+
+  | Infusion: ClanCash                                 			|
+  | Filename: ccp_admin_panel.php                      			|
+  | Author:                                            			|
+  | RedDragon(v6) 	    http://www.efc-funclan.de      			|
+  | globeFrEak (v7) 		http://www.cwclan.de           			|
+  | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+  +--------------------------------------------------------------+
+  | This program is released as free software under the			|
+  | Affero GPL license. You can redistribute it and/or			|
+  | modify it under the terms of this license which you			|
+  | can read by viewing the included agpl.txt or online			|
+  | at www.gnu.org/licenses/agpl.html. Removal of this			|
+  | copyright header is strictly prohibited without				|
+  | written permission from the original author(s).				|
+  +-------------------------------------------------------------- */
 if (!defined("IN_FUSION") || !IN_FUSION)
     die("Access denied!");
 
@@ -73,14 +74,15 @@ if ($set_member_id == 0 || 101 || 102 || 103) {
 }
 while ($data = dbarray($result)) {
     for ($count_monat = 1; $count_monat < 13; $count_monat++) {
-        $db_total = dbarray(dbquery("SELECT SUM(valuta) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='" . $data['user_id'] . "' AND geloescht='0'"));
+        $db_total = dbarray(dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='" . $data['user_id'] . "' AND geloescht='0'"));
         $summe = number_format($db_total['total'], 2, ',', '.');
         ${"total_" . $count_monat} = $summe;
+        ${"total_op" . $count_monat} = $db_total['total'];
     }
     $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
     $i++;
     for ($nr = 1; $nr < 13; $nr++) {
-        if (${"total_" . $nr} > 0 || ${"total_" . $nr} < 0) {
+        if (${"total_op" . $nr} > 0 || ${"total_" . $nr} < 0) {
             ${"col_" . $nr} = "<a href='" . INFUSIONS . "clancash_panel/ccp_clancash.php?user=" . $data['user_id'] . "&amp;year=$view_jahr&amp;month=$nr&amp;cat=all&amp;account=all'>" . ${"total_" . $nr} . " $set_symbol</a>";
         } else {
             ${"col_" . $nr} = "";
@@ -104,9 +106,9 @@ $result = dbquery("SELECT a.id, a.kat_klartext FROM " . DB_CCP_KATEGORIEN . " AS
 if (dbrows($result) > 0) {
     while ($data = dbarray($result)) {
         for ($count_monat = 1; $count_monat < 13; $count_monat++) {
-            $db_total = dbarray(dbquery("SELECT SUM(valuta) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='0' AND geloescht='0' AND kat_id='" . $data['id'] . "'"));
+            $db_total = dbarray(dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='0' AND geloescht='0' AND kat_id='" . $data['id'] . "'"));
             $summe = number_format($db_total['total'], 2, ',', '.');
-            ${"total_" . $count_monat} = $summe;
+            ${"total_" . $count_monat} = $summe;            
         }
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         $i++;
