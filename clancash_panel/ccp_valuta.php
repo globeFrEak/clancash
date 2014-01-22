@@ -105,6 +105,6 @@ echo "<div id='box_graph'";
 if ($opengraph == "off") {
     echo "style='display:none'";
 } echo ">\n";
-echo "<center><img src='" . INFUSIONS . "clancash_panel/ccp_graph.php?year=".$view_jahr." alt='" . $locale['ccp161'] . "' title='" . $locale['ccp161'] . "'></center>";
+echo "<center><img src='" . INFUSIONS . "clancash_panel/ccp_graph.php?year=".$view_jahr."' alt='" . $locale['ccp161'] . "' title='" . $locale['ccp161'] . "'></center>";
 echo"</div>";
 ?>
