@@ -10,7 +10,7 @@
  | Author:                                            			|
  | RedDragon(v6) 	    http://www.efc-funclan.de      			|
  | globeFrEak (v7) 		http://www.cwclan.de           			|
- | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+ | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
  +--------------------------------------------------------------+
  | This program is released as free software under the			|
  | Affero GPL license. You can redistribute it and/or			|
@@ -27,6 +27,10 @@ switch ($ccp_version):
 
 	case false:
 	echo "<tr><td colspan='4' class='tbl1'><a href='".INFUSIONS."clancash_panel/update/update_from_v1.2.php".$aidlink."'>".$locale['ccp306'].": 1.2 => 1.3</a></td></tr>";
+	break;
+	
+	case "1.3":
+	echo "<tr><td colspan='4' class='tbl1'><a href='".INFUSIONS."clancash_panel/update/update_from_v1.3.php".$aidlink."'>".$locale['ccp306'].": 1.3 => 1.4</a></td></tr>";
 	break;
 	
 	default :

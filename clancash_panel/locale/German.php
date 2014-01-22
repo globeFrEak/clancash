@@ -10,7 +10,7 @@
  | Author:                                            			|
  | RedDragon(v6) 	    http://www.efc-funclan.de      			|
  | globeFrEak (v7) 		http://www.cwclan.de           			|
- | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+ | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
  +--------------------------------------------------------------+
  | This program is released as free software under the			|
  | Affero GPL license. You can redistribute it and/or			|
@@ -24,7 +24,7 @@
 
 $locale['ccp000'] = "ClanCash";
 $locale['ccp001'] = "Panel f&uuml;r die Verwaltung der Clan- oder Vereins-kasse.";
-$locale['ccp002'] = "1.3";
+$locale['ccp002'] = "1.4";
 $locale['ccp003'] = "Spenden";
 $locale['ccp004'] = "Einnahmen";
 $locale['ccp005'] = "Ausgaben";

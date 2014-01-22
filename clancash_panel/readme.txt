@@ -9,7 +9,7 @@
  | Author:                                            		|
  | RedDragon(v6) 	http://www.efc-funclan.de      		|
  | globeFrEak (v7) 	http://www.cwclan.de           		|
- | Sonic (v7.02)	http://www.germanys-united-legends.de 	|
+ | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
  +--------------------------------------------------------------+
  | This program is released as free software under the		|
  | Affero GPL license. You can redistribute it and/or		|
@@ -32,6 +32,10 @@ Installation:
 
 Update:
 von v1.2 --> v1.3
+- Kopiere den kompletten Inhalt in den Infusions Ordner
+- Gehe in das Adminmenü der ClanKasse unter Einstellungen und klicke auf den Link: "Datenbank-Update verfügbar".
+
+von v1.3 --> v1.4
 - Kopiere den kompletten Inhalt in den Infusions Ordner
 - Gehe in das Adminmenü der ClanKasse unter Einstellungen und klicke auf den Link: "Datenbank-Update verfügbar".
 

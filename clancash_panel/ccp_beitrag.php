@@ -10,8 +10,8 @@
   | Filename: ccp_admin_panel.php                      			|
   | Author:                                            			|
   | RedDragon(v6) 	    http://www.efc-funclan.de      			|
-  | globeFrEak (v7) 		http://www.cwclan.de           			|
-  | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+  | globeFrEak (v7) 	http://www.cwclan.de           			|
+  | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
   +--------------------------------------------------------------+
   | This program is released as free software under the			|
   | Affero GPL license. You can redistribute it and/or			|
