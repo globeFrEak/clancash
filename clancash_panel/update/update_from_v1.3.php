@@ -55,42 +55,11 @@ function dbquery_ccp_update($query) {
 	}
 }
 
-opentable($locale['ccp306'].": v1.2 => v1.3");
+opentable($locale['ccp306'].": v1.3 => v1.4");
 
-$mysql[] = "ALTER TABLE ".DB_CCP_SETTINGS." ADD member_show_names BOOL NOT NULL";
-$mysql[] = "ALTER TABLE ".DB_CCP_SETTINGS." ADD placeholder_name varchar(15) default 'xxxxx'";
-$mysql[] = "ALTER TABLE ".DB_CCP_SETTINGS." ADD paypal BOOL NOT NULL";
-$mysql[] = "ALTER TABLE ".DB_CCP_SETTINGS." ADD standard_konto int(11) default '1'";
-$mysql[] = "ALTER TABLE ".DB_CCP_SETTINGS." ADD version VARCHAR(20) NOT NULL";
+$mysql[] = "UPDATE ".DB_CCP_SETTINGS." SET version='1.4'";
 
-$mysql[] = "ALTER TABLE ".DB_CCP_KONTEN." ADD paypal_email varchar(200) NOT NULL";
-$mysql[] = "ALTER TABLE ".DB_CCP_KONTEN." ADD paypal_button varchar(200) NOT NULL";
-$mysql[] = "ALTER TABLE ".DB_CCP_KONTEN." ADD paypal_submit_button varchar(200) NOT NULL";
-$mysql[] = "ALTER TABLE ".DB_CCP_KONTEN." ADD paypal_cancel_url varchar(200) default NULL";
-$mysql[] = "ALTER TABLE ".DB_CCP_KONTEN." ADD paypal_thanks_url varchar(200) default NULL";
-$mysql[] = "ALTER TABLE ".DB_CCP_KONTEN." ADD paypal_beitrag_checked tinyint(2) NOT NULL default '1'";
-
-$mysql[] = "CREATE TABLE ".DB_CCP_PAYPAL . " (
-id int(11) NOT NULL auto_increment,
-name varchar(32) default NULL,
-subtype varchar(32) default NULL,
-value decimal(8,2) NOT NULL default '10.00',
-PRIMARY KEY  (id)
-) ENGINE=MyISAM;";
-
-$mysql[] = "UPDATE ".DB_CCP_SETTINGS." SET member_show_names='0'";
-$mysql[] = "UPDATE ".DB_CCP_SETTINGS." SET placeholder_name='xxxxx'";
-$mysql[] = "UPDATE ".DB_CCP_SETTINGS." SET paypal='0'";
-$mysql[] = "UPDATE ".DB_CCP_SETTINGS." SET version='1.3'";
-
-$mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('1','Betrag', '1', '5.00')";
-$mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('2','Betrag', '2', '10.00')";
-$mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('3','Betrag', '3', '15.00')";
-$mysql[] = "INSERT ".DB_CCP_PAYPAL." (id, name, subtype, value) VALUES ('4','Betrag', '4', '20.00')";
-
-$mysql[] = "UPDATE ".DB_INFUSIONS." SET inf_version='1.3' WHERE inf_folder='clancash_panel'";
-						
-$mysql[] = "UPDATE " .DB_ADMIN. " SET admin_image='../infusions/clancash_panel/images/admin.gif' WHERE admin_rights='CCP'";
+$mysql[] = "UPDATE ".DB_INFUSIONS." SET inf_version='1.4' WHERE inf_folder='clancash_panel'";
 
 $errors = 0;
 foreach($mysql as $query) {

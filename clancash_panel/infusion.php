@@ -10,7 +10,7 @@
  | Author:                                            			|
  | RedDragon(v6) 	    http://www.efc-funclan.de      			|
  | globeFrEak (v7) 		http://www.cwclan.de           			|
- | Sonic (v7.02)		http://www.germanys-united-legends.de 	|
+ | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
  +--------------------------------------------------------------+
  | This program is released as free software under the			|
  | Affero GPL license. You can redistribute it and/or			|
@@ -35,7 +35,7 @@ if (file_exists(INFUSIONS . "clancash_panel/locale/" . $settings['locale'] . ".p
 // Infusion general information
 $inf_title = $locale['ccp000'];
 $inf_version = $locale['ccp002'];
-$inf_developer = "RedDragon (v6) | globefreak & Sonic since v1.3 (v7)";
+$inf_developer = "RedDragon (v6) | globefreak & GUL-Sonic since v1.3 (v7)";
 $inf_weburl = "https://github.com/globeFrEak/clancash";
 $inf_email = "globefreak@cwclan.de";
 $inf_folder = "clancash_panel";
