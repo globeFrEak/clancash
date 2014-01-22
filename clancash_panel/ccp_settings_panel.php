@@ -192,13 +192,13 @@ if (version_compare($new_version, $ccp_version, '<=') AND $new_version > 0) {
 	<td><img src='" . INFUSIONS . "clancash_panel/images/version_old.gif' alt='old version' /></td>
 	<td><span style='font-weight: bold; color: red;'>" . $locale['ccp302'] . ": " . $ccp_version . "</span><br />
 	<span style='font-weight: bold; color: #1bdc16;'>" . $locale['ccp301'] . ": " . $new_version . "</span><br />
-	<span style='font-weight: bold;'>" . $locale['ccp304'] . ": </span><a href='https://github.com/globeFrEak/clancash/releases' target='_blank' title='" . $locale['ccp312'] . "'><span style='font-weight: bold;'>" . $locale['ccp312'] . "</span></a></td>
+	<span style='font-weight: bold;'>" . $locale['ccp304'] . ": </span><a href='http://globefreak.github.io/clancash/' target='_blank' title='" . $locale['ccp312'] . "'><span style='font-weight: bold;'>" . $locale['ccp312'] . "</span></a></td>
 	</tr>
 	</table>";
     }
 }
 if (empty($new_version)) {
-    $ausgabe = "<br /><span style='font-weight: bold; color: red;'>" . $locale['ccp305'] . "!<br /></span><span style='font-weight: bold;'>" . $locale['ccp304'] . "</span> <a href='https://github.com/globeFrEak/clancash/releases' target='_blank' title='" . $locale['ccp312'] . "'><span style='font-weight: bold;'>" . $locale['ccp312'] . "</span></a><br /><br />";
+    $ausgabe = "<br /><span style='font-weight: bold; color: red;'>" . $locale['ccp305'] . "!<br /></span><span style='font-weight: bold;'>" . $locale['ccp304'] . "</span> <a href='http://globefreak.github.io/clancash/' target='_blank' title='" . $locale['ccp312'] . "'><span style='font-weight: bold;'>" . $locale['ccp312'] . "</span></a><br /><br />";
 }
 echo "<div align='center'>" . $ausgabe . "</div>";
 
