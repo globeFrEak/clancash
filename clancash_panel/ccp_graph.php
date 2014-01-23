@@ -53,6 +53,8 @@ while ($db_total = dbarraynum($result))
  include(CLASS_PATH."/pDraw.class.php");
  include(CLASS_PATH."/pImage.class.php");
  
+ 
+ // Data object
  if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale']."_graph.php")) {
     include INFUSIONS."clancash_panel/locale/".$settings['locale']."_graph.php";
 } else {
@@ -64,6 +66,7 @@ while ($db_total = dbarraynum($result))
  $myPicture = new pImage(700,230,$MyData);
  $myPicture->drawGradientArea(0,0,700,230,DIRECTION_VERTICAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>100));
  $myPicture->drawGradientArea(0,0,700,230,DIRECTION_HORIZONTAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>20));
+ $myPicture->drawRectangle(0,0,699,229,array("R"=>0,"G"=>0,"B"=>0));
  $myPicture->setFontProperties(array("FontName"=>FONT_PATH."/pf_arma_five.ttf","FontSize"=>6));
 
  // Draw the scale  
@@ -74,7 +77,7 @@ while ($db_total = dbarraynum($result))
  $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
 
  // Draw the chart 
- $settings = array("Gradient"=>TRUE,"DisplayPos"=>LABEL_POS_INSIDE,"DisplayValues"=>TRUE,"DisplayR"=>255,"DisplayG"=>255,"DisplayB"=>255,"DisplayShadow"=>TRUE,"Surrounding"=>10);
+ $settings = array("Gradient"=>TRUE,"DisplayPos"=>LABEL_POS_INSIDE,"DisplayValues"=>TRUE,"DisplayR"=>255,"DisplayG"=>255,"DisplayB"=>255,"DisplayShadow"=>TRUE,"Surrounding"=>20,"InnerSurrounding"=>-20);
  $myPicture->drawBarChart($settings);
 
  // Write the chart legend 
