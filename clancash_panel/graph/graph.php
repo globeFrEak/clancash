@@ -9,8 +9,8 @@
   | Infusion: ClanCash                                 			|
   | Filename: ccp_graph.php                      			|
   | Author:                                            			|
-  | RedDragon(v6) 	    http://www.efc-funclan.de      		|
-  | globeFrEak (v7) 		http://www.cwclan.de           		|
+  | RedDragon(v6) 	    http://www.efc-funclan.de      			|
+  | globeFrEak (v7) 		http://www.cwclan.de           			|
   | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
   +--------------------------------------------------------------+
   | This program is released as free software under the			|
@@ -18,20 +18,31 @@
   | modify it under the terms of this license which you			|
   | can read by viewing the included agpl.txt or online			|
   | at www.gnu.org/licenses/agpl.html. Removal of this			|
-  | copyright header is strictly prohibited without			|
-  | written permission from the original author(s).                 |
+  | copyright header is strictly prohibited without				|
+  | written permission from the original author(s).				|
   +-------------------------------------------------------------- */
-if (!defined("IN_FUSION") || !IN_FUSION)
-    die("Access denied!");
+require_once "../../../maincore.php";
+require_once THEMES . "templates/header.php";
+include INFUSIONS . "clancash_panel/infusion_db.php";
 
 add_to_head("<link rel='stylesheet' type='text/css' href='" . INFUSIONS . "clancash_panel/graph/jquery.jqplot.min.css'>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jquery.jqplot.min.js'></script>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.barRenderer.min.js'></script>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.categoryAxisRenderer.min.js'></script>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.highlighter.min.js'></script>");
+
+
 add_to_head('<style type="text/css">
     .jqplot-highlighter-tooltip{font-size:1em;}
 </style>');
+
+
+
+if (file_exists(INFUSIONS . "clancash_panel/locale/" . $settings['locale'] . ".php")) {
+    include INFUSIONS . "clancash_panel/locale/" . $settings['locale'] . ".php";
+} else {
+    include INFUSIONS . "clancash_panel/locale/English.php";
+}
 
 $akt_jahr = date('Y');
 $view_jahr = ($_GET['year'] ? $_GET['year'] : $akt_jahr);
@@ -53,8 +64,9 @@ while ($db_total = dbarraynum($result)) {
     $totalaus[$monat] = round($db_total[0], 2);
 }
 $totalaus = json_encode($totalaus);
+echo "<div id='chart'></div>";
 
-add_to_head("<script type='text/javascript'>
+add_to_head("<script class='code' type='text/javascript'>
 $(document).ready(function(){
     var s1 = " . $totalein . ";
     var s2 = " . $totalaus . ";
@@ -72,7 +84,7 @@ $(document).ready(function(){
         '" . $locale['ccp_nov'] . "',
         '" . $locale['ccp_dez'] . "']; 
     
-    var plot1 = $.jqplot('box_graph', [s1, s2], {        
+    var plot1 = $.jqplot('chart', [s1, s2], {        
         stackSeries: true, 
         seriesColors:['#089629', '#980F0F'],
         seriesDefaults:{        
@@ -91,8 +103,7 @@ $(document).ready(function(){
         highlighter: {
             show: true,
             tooltipAxes: 'y',            
-            bringSeriesToFront: true,
-            tooltipOffset: 9
+            bringSeriesToFront: true
         },
         axes: {            
             xaxis: {
@@ -106,4 +117,6 @@ $(document).ready(function(){
     });
 });
 </script>");
+
+require_once THEMES . "templates/footer.php";
 ?>

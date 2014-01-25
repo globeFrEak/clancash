@@ -1,27 +1,30 @@
 <?php
-/*--------------------------------------------------------------+
- | PHP-Fusion 7 Content Management System             			|
- +--------------------------------------------------------------+
- | Copyright © 2002 - 2013 Nick Jones                 			|
- | http://www.php-fusion.co.uk/                       			|
- +--------------------------------------------------------------+
- | Infusion: ClanCash                                 			|
- | Filename: ccp_admin_panel.php                      			|
- | Author:                                            			|
- | RedDragon(v6) 	    http://www.efc-funclan.de      			|
- | globeFrEak (v7) 		http://www.cwclan.de           			|
- | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
- +--------------------------------------------------------------+
- | This program is released as free software under the			|
- | Affero GPL license. You can redistribute it and/or			|
- | modify it under the terms of this license which you			|
- | can read by viewing the included agpl.txt or online			|
- | at www.gnu.org/licenses/agpl.html. Removal of this			|
- | copyright header is strictly prohibited without				|
- | written permission from the original author(s).				|
- +--------------------------------------------------------------*/
+
+/* --------------------------------------------------------------+
+  | PHP-Fusion 7 Content Management System             			|
+  +--------------------------------------------------------------+
+  | Copyright © 2002 - 2013 Nick Jones                 			|
+  | http://www.php-fusion.co.uk/                       			|
+  +--------------------------------------------------------------+
+  | Infusion: ClanCash                                 			|
+  | Filename: ccp_admin_panel.php                      			|
+  | Author:                                            			|
+  | RedDragon(v6) 	    http://www.efc-funclan.de      			|
+  | globeFrEak (v7) 		http://www.cwclan.de           			|
+  | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
+  +--------------------------------------------------------------+
+  | This program is released as free software under the			|
+  | Affero GPL license. You can redistribute it and/or			|
+  | modify it under the terms of this license which you			|
+  | can read by viewing the included agpl.txt or online			|
+  | at www.gnu.org/licenses/agpl.html. Removal of this			|
+  | copyright header is strictly prohibited without				|
+  | written permission from the original author(s).				|
+  +-------------------------------------------------------------- */
 if (!defined("IN_FUSION") || !IN_FUSION)
     die("Access denied!");
+
+require_once INFUSIONS . "clancash_panel/ccp_graph.php";
 
 $openkonten = (isset($_POST['view'])) ? "on" : "off";
 $openview = (isset($_POST['view_jahr'])) ? "on" : "off";
@@ -49,10 +52,8 @@ if (checkgroup("$set_admin_id") || $show_all == 1) {
 echo"</tr>
       </table><br>
           <div id='box_konten'";
-if ($openkonten == "off") {
-    echo "style='display:none'";
-} echo ">\n
-          <table class='tbl-border' width='100%'>
+echo ($openkonten == "off") ? "style='display:none'>\n" : ">\n";
+echo "<table class='tbl-border' width='100%'>
           <tr align='center'>
           <td class='tbl1'>";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN);
@@ -96,15 +97,9 @@ while ($data = dbarray($result)) {
 }
 echo"</td></tr></table></div>
           <div id='box_view'";
-if ($openview == "off") {
-    echo "style='display:none'";
-} echo ">\n";
+echo ($openview == "off") ? "style='display:none'>\n" : ">\n";
 require_once "ccp_beitrag.php";
 echo"</div>";
-echo "<div id='box_graph'";
-if ($opengraph == "off") {
-    echo "style='display:none'";
-} echo ">\n";
-echo "<center><img src='" . INFUSIONS . "clancash_panel/ccp_graph.php?year=".$view_jahr."' alt='" . $locale['ccp161'] . "' title='" . $locale['ccp161'] . "'></center>";
+echo "<div id='box_graph'>";
 echo"</div>";
 ?>

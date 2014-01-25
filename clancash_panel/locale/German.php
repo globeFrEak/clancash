@@ -136,4 +136,17 @@ $locale['ccp312'] = "Aktuellste Version auf github.com";
 $locale['ccp999'] = "Wirklich löschen?";
 
 $locale['ccp_a000'] = "ClanKasse - Administration";
+
+$locale['ccp_jan'] = "Januar";
+$locale['ccp_feb'] = "Februar";
+$locale['ccp_mar'] = "M&auml;rz";
+$locale['ccp_apr'] = "April";
+$locale['ccp_may'] = "Mai";
+$locale['ccp_jun'] = "Juni";
+$locale['ccp_jul'] = "Juli";
+$locale['ccp_aug'] = "August";
+$locale['ccp_sep'] = "September";
+$locale['ccp_okt'] = "Oktober";
+$locale['ccp_nov'] = "November";
+$locale['ccp_dez'] = "Dezember";
 ?>

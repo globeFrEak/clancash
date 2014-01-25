@@ -136,4 +136,17 @@ $locale['ccp312'] = "Latest version on github.com";
 $locale['ccp999'] = "are u sure?";
 
 $locale['ccp_a000'] = "ClanCash - administration";
+
+$locale['ccp_jan'] = "January";
+$locale['ccp_feb'] = "February";
+$locale['ccp_mar'] = "March";
+$locale['ccp_apr'] = "April";
+$locale['ccp_may'] = "May";
+$locale['ccp_jun'] = "June";
+$locale['ccp_jul'] = "July";
+$locale['ccp_aug'] = "August";
+$locale['ccp_sep'] = "September";
+$locale['ccp_okt'] = "October";
+$locale['ccp_nov'] = "November";
+$locale['ccp_dez'] = "December";
 ?>

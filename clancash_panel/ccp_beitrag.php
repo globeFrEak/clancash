@@ -108,7 +108,7 @@ if (dbrows($result) > 0) {
         for ($count_monat = 1; $count_monat < 13; $count_monat++) {
             $db_total = dbarray(dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='0' AND geloescht='0' AND kat_id='" . $data['id'] . "'"));
             $summe = number_format($db_total['total'], 2, ',', '.');
-            ${"total_" . $count_monat} = $summe;            
+            ${"total_" . $count_monat} = $summe;
         }
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         $i++;
