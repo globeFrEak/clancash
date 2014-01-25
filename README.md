@@ -17,8 +17,9 @@ Email: globefreak@cwclan.de
 Homepage: http://www.germanys-united-legends.de  
 
 ##Beinhaltet:
-pChart - a PHP Charting library  
-Made by: Jean-Damien POGOLOTTI
+JqPlot - A Versatile and Expandable jQuery Plotting Plugin!
+http://www.jqplot.com/ 
+
 
 ##Icons:
 WooFunction Web Icon Set - http://www.woothemes.com/2009/09/woofunction/
