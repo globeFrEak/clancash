@@ -18,7 +18,8 @@ Homepage: http://www.germanys-united-legends.de
 
 ##Beinhaltet:
 JqPlot - A Versatile and Expandable jQuery Plotting Plugin!
-http://www.jqplot.com/ 
+http://www.jqplot.com/
+project by Chris Leonello
 
 
 ##Icons:
