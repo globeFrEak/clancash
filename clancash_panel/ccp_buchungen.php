@@ -22,13 +22,16 @@
  +--------------------------------------------------------------*/
 if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");
 
+
+$result = dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter ORDER BY jahr DESC, monat DESC, tag DESC");
+$rows = dbrows($result);
+
 if (!isset($_GET['rowstart']) || !isNum($_GET['rowstart'])) {
     $rowstart = 0;
 } else {
     $rowstart = $_GET['rowstart'];
 }
 $result = dbquery("SELECT * FROM ".DB_CCP_BUCHUNGEN." $filter ORDER BY jahr DESC, monat DESC, tag DESC LIMIT $rowstart,$b_per_page");
-$rows = dbrows($result);
 if ($rows > 0) {
 echo"<div><table class='tbl-border' width='100%'>";
 while ($data = dbarray($result)){
