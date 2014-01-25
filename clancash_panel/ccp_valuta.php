@@ -99,5 +99,6 @@ echo ($openview == "off") ? "style='display:none'>\n" : ">\n";
 require_once "ccp_beitrag.php";
 echo"</div>";
 echo "<div id='box_graph'>";
+//echo ($opengraph == "off") ? "style='display:none'>\n" : ">\n";
 echo"</div>";
 ?>

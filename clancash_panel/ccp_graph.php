@@ -52,7 +52,7 @@ while ($db_total = dbarraynum($result)) {
 }
 $totalaus = json_encode($totalaus);
 
-add_to_head("<script type='text/javascript'>
+add_to_footer("<script type='text/javascript'>
 $(document).ready(function(){
     var s1 = " . $totalein . ";
     var s2 = " . $totalaus . ";
