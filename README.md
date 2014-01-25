@@ -17,8 +17,8 @@ Email: globefreak@cwclan.de
 Homepage: http://www.germanys-united-legends.de  
 
 ##Beinhaltet:
-JqPlot - A Versatile and Expandable jQuery Plotting Plugin!
-http://www.jqplot.com/
+JqPlot - A Versatile and Expandable jQuery Plotting Plugin!http://www.jqplot.com/
+
 project by Chris Leonello
 
 
