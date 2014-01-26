@@ -137,6 +137,7 @@ $locale['ccp999'] = "are u sure?";
 
 $locale['ccp_a000'] = "ClanCash - administration";
 
+$locale['ccp_graph_title'] = "Income/Expenditure for the year ";
 $locale['ccp_jan'] = "January";
 $locale['ccp_feb'] = "February";
 $locale['ccp_mar'] = "March";

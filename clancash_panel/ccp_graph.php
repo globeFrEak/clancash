@@ -31,8 +31,7 @@ add_to_head('<style type="text/css">
     .jqplot-highlighter-tooltip{font-size:1em;}
 </style>');
 
-$akt_jahr = date('Y');
-$view_jahr = ($_GET['year'] ? $_GET['year'] : $akt_jahr);
+$view_jahr = (isset($_POST['filter_jahr'])) && $_POST['filter_jahr'] != 'all' ? $_POST['filter_jahr'] : date('Y');
 
 $result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta > 0 AND geloescht='0' GROUP BY monat ORDER BY monat ASC");
 $totalein = array_fill(0, 12, 0);
@@ -70,7 +69,8 @@ $(document).ready(function(){
         '" . $locale['ccp_nov'] . "',
         '" . $locale['ccp_dez'] . "']; 
     
-    var plot1 = $.jqplot('box_graph', [s1, s2], {        
+    var plot1 = $.jqplot('box_graph', [s1, s2], { 
+        title: '".$locale['ccp_graph_title'].$view_jahr."',
         stackSeries: true, 
         seriesColors:['#089629', '#980F0F'],
         seriesDefaults:{        
@@ -78,13 +78,14 @@ $(document).ready(function(){
             rendererOptions: {fillToZero: true,varyBarColor: true},            
         },          
         series:[            
-            {label:'Ein'},
-            {label:'Aus', useNegativeColors: false}
+            {label:'".$locale['ccp004']."'},
+            {label:'".$locale['ccp005']."', useNegativeColors: false}
         ],        
         legend: {
-            show: true,
-            location: 'e',
-            placement: 'outsideGrid'
+            show: false,
+            location: 'sw',
+            placement: 'insideGrid',
+            border: 'border:none;'
         },
         highlighter: {
             show: true,
@@ -98,7 +99,7 @@ $(document).ready(function(){
                 ticks: ticks
             },           
             yaxis: {                
-                tickOptions: {formatString: '€%d'}
+                tickOptions: {formatString: '%#.2f ".$set_symbol."'}
             }
         }
     });

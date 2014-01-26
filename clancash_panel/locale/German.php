@@ -137,6 +137,7 @@ $locale['ccp999'] = "Wirklich löschen?";
 
 $locale['ccp_a000'] = "ClanKasse - Administration";
 
+$locale['ccp_graph_title'] = "Ein-/Ausgaben für das Jahr ";
 $locale['ccp_jan'] = "Januar";
 $locale['ccp_feb'] = "Februar";
 $locale['ccp_mar'] = "M&auml;rz";
