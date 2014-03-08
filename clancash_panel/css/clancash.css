@@ -29,28 +29,17 @@ ul.ccp_tabs li a {
 	text-decoration:none;
 	font-size:9px;	
 	font-weight:bold;
-	text-transform:uppercase;		
-	background-repeat:repeat-x;	 
-	background-position:bottom;
+	text-transform:uppercase;	
 }
 ul.ccp_tabs li a:hover {
 	background: rgba(0, 0, 0, 0.2);
 }
 ul.ccp_tabs li a.active {
-	background-color:#ffffff;
-	color:#282e32;
-	border:1px solid #464c54; 
-	border-bottom: 1px solid #ffffff;
-	
-	background-repeat:repeat-x;
-	background-position:top;	
-}
+	background-color:#ffffff;	
+	border-bottom: 1px solid #ffffff;}
 .tab_content {
 	background-color:#ffffff;
-	padding:10px;
-	border:1px solid #464c54;	
-	background-repeat:repeat-x;	 
-	background-position:bottom;	
+	padding:10px;		
 }
 #content_2, #content_3 { display:none; }
 
