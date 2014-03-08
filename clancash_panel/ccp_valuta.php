@@ -25,33 +25,50 @@ if (!defined("IN_FUSION") || !IN_FUSION)
 
 require_once INFUSIONS . "clancash_panel/ccp_graph.php";
 
-$openkonten = (isset($_POST['view'])) ? "on" : "off";
+$openkonten = (isset($_POST['view_jahr'])) ? "on" : "off";
 $openview = (isset($_POST['view_jahr'])) ? "on" : "off";
 $opengraph = (isset($_POST['view_jahr'])) ? "on" : "off";
 $openstats = (isset($_POST['stats_jahr'])) ? "on" : "off";
-$box_img_konto = ($openkonten == "on" ? "off" : "on");
-$box_img_view = ($openview == "on" ? "off" : "on");
-$box_img_graph = ($opengraph == "on" ? "off" : "on");
 $view_jahr = (isset($_POST['view_jahr'])) ? $_POST['view_jahr'] : $akt_jahr;
 $stats_jahr = (isset($_POST['stats_jahr'])) ? $_POST['stats_jahr'] : $akt_jahr;
 
-echo "<table class='tbl-border ccp_tabs' cellspacing='1' cellpadding='0' style='width:100%'><tr><td>";
-if (checkgroup("$set_admin_id") || $show_all == 1) {
-    echo "<div><img onclick=\"javascript:flipBox('view')\" name='b_view' border='0' src='" . INFUSIONS . "clancash_panel/images/beitrag_$box_img_view.png'>
-	<span onclick=\"javascript:flipBox('view')\" style='cursor:pointer'>" . $locale['ccp158'] . "</span></div>";
-    
-    echo "<div><img onclick=\"javascript:flipBox('graph')\" name='b_graph' border='0' src='" . INFUSIONS . "clancash_panel/images/einaus_$box_img_graph.png'>
-        <span onclick=\"javascript:flipBox('graph')\" style='cursor:pointer'>" . $locale['ccp161'] . "</span></div>";
-}
-echo "<div><img onclick=\"javascript:flipBox('konten')\" name='b_konten' border='0' src='" . INFUSIONS . "clancash_panel/images/konto_$box_img_konto.png'>
-      <span onclick=\"javascript:flipBox('konten')\" style='cursor:pointer'>" . $locale['ccp151'] . "</span></div>";
-if (checkgroup("$set_admin_id") || $show_all == 1) {
-    echo "<div>" . $locale['ccp152'] . ": $valuta</div>\n";
-}
-echo"</td></tr></table>";
+add_to_head("<script>		  
+	  $(document).ready(function(){		
+		$('a.tab').click(function () {			
+			$('.active').removeClass('active');			
+			$(this).addClass('active');			
+			$('.tab_content').slideUp();			
+			var content_show = $(this).attr('title');
+			$('#'+content_show).slideDown();		  
+		});	
+	  });
+  </script>");
 
-echo"<div id='box_konten'";
-echo ($openkonten == "off") ? "style='display:none'>\n" : ">\n";
+echo "<div id='tabbed_box_1' class='tabbed_box'>";
+echo "<div class='tabbed_area'>";
+echo "<ul class='ccp_tabs'>";
+if (checkgroup("$set_admin_id") || $show_all == 1) {
+    echo "<li><a href='#' title='content_1' class='tab active'><img border='0' src='" . INFUSIONS . "clancash_panel/images/graph.png'>" . $locale['ccp161'] . "</a></li>";
+    echo "<li><a href='#' title='content_2' class='tab'><img border='0' src='" . INFUSIONS . "clancash_panel/images/beitrag.png'>" . $locale['ccp158'] . "</a></li>";
+}
+echo "<li><a href='#' title='content_3' class='tab'><img border='0' src='" . INFUSIONS . "clancash_panel/images/konto.png'>" . $locale['ccp151'] . "</a></li>";
+if (checkgroup("$set_admin_id") || $show_all == 1) {
+    echo "<li><span>" . $locale['ccp152'] . ": $valuta</span></li>";
+}
+echo "</ul>";
+
+/** Graph **/
+echo "<div id='content_1' class='tab_content'>";
+echo "<div id='box_graph'></div>";
+echo "</div>";
+
+/** Beiträge **/
+echo "<div id='content_2' class='tab_content'>";
+require_once "ccp_beitrag.php";
+echo "</div>";
+
+/** Kontakt **/
+echo "<div id='content_3' class='tab_content'>";
 echo "<table class='tbl-border' width='100%'>
           <tr align='center'>
           <td class='tbl1'>";
@@ -94,11 +111,8 @@ while ($data = dbarray($result)) {
         echo" <a href='" . INFUSIONS . "clancash_panel/ccp_paypal.php?id=" . $data['id'] . "'><img src='" . $data['paypal_button'] . "' border='0'></a>";
     }
 }
-echo"</td></tr></table></div>
-          <div id='box_view'";
-echo ($openview == "off") ? "style='display:none'>\n" : ">\n";
-require_once "ccp_beitrag.php";
-echo"</div>";
-echo "<div id='box_graph'>";
-echo"</div>";
+echo"</td></tr></table>";
+echo "</div>";
+echo "</div>";
+echo "</div>";
 ?>

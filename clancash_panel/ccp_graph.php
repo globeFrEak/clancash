@@ -22,7 +22,6 @@
 if (!defined("IN_FUSION") || !IN_FUSION)
     die("Access denied!");
 
-add_to_head("<link rel='stylesheet' type='text/css' href='" . INFUSIONS . "clancash_panel/graph/jquery.jqplot.min.css'>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jquery.jqplot.min.js'></script>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.barRenderer.min.js'></script>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.categoryAxisRenderer.min.js'></script>");
