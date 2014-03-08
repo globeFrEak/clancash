@@ -27,9 +27,6 @@ add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jquery.jqplot.mi
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.barRenderer.min.js'></script>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.categoryAxisRenderer.min.js'></script>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.highlighter.min.js'></script>");
-add_to_head('<style type="text/css">
-    .jqplot-highlighter-tooltip{font-size:1em;}
-</style>');
 
 $view_jahr = (isset($_POST['filter_jahr'])) && $_POST['filter_jahr'] != 'all' ? $_POST['filter_jahr'] : date('Y');
 
@@ -89,6 +86,7 @@ $(document).ready(function(){
         },
         highlighter: {
             show: true,
+            tooltipLocation: 'n',
             tooltipAxes: 'y',            
             bringSeriesToFront: true,
             tooltipOffset: 9

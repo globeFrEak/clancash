@@ -21,14 +21,6 @@
  +--------------------------------------------------------------*/
 if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");
 
-add_to_head("<style type='text/css'>
-.navi{
-    position: relative;
-    top: -12px;
-    margin: 5px 10px 5px 2px;
-}
-</style>");
-
 echo"<center>\n<h4>\n
      <img src='" . INFUSIONS . "clancash_panel/images/admin_panel.png' alt='".$locale['ccp143']."'><a class='navi' href='ccp_admin_panel.php".$aidlink."'>".$locale['ccp143']."</a>\n
      <img src='" . INFUSIONS . "clancash_panel/images/cats.png' alt='".$locale['ccp127']."'><a class='navi' href='ccp_cats.php'>".$locale['ccp127']."</a>\n

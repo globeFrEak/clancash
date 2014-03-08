@@ -29,6 +29,8 @@ if (file_exists(INFUSIONS."clancash_panel/locale/".$settings['locale'].".php")) 
     include INFUSIONS."clancash_panel/locale/English.php";
 }
 
+add_to_head("<link rel='stylesheet' href='" . INFUSIONS . "clancash_panel/css/clancash.css' type='text/css'/>");
+
 include_once INFUSIONS."clancash_panel/ccp_functions.php";
 if (!checkgroup($set_member_id) && !checkgroup($set_admin_id)) redirect("../../login.php");
 

@@ -29,6 +29,8 @@ if (file_exists(INFUSIONS . "clancash_panel/locale/" . $settings['locale'] . ".p
     include INFUSIONS . "clancash_panel/locale/English.php";
 }
 
+add_to_head("<link rel='stylesheet' href='" . INFUSIONS . "clancash_panel/css/clancash.css' type='text/css'/>\n");
+
 include_once INFUSIONS . "clancash_panel/ccp_functions.php";
 
 $edit = (isset($_POST['edit'])) ? $_POST['edit'] : "";

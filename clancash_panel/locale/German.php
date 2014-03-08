@@ -138,16 +138,16 @@ $locale['ccp999'] = "Wirklich löschen?";
 $locale['ccp_a000'] = "ClanKasse - Administration";
 
 $locale['ccp_graph_title'] = "Ein-/Ausgaben für das Jahr ";
-$locale['ccp_jan'] = "Januar";
-$locale['ccp_feb'] = "Februar";
+$locale['ccp_jan'] = "Jan";
+$locale['ccp_feb'] = "Febr";
 $locale['ccp_mar'] = "M&auml;rz";
-$locale['ccp_apr'] = "April";
+$locale['ccp_apr'] = "Apr";
 $locale['ccp_may'] = "Mai";
 $locale['ccp_jun'] = "Juni";
 $locale['ccp_jul'] = "Juli";
-$locale['ccp_aug'] = "August";
-$locale['ccp_sep'] = "September";
-$locale['ccp_okt'] = "Oktober";
-$locale['ccp_nov'] = "November";
-$locale['ccp_dez'] = "Dezember";
+$locale['ccp_aug'] = "Aug";
+$locale['ccp_sep'] = "Sept";
+$locale['ccp_okt'] = "Okt";
+$locale['ccp_nov'] = "Nov";
+$locale['ccp_dez'] = "Dez";
 ?>

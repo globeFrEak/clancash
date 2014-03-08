@@ -1,0 +1,23 @@
+/* 
+    Created on : 08.03.2014, 13:14:39
+    Author     : globeFrEak
+*/
+.navi{
+    position: relative;
+    top: -12px;
+    margin: 5px 10px 5px 2px;
+}
+
+.ccp_tabs tr td {
+    text-align: center;
+}
+.ccp_tabs div {
+    float: left;
+    margin: 5px;
+}
+
+/* jqPlot Styles */
+.jqplot-highlighter-tooltip{
+    font-size:1em;
+    background:#fff;
+}
