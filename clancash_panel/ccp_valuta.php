@@ -62,6 +62,8 @@ echo "</ul>";
 /** Graph **/
 echo "<div id='content_1' class='tbl-border tab_content'>";
 echo "<div id='box_graph'></div>";
+echo "<hr>";
+echo "<div id='box_graph_2'></div>";
 echo "</div>";
 
 /** Beiträge **/
