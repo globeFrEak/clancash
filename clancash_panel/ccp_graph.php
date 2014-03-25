@@ -117,14 +117,15 @@ $(document).ready(function(){
             {label:'" . $locale['ccp004'] . "'},
             {label:'" . $locale['ccp005'] . "', useNegativeColors: false}
         ],        
-        legend: {
-            show: false,
+        legend: {            
+            show: false,            
             location: 'sw',
             placement: 'insideGrid',
             border: 'border:none;'
         },
         highlighter: {
             show: true,
+            showMarker: false,
             tooltipLocation: 'n',
             tooltipAxes: 'y',            
             bringSeriesToFront: true,
@@ -154,13 +155,14 @@ $(document).ready(function(){
             {label:'" . $locale['ccp004'] . "'}            
         ],        
         legend: {
-            show: false,
+            show: false,            
             location: 'sw',
             placement: 'insideGrid',
             border: 'border:none;'
         },
         highlighter: {
             show: true,
+            showMarker: false,
             tooltipLocation: 'n',
             tooltipAxes: 'y',            
             bringSeriesToFront: true,
