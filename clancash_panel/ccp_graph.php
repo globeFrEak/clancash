@@ -30,26 +30,35 @@ add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.highlight
 
 $view_jahr = (isset($_POST['filter_jahr'])) && $_POST['filter_jahr'] != 'all' ? $_POST['filter_jahr'] : date('Y');
 
+//
+// Übertrag aus Vorjahren
+$result = dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE valuta IS NOT NULL AND jahr < $view_jahr AND geloescht='0'");
+if (dbrows($result) > 0) {
+    $gesamt = dbarraynum($result);
+    $uebertrag = (double) $gesamt[0];
+} else {
+    $uebertrag = 0;
+}
+
+//
 // Einnahmen pro Monat
 $result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta > 0 AND geloescht='0' GROUP BY monat ORDER BY monat ASC");
 $totalein = array_fill(0, 12, 0);
 
 while ($db_total = dbarraynum($result)) {
     $monat = $db_total[1] - 1;
-    $totalein[$monat] = round($db_total[0], 2);
+    $totalein[$monat] = (double) $db_total[0];
 }
-$totalein_json = json_encode($totalein);
-
+//
 // Ausgaben pro Monat
 $result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta < 0 AND geloescht='0' GROUP BY monat ORDER BY monat ASC");
 $totalaus = array_fill(0, 12, 0);
 
 while ($db_total = dbarraynum($result)) {
     $monat = $db_total[1] - 1;
-    $totalaus[$monat] = round($db_total[0], 2);
+    $totalaus[$monat] = (double) $db_total[0];
 }
-$totalaus_json = json_encode($totalaus);
-
+//
 // Monats Kalkulation abzueglich der Ausgaben
 $totalmonat = array_fill(0, 12, 0);
 for ($m = 0; $m < 11; $m++) {
@@ -60,7 +69,20 @@ for ($m = 0; $m < 11; $m++) {
     } else {
         $totalmonat[$m] = round($totalein[$m] - abs($totalaus[$m]), 2);
     }
+    // Addiere den Übertrag der Vorjahre auf den ersten Monat und Addiere den Übertrag Monat für Monat
+    if ($m === 0) {
+        $totalmonat[$m] = round($totalmonat[$m] + $uebertrag, 2);
+    } elseif ($m > 0){
+        $i = $m - 1;
+        $totalmonat[$m] = round($totalmonat[$m] + $totalmonat[$i], 2);
+    }
+    $totalaus[$m] = round($totalaus[$m], 2);
+    $totalein[$m] = round($totalein[$m], 2);
 }
+//
+// Arrays in JSON Enkodieren
+$totalein_json = json_encode($totalein);
+$totalaus_json = json_encode($totalaus);
 $totalmonat_json = json_encode($totalmonat);
 
 // Graph definition als Javascript
