@@ -73,7 +73,7 @@ if ($set_member_id == 0 || 101 || 102 || 103) {
 while ($data = dbarray($result)) {
     for ($count_monat = 1; $count_monat < 13; $count_monat++) {
         $db_total = dbarray(dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='" . $data['user_id'] . "' AND geloescht='0'"));
-        $summe = number_format($db_total['total'], 2, ',', '.');
+        $summe = number_format($db_total['total'], 2, $locale['ccp006'], $locale['ccp007']);
         ${"total_" . $count_monat} = $summe;
         ${"total_op" . $count_monat} = $db_total['total'];
     }
@@ -105,7 +105,7 @@ if (dbrows($result) > 0) {
     while ($data = dbarray($result)) {
         for ($count_monat = 1; $count_monat < 13; $count_monat++) {
             $db_total = dbarray(dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='0' AND geloescht='0' AND kat_id='" . $data['id'] . "'"));
-            $summe = number_format($db_total['total'], 2, ',', '.');
+            $summe = number_format($db_total['total'], 2, $locale['ccp006'], $locale['ccp007']);
             ${"total_" . $count_monat} = $summe;
         }
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");

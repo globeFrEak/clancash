@@ -53,8 +53,7 @@ $ed_check_p = "selected ";
 $ccp_version = $data['version'];
 
 $data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM " . DB_CCP_BUCHUNGEN . " WHERE geloescht='0'"));
-$summe = round($data['summe'], 2);
-$summe = number_format($summe, 2, ',', '.');
+$summe = number_format($data['summe'], 2, $locale['ccp006'], $locale['ccp007']);
 $valuta = "<font style='font-size:150%'><b>$summe $set_symbol</b></font>";
 
 add_to_head("<script type='text/javascript'>

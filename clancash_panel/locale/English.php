@@ -28,6 +28,9 @@ $locale['ccp002'] = "1.4";
 $locale['ccp003'] = "donation";
 $locale['ccp004'] = "income";
 $locale['ccp005'] = "expenditure";
+// decimal mark + thousands meparator
+$locale['ccp006'] = ".";
+$locale['ccp007'] = ",";
 
 $locale['ccp100'] = "Administration";
 $locale['ccp101'] = "date:";
@@ -137,7 +140,9 @@ $locale['ccp999'] = "are u sure?";
 
 $locale['ccp_a000'] = "ClanCash - administration";
 
-$locale['ccp_graph_title'] = "Income/Expenditure for the year ";
+$locale['ccp_graph_title'] = "Income/Expenditure ";
+$locale['ccp_graph2_title'] = "Account balance history ";
+$locale['ccp_graph2_uebertrag'] = "transfer: ";
 $locale['ccp_jan'] = "Jan";
 $locale['ccp_feb'] = "Feb";
 $locale['ccp_mar'] = "Mar";

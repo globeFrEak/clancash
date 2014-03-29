@@ -37,7 +37,7 @@ if (dbrows($result) > 0) {
     $gesamt = dbarraynum($result);
     $uebertrag = (double) $gesamt[0];
 } else {
-    $uebertrag = 0;
+    $uebertrag = (double) 0;
 }
 
 //
@@ -61,18 +61,18 @@ while ($db_total = dbarraynum($result)) {
 //
 // Monats Kalkulation abzueglich der Ausgaben
 $totalmonat = array_fill(0, 12, 0);
-for ($m = 0; $m < 11; $m++) {
+for ($m = 0; $m <= 11; $m++) {
     if ($totalein[$m] === 0) {
-        $totalmonat[$m] = $totalaus[$m];
+        $totalmonat[$m] = (double) $totalaus[$m];
     } elseif ($totalaus[$m] === 0) {
-        $totalmonat[$m] = $totalein[$m];
+        $totalmonat[$m] = (double) $totalein[$m];
     } else {
         $totalmonat[$m] = round($totalein[$m] - abs($totalaus[$m]), 2);
     }
     // Addiere den Übertrag der Vorjahre auf den ersten Monat und Addiere den Übertrag Monat für Monat
     if ($m === 0) {
         $totalmonat[$m] = round($totalmonat[$m] + $uebertrag, 2);
-    } elseif ($m > 0){
+    } else {
         $i = $m - 1;
         $totalmonat[$m] = round($totalmonat[$m] + $totalmonat[$i], 2);
     }
@@ -90,7 +90,7 @@ add_to_footer("<script type='text/javascript'>
 $(document).ready(function(){
     var s1 = " . $totalein_json . ";
     var s2 = " . $totalaus_json . ";
-    var m1 = " . $totalmonat_json . ";
+    var m1 = " . $totalmonat_json . ";    
     
     var ticks = ['" . $locale['ccp_jan'] . "',
         '" . $locale['ccp_feb'] . "',
@@ -104,6 +104,9 @@ $(document).ready(function(){
         '" . $locale['ccp_okt'] . "',
         '" . $locale['ccp_nov'] . "',
         '" . $locale['ccp_dez'] . "']; 
+            
+    $.jqplot.sprintf.thousandsSeparator = '".$locale['ccp007']."';
+    $.jqplot.sprintf.decimalMark = '".$locale['ccp006']."';
     
     var plot1 = $.jqplot('box_graph', [s1, s2], { 
         title: '" . $locale['ccp_graph_title'] . $view_jahr . "',
@@ -137,47 +140,47 @@ $(document).ready(function(){
                 ticks: ticks
             },           
             yaxis: {                
-                tickOptions: {formatString: '%#.2f " . $set_symbol . "'}
+                tickOptions: {formatString: '%\'.2f " . $set_symbol . "'}
             }
         }
     });
     
     var plot2 = $.jqplot('box_graph_2', [m1], { 
-        title: '" . $locale['ccp_graph_title'] . $view_jahr . "',
+        title: '" . $locale['ccp_graph2_title'] . $view_jahr . " (" . $locale['ccp_graph2_uebertrag'] . $uebertrag . "&nbsp;" . $set_symbol . ")',
         stackSeries: true, 
         seriesColors:['#089629'],
         negativeSeriesColors: ['#980F0F'],
-        seriesDefaults:{        
-            renderer:$.jqplot.BarRenderer,
-            rendererOptions: {fillToZero: true,varyBarColor: true},            
-        },          
-        series:[            
-            {label:'" . $locale['ccp004'] . "'}            
-        ],        
+        seriesDefaults:{
+        renderer:$.jqplot.BarRenderer,
+        rendererOptions: {fillToZero: true, varyBarColor: true},
+        },
+        series:[
+        {label:'" . $locale['ccp004'] . "'}
+        ],
         legend: {
-            show: false,            
-            location: 'sw',
-            placement: 'insideGrid',
-            border: 'border:none;'
+        show: false,
+        location: 'sw',
+        placement: 'insideGrid',
+        border: 'border:none;'
         },
         highlighter: {
-            show: true,
-            showMarker: false,
-            tooltipLocation: 'n',
-            tooltipAxes: 'y',            
-            bringSeriesToFront: true,
-            tooltipOffset: 9
+        show: true,
+        showMarker: false,
+        tooltipLocation: 'n',
+        tooltipAxes: 'y',
+        bringSeriesToFront: true,
+        tooltipOffset: 9
         },
-        axes: {            
-            xaxis: {
-                renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: ticks
-            },           
-            yaxis: {                
-                tickOptions: {formatString: '%#.2f " . $set_symbol . "'}
-            }
+        axes: {
+        xaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,
+        ticks: ticks
+        },
+        yaxis: {
+        tickOptions: {formatString: '%\'.2f " . $set_symbol . "'}
         }
-    });
-});
+        }
+        });
+        });
 </script>");
 ?>

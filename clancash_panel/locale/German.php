@@ -28,6 +28,9 @@ $locale['ccp002'] = "1.4";
 $locale['ccp003'] = "Spenden";
 $locale['ccp004'] = "Einnahmen";
 $locale['ccp005'] = "Ausgaben";
+// dezimal marker + tausender zeichen
+$locale['ccp006'] = ",";
+$locale['ccp007'] = ".";
 
 $locale['ccp100'] = "Verwaltung";
 $locale['ccp101'] = "Datum";
@@ -137,7 +140,9 @@ $locale['ccp999'] = "Wirklich löschen?";
 
 $locale['ccp_a000'] = "ClanKasse - Administration";
 
-$locale['ccp_graph_title'] = "Ein-/Ausgaben für das Jahr ";
+$locale['ccp_graph_title'] = "Ein-/Ausgaben ";
+$locale['ccp_graph2_title'] = "Kontoverlauf ";
+$locale['ccp_graph2_uebertrag'] = "Übertrag: ";
 $locale['ccp_jan'] = "Jan";
 $locale['ccp_feb'] = "Febr";
 $locale['ccp_mar'] = "M&auml;rz";
