@@ -233,7 +233,12 @@ if ($set_member_id == 0 || 101 || 102 || 103) {
 echo"</select></td>
       </tr>
       <tr>        
-        <td class='tbl1' colspan='2'>";
+        <td class='tbl1' colspan='2'>
+        <input type='hidden' name='filter_jahr' value='$filter_jahr' />
+        <input type='hidden' name='filter_monat' value='$filter_monat' />
+        <input type='hidden' name='filter_user' value='$filter_user' />
+        <input type='hidden' name='filter_cat' value='$filter_cat' />
+        <input type='hidden' name='filter_konto' value='$filter_konto' />";
 if ($edit != "")
     echo"<input type='hidden' name='id' value='$edit' /><input style='width:75' type='submit' name='update' class='button' value='" . $locale['ccp108'] . "'>&nbsp;&nbsp;<input style='width:75' type='submit' class='button' value='" . $locale['ccp109'] . "'>";
 else

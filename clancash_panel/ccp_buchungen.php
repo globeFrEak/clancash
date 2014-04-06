@@ -69,11 +69,11 @@ if ($rows > 0) {
         <td class='$cell_color' colspan='4'>" . $data['comment'] . "</td>\n
         <td class='$cell_color ccp_right' style='white-space: nowrap'>";
         if (checkgroup($set_admin_id) && $data['geloescht']) {
-            echo"<font style='color:red'>" . $locale['ccp112'] . "</font> --- <a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?delcom=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/delete.png' alt='" . $locale['ccp160'] . "' title='" . $locale['ccp160'] . "'></a>&nbsp;";
-            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?delret=" . $data['id'] . "' ><img src='" . INFUSIONS . "clancash_panel/images/returndel.png' alt='" . $locale['ccp114a'] . "' title='" . $locale['ccp114a'] . "'></a>&nbsp;";
+            echo"<font style='color:red'>" . $locale['ccp112'] . "</font> --- <a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&delcom=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/delete.png' alt='" . $locale['ccp160'] . "' title='" . $locale['ccp160'] . "'></a>&nbsp;";
+            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&delret=" . $data['id'] . "' ><img src='" . INFUSIONS . "clancash_panel/images/returndel.png' alt='" . $locale['ccp114a'] . "' title='" . $locale['ccp114a'] . "'></a>&nbsp;";
         } else if (checkgroup($set_admin_id)) {
-            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?edit=" . $data['id'] . "' ><img src='" . INFUSIONS . "clancash_panel/images/edit.png' alt='" . $locale['ccp113'] . "' title='" . $locale['ccp113'] . "'></a>&nbsp;";
-            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/temp-delete.png' alt='" . $locale['ccp114'] . "' title='" . $locale['ccp114'] . "'></a>";
+            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&edit=" . $data['id'] . "' ><img src='" . INFUSIONS . "clancash_panel/images/edit.png' alt='" . $locale['ccp113'] . "' title='" . $locale['ccp113'] . "'></a>&nbsp;";
+            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/temp-delete.png' alt='" . $locale['ccp114'] . "' title='" . $locale['ccp114'] . "'></a>";
         }
         echo"</td>\n</tr>\n";
     }

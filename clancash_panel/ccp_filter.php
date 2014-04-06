@@ -26,35 +26,6 @@ if (!defined("IN_FUSION") || !IN_FUSION)
 //vars
 $fzeichen = "-";
 
-if (((isset($_POST['filter_jahr'])) || (isset($_POST['filter_monat'])) || (isset($_POST['filter_user'])) || (isset($_POST['filter_cat'])) || (isset($_POST['filter_konto'])) || (isset($_GET['year'])) || (isset($_GET['month'])) || (isset($_GET['user'])) || (isset($_GET['cat'])) || (isset($_GET['account']))) && !(isset($_POST['reset']))) {
-    $filter_jahr = (isset($_POST['filter_jahr'])) ? $_POST['filter_jahr'] : $_GET['year'];
-    $filter_monat = (isset($_POST['filter_monat'])) ? $_POST['filter_monat'] : $_GET['month'];
-    if ($show_all == 1) {
-        $filter_user = (isset($_POST['filter_user'])) ? $_POST['filter_user'] : $_GET['user'];
-    } else if ($is_admin == 1) {
-        $filter_user = (isset($_POST['filter_user'])) ? $_POST['filter_user'] : $_GET['user'];
-    } else {
-        $filter_user = $userdata['user_id'];
-    }
-    $filter_cat = (isset($_POST['filter_cat'])) ? $_POST['filter_cat'] : $_GET['cat'];
-    $filter_konto = (isset($_POST['filter_konto'])) ? $_POST['filter_konto'] : $_GET['account'];
-} else {
-    if ($show_all == 1) {
-        $filter_user = "all";
-    } else {
-        $filter_user = ($is_admin == 1 ? "all" : $userdata['user_id']);
-    }
-    $filter_cat = "all";
-    $filter_monat = "all";
-    $filter_jahr = $akt_jahr;
-    $filter_konto = "all";
-    $year = "";
-    $month = "";
-    $user = "";
-    $cat = "";
-    $month = "";
-}
-
 $filter7 = ($is_admin == 0 ? "geloescht='0'" : "");
 $and5 = ($filter7 != '' && ($filter_monat != 'all' || $filter_jahr != 'all' || $filter_user != 'all' || $filter_cat != 'all' || $filter_konto != 'all') ? "AND " : "");
 $filter6 = ($filter_konto != 'all' ? "konto_id='$filter_konto' " : "");
