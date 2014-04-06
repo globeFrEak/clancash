@@ -68,9 +68,10 @@ if ($rows > 0) {
       <tr>\n
         <td class='$cell_color' style='text-align: center;' colspan='4'>" . $data['comment'] . "</td>\n
         <td class='$cell_color' style='text-align: right;'>";
-        if (checkgroup($set_admin_id) && $data['geloescht'])
-            echo"<font style='color:red'>" . $locale['ccp112'] . "</font> --- <a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?delcom=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/delete.png' alt='" . $locale['ccp160'] . "' title='" . $locale['ccp160'] . "'></a>";
-        else if (checkgroup($set_admin_id)) {
+        if (checkgroup($set_admin_id) && $data['geloescht']) {            
+            echo"<font style='color:red'>" . $locale['ccp112'] . "</font> --- <a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?delcom=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/delete.png' alt='" . $locale['ccp160'] . "' title='" . $locale['ccp160'] . "'></a>&nbsp;";
+            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?delret=" . $data['id'] . "' ><img src='" . INFUSIONS . "clancash_panel/images/returndel.png' alt='" . $locale['ccp114a'] . "' title='" . $locale['ccp114a'] . "'></a>&nbsp;";            
+        } else if (checkgroup($set_admin_id)) {
             echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?edit=" . $data['id'] . "' ><img src='" . INFUSIONS . "clancash_panel/images/edit.png' alt='" . $locale['ccp113'] . "' title='" . $locale['ccp113'] . "'></a>&nbsp;";
             echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/temp-delete.png' alt='" . $locale['ccp114'] . "' title='" . $locale['ccp114'] . "'></a>";
         }

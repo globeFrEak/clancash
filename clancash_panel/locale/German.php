@@ -47,6 +47,7 @@ $locale['ccp111'] = "Felder mit <span style='color:red;'>*</span> m&uuml;ssen au
 $locale['ccp112'] = "Buchung wurde gel&ouml;scht!";
 $locale['ccp113'] = "Bearbeiten";
 $locale['ccp114'] = "L&ouml;schen";
+$locale['ccp114a'] = "Gel&ouml;scht Buchung wiederherstellen!";
 $locale['ccp115'] = "Budgetplanung";
 $locale['ccp116'] = "Anzahl";
 $locale['ccp117'] = "Ist Einnahme";

@@ -1,24 +1,25 @@
 <?php
-/*--------------------------------------------------------------+
- | PHP-Fusion 7 Content Management System             		|
- +--------------------------------------------------------------+
- | Copyright © 2002 - 2013 Nick Jones                 		|
- | http://www.php-fusion.co.uk/                       		|
- +--------------------------------------------------------------+
- | Infusion: ClanCash                                 		|
- | Author:                                            		|
- | RedDragon(v6) 	    http://www.efc-funclan.de      	|
- | globeFrEak (v7) 		http://www.cwclan.de           	|
- | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
- +--------------------------------------------------------------+
- | This program is released as free software under the		|
- | Affero GPL license. You can redistribute it and/or		|
- | modify it under the terms of this license which you		|
- | can read by viewing the included agpl.txt or online		|
- | at www.gnu.org/licenses/agpl.html. Removal of this		|
- | copyright header is strictly prohibited without		|
- | written permission from the original author(s).		|
- +--------------------------------------------------------------*/
+
+/* --------------------------------------------------------------+
+  | PHP-Fusion 7 Content Management System             		|
+  +--------------------------------------------------------------+
+  | Copyright © 2002 - 2013 Nick Jones                 		|
+  | http://www.php-fusion.co.uk/                       		|
+  +--------------------------------------------------------------+
+  | Infusion: ClanCash                                 		|
+  | Author:                                            		|
+  | RedDragon(v6) 	    http://www.efc-funclan.de      	|
+  | globeFrEak (v7) 		http://www.cwclan.de           	|
+  | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
+  +--------------------------------------------------------------+
+  | This program is released as free software under the		|
+  | Affero GPL license. You can redistribute it and/or		|
+  | modify it under the terms of this license which you		|
+  | can read by viewing the included agpl.txt or online		|
+  | at www.gnu.org/licenses/agpl.html. Removal of this		|
+  | copyright header is strictly prohibited without		|
+  | written permission from the original author(s).		|
+  +-------------------------------------------------------------- */
 require_once "../../maincore.php";
 require_once THEMES . "templates/header.php";
 include INFUSIONS . "clancash_panel/infusion_db.php";
@@ -45,7 +46,7 @@ if (!checkgroup($set_member_id) && !checkgroup($set_admin_id))
     redirect("../../login.php");
 
 if ((isset($_GET['edit'])) != '') {
-    $edit = $_GET['edit'];
+    $edit = mysql_real_escape_string($_GET['edit']);
     $update = dbarray(dbquery("SELECT * FROM " . DB_CCP_BUCHUNGEN . " WHERE id='$edit'"));
     $ed_valuta = ($update['valuta'] < 0 ? $update['valuta'] * -1 : $update['valuta']);
     $ed_comment = $update['comment'];
@@ -60,13 +61,19 @@ if ((isset($_GET['edit'])) != '') {
 }
 
 if ((isset($_GET['del'])) != '') {
-    $del = $_GET['del'];
+    $del = mysql_real_escape_string($_GET['del']);
     dbquery("UPDATE " . DB_CCP_BUCHUNGEN . " SET
   geloescht = '1' WHERE id='$del'");
 }
 
+if ((isset($_GET['delret'])) != '') {
+    $delret = mysql_real_escape_string($_GET['delret']);
+    dbquery("UPDATE " . DB_CCP_BUCHUNGEN . " SET
+  geloescht = '0' WHERE id='$delret'");
+}
+
 if ((isset($_GET['delcom'])) != '') {
-    $delcom = $_GET['delcom'];
+    $delcom = mysql_real_escape_string($_GET['delcom']);
     dbquery("DELETE FROM " . DB_CCP_BUCHUNGEN . " WHERE id='$delcom' AND geloescht=1");
 }
 
@@ -200,7 +207,7 @@ if (dbrows($result) > 0) {
     }
     echo "</select>";
 } else {
-    echo "<a href='" . BASEDIR . "infusions/clancash_panel/ccp_konten.php'>".$locale['ccp251']."</a>";
+    echo "<a href='" . BASEDIR . "infusions/clancash_panel/ccp_konten.php'>" . $locale['ccp251'] . "</a>";
 }
 echo"</td>
       </tr>

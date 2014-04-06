@@ -47,6 +47,7 @@ $locale['ccp111'] = "Fields with <span style='color:red;'>*</span> have to be fi
 $locale['ccp112'] = "Bank posting has been deleted!";
 $locale['ccp113'] = "edit";
 $locale['ccp114'] = "delete";
+$locale['ccp114a'] = "recover deleted Booking";
 $locale['ccp115'] = "budget control";
 $locale['ccp116'] = "qty";
 $locale['ccp117'] = "income";
