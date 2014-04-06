@@ -135,14 +135,14 @@ closetable();
 
 opentable($locale['ccp115']);
 echo"<form name='cashadmin' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>";
-echo"<table align='center' class='tbl-border' width='100%'>";
+echo"<table align='center' class='tbl-border tbl_ccp'>";
 echo"<tr>
-            <td class='tbl1' align='center' width='30%'>" . $locale['ccp116'] . ":$required</td>
-            <td class='tbl1' align='left' width='70%'><input name='anzahl' class='textbox' value='$ed_anzahl' maxlength='6' size='7' style='text-align:center'></td>
+            <td class='tbl1'>" . $locale['ccp116'] . ":$required</td>
+            <td class='tbl1 ccp_left'><input name='anzahl' class='textbox' value='$ed_anzahl' maxlength='6' size='7' style='text-align:center'></td>
           </tr>
           <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp104'] . ":$required</td>
-            <td class='tbl1' align='left'>
+            <td class='tbl2'>" . $locale['ccp104'] . ":$required</td>
+            <td class='tbl2 ccp_left'>
               <select name='einaus' class='textbox' style='text-align:center;'>\n
                  <option value='1' $ed_check_p style='background-color:green;color:black;'>+</option>\n
                  <option value='-1' $ed_check_m style='background-color:red;color:black;'>-</option>\n
@@ -150,12 +150,12 @@ echo"<tr>
             <input name='betrag' class='textbox' value='$ed_valuta' maxlength='10' size='11' style='text-align:center'>&nbsp;$set_symbol</td>
           </tr>
           <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp155'] . ":$required</td>
-            <td class='tbl1' align='center'><input name='zweck' class='textbox' value='$ed_zweck' maxlength='54' size='56' style='width:100%'></td>
+            <td class='tbl1'>" . $locale['ccp155'] . ":$required</td>
+            <td class='tbl1'><input name='zweck' class='textbox' value='$ed_zweck' maxlength='54' size='56' style='width:100%'></td>
           </tr>
           <tr>
-            <td class='tbl1' align='center'>" . $locale['ccp119'] . ":$required</td>
-            <td class='tbl1' align='left'>
+            <td class='tbl2'>" . $locale['ccp119'] . ":$required</td>
+            <td class='tbl2 ccp_left'>
               <select name='art' class='textbox'>\n
                 <option" . (1 == $ed_art ? " selected" : "") . " value='1'>" . $locale['ccp120'] . "</option>\n
                 <option" . (2 == $ed_art ? " selected" : "") . " value='2'>" . $locale['ccp121'] . "</option>\n
@@ -165,42 +165,43 @@ echo"<tr>
               </select>
           <tr>";
 if ($edit != '')
-    echo"<td align='center' class='tbl2' colspan='2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='" . $locale['ccp108'] . "'></td>";
+    echo"<td class='tbl1' colspan='2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='" . $locale['ccp108'] . "'></td>";
 else
-    echo"<td align='center' class='tbl2' colspan='2'><input type='submit' name='save' class='button' value='" . $locale['ccp110'] . "'></td>";
+    echo"<td class='tbl1' colspan='2'><input type='submit' name='save' class='button' value='" . $locale['ccp110'] . "'></td>";
 echo"</tr><tr>
-            <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td>
+            <td class='tbl1' colspan='2'>" . $locale['ccp111'] . "</td>
             </table></form><br>";
 $query = dbquery("SELECT SUM(bmonat) AS total FROM " . DB_CCP_BUDGET);
 if (dbrows($query) > 0) {
     $data = dbarray($query);
-    echo"<table align='center' class='tbl-border' width='100%'>";
+    echo"<table class='tbl-border tbl_ccp'>";
     $total_monat = round($data['total'], 2);
     $total_jahr = round($total_monat * 12, 2);
     echo"<tr>
-            <td class='tbl1' align='right' colspan='4'>" . $locale['ccp104'] . ":&nbsp;&nbsp;</td>
-            <td class='tbl1' align='center' width='10%'>$total_monat&nbsp;$set_symbol</td>
-            <td class='tbl1' align='center' width='60%'>$total_jahr&nbsp;$set_symbol</td>
-            <td class='tbl1' align='right'>&nbsp;</td>
+            <th class='tbl1 ccp_right' colspan='4'>" . $locale['ccp104'] . ":</th>
+            <th class='tbl1'>$total_monat&nbsp;$set_symbol</th>
+            <th class='tbl1'>$total_jahr&nbsp;$set_symbol</th>
+            <th class='tbl1 ccp_right'>&nbsp;</th>
           </tr>
           <tr>
-            <td class='$cell_color' align='center' width='5%'>" . $locale['ccp116'] . "</td>
-            <td class='$cell_color' align='center' width='10%'>" . $locale['ccp104'] . "</td>
-            <td class='$cell_color' align='center' width='60%'>" . $locale['ccp155'] . "</td>
-            <td class='$cell_color' align='center' width='20%'>" . $locale['ccp119'] . "</td>
-            <td class='$cell_color' align='center' width='10%'>" . $locale['ccp125'] . "</td>
-            <td class='$cell_color' align='center' width='10%'>" . $locale['ccp126'] . "</td>
-            <td class='$cell_color' align='center' width='30%'>&nbsp;</td>
+            <th class='tbl1'>" . $locale['ccp116'] . "</th>
+            <th class='tbl1'>" . $locale['ccp104'] . "</th>
+            <th class='tbl1'>" . $locale['ccp155'] . "</th>
+            <th class='tbl1'>" . $locale['ccp119'] . "</th>
+            <th class='tbl1'>" . $locale['ccp125'] . "</th>
+            <th class='tbl1'>" . $locale['ccp126'] . "</th>
+            <th class='tbl1'>&nbsp;</td>
           </tr>";
     $result = dbquery("SELECT * FROM " . DB_CCP_BUDGET . " ORDER BY 2");
+    $i = 1;
     while ($data = dbarray($result)) {
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         $i++;
         echo"<tr>
-            <td class='$cell_color' align='center' width='5%'>" . $data['anzahl'] . "</td>
-            <td class='$cell_color' align='center' width='10%'>" . $data['betrag'] . "&nbsp;$set_symbol</td>
-            <td class='$cell_color' align='center' width='60%'>" . $data['zweck'] . "</td>
-            <td class='$cell_color' align='center' width='20%'>";
+            <td class='$cell_color'>" . $data['anzahl'] . "</td>
+            <td class='$cell_color'>" . $data['betrag'] . "&nbsp;$set_symbol</td>
+            <td class='$cell_color'>" . $data['zweck'] . "</td>
+            <td class='$cell_color'>";
         IF ($data['art'] == 1)
             echo $locale['ccp120'];
         else if ($data['art'] == 2)
@@ -213,9 +214,11 @@ if (dbrows($query) > 0) {
             echo $locale['ccp124'];
         $bjahr = round($data['bmonat'] * 12, 2);
         echo"</td>
-            <td class='$cell_color' align='center' width='10%'>" . round($data['bmonat'], 2) . "&nbsp;$set_symbol</td>
-            <td class='$cell_color' align='center' width='10%'>$bjahr&nbsp;$set_symbol</td>
-            <td class='$cell_color' align='center' width='30%'><a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'>" . $locale['ccp113'] . "</a><br><a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'>" . $locale['ccp114'] . "</a></td>
+            <td class='$cell_color'>" . round($data['bmonat'], 2) . "&nbsp;$set_symbol</td>
+            <td class='$cell_color'>$bjahr&nbsp;$set_symbol</td>
+            <td class='$cell_color'>"
+                . "<a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'><img src='" . INFUSIONS . "clancash_panel/images/edit.png' alt='" . $locale['ccp113'] . "' title='" . $locale['ccp113'] . "'></a>&nbsp;"
+                . "<a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/temp-delete.png' alt='" . $locale['ccp114'] . "' title='" . $locale['ccp114'] . "'></a></td>
           </tr>";
     } echo "</table>";
 } else {

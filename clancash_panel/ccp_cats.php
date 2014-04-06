@@ -83,28 +83,28 @@ closetable();
 
 opentable($locale['ccp127']);
 echo"<form name='cashadmin' method='post' enctype='multipart/form-data' action=''>";
-echo"<table align='center' class='tbl-border' width='100%'>";
+echo"<table class='tbl-border tbl_ccp'>";
 echo"<tr>
-           <td class='tbl1' align='center' width='30%'>" . $locale['ccp102'] . ":$required</td>
-           <td class='tbl1' align='center' width='70%'><input name='kategorie' class='textbox' value='$ed_kat_klartext' maxlength='40' style='width:100%'></td>
+           <td class='tbl1'>" . $locale['ccp102'] . ":$required</td>
+           <td class='tbl1'><input name='kategorie' class='textbox' value='$ed_kat_klartext' maxlength='40' style='width:100%'></td>
          <tr>";
 if ($edit != '')
-    echo"<td colspan='2' align='center' class='tbl2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='" . $locale['ccp108'] . "'></td>";
+    echo"<td colspan='2' class='tbl2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='" . $locale['ccp108'] . "'></td>";
 else
-    echo"<td colspan='2' align='center' class='tbl2'><input type='submit' name='save' class='button' value='" . $locale['ccp110'] . "'></td>";
+    echo"<td colspan='2' class='tbl2'><input type='submit' name='save' class='button' value='" . $locale['ccp110'] . "'></td>";
 echo"</tr><tr>
-          <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td>
+          <td class='tbl1' colspan='2'>" . $locale['ccp111'] . "</td>
           </table></form><br>";
 
     $result = dbquery("SELECT * FROM " . DB_CCP_KATEGORIEN . " ORDER BY 2");
 if (dbrows($result) > 0) {
-    echo "<table align='center' class='tbl-border' width='100%'>";    
+    echo "<table class='tbl-border tbl_ccp'>";    
     while ($data = dbarray($result)) {
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         $i++;
         echo"<tr>
-            <td class='$cell_color' align='center' width='70%'>" . $data['kat_klartext'] . "</td>
-            <td class='$cell_color' align='center' width='30%'><a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'>" . $locale['ccp113'] . "</a>";
+            <td class='$cell_color'>" . $data['kat_klartext'] . "</td>
+            <td class='$cell_color'><a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'>" . $locale['ccp113'] . "</a>";
         if (dbrows(dbquery("SELECT * FROM " . DB_CCP_BUCHUNGEN . " WHERE kat_id='" . $data['id'] . "'")) == 0) {
             echo " -- <a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'>" . $locale['ccp114'] . "</a>";
         } else {

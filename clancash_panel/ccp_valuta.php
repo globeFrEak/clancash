@@ -29,7 +29,7 @@ $openkonten = (isset($_POST['view_jahr'])) ? "on" : "off";
 $openview = (isset($_POST['view_jahr'])) ? "on" : "off";
 $opengraph = (isset($_POST['view_jahr'])) ? "on" : "off";
 $openstats = (isset($_POST['stats_jahr'])) ? "on" : "off";
-$view_jahr = (isset($_POST['view_jahr'])) ? $_POST['view_jahr'] : $akt_jahr;
+$view_jahr = (isset($_POST['filter_jahr'])) ? $_POST['filter_jahr'] : $akt_jahr;
 $stats_jahr = (isset($_POST['stats_jahr'])) ? $_POST['stats_jahr'] : $akt_jahr;
 
 add_to_head("<script>		  
@@ -45,7 +45,6 @@ add_to_head("<script>
 		});	
 	  });
   </script>");
-
 echo "<div id='tabbed_box_1' class='tabbed_box'>";
 echo "<div class='tabbed_area'>";
 echo "<ul class='ccp_tabs'>";
@@ -59,61 +58,63 @@ if (checkgroup("$set_admin_id") || $show_all == 1) {
 }
 echo "</ul>";
 
-/** Graph **/
+/** Graph * */
 echo "<div id='content_1' class='tbl-border tab_content'>";
 echo "<div id='box_graph'></div>";
 echo "<hr>";
 echo "<div id='box_graph_2'></div>";
 echo "</div>";
 
-/** Beiträge **/
+/** Beiträge * */
 echo "<div id='content_2' class='tbl-border tab_content'>";
 require_once "ccp_beitrag.php";
 echo "</div>";
 
-/** Kontakt **/
+/** Kontakt * */
 echo "<div id='content_3' class='tbl-border tab_content'>";
-echo "<table class='tbl-border' width='100%'>
-          <tr align='center'>
+echo "<table class='tbl_ccp'>
+          <tr>
           <td class='tbl1'>";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN);
 while ($data = dbarray($result)) {
-    echo"<table class='tbl2' cellspacing='1' cellpadding='0' style='width:100%'>
+    echo"<table class='tbl-border tbl_ccp' cellspacing='1'>
             <tr>
-              <td class='tbl-border' align='left' colspan='2'>" . $data['name'] . "</td>
+              <th class='ccp_left' colspan='2'>" . $data['name'] . "</th>
             </tr>
             <tr>
-              <td align='right' width='25%'>" . $locale['ccp137'] . ":&nbsp;</td>
-              <td align='left'>&nbsp;" . $data['inhaber'] . "</td>
+              <td class='ccp_right'>" . $locale['ccp137'] . ":</td>
+              <td class='ccp_left'>" . $data['inhaber'] . "</td>
             </tr>
             <tr>
-              <td align='right'>" . $locale['ccp140'] . ":&nbsp;</td>
-              <td align='left'>&nbsp;" . $data['bank'] . "</td>
+              <td class='ccp_right'>" . $locale['ccp140'] . ":</td>
+              <td class='ccp_left'>" . $data['bank'] . "</td>
             </tr>
             <tr>
-              <td align='right'>" . $locale['ccp106'] . ":&nbsp;</td>
-              <td align='left'>&nbsp;" . $data['konto_id'] . "</td>
+              <td class='ccp_right'>" . $locale['ccp106'] . ":</td>
+              <td class='ccp_left'>" . $data['konto_id'] . "</td>
             </tr>
             <tr>
-              <td align='right'>" . $locale['ccp139'] . ":&nbsp;</td>
-              <td align='left'>&nbsp;" . $data['blz'] . "</td>
+              <td class='ccp_right'>" . $locale['ccp139'] . ":</td>
+              <td class='ccp_left'>" . $data['blz'] . "</td>
             </tr>
             <tr>
-              <td align='right'>" . $locale['ccp141'] . ":&nbsp;</td>
-              <td align='left'>&nbsp;" . $data['iban'] . "</td>
+              <td class='ccp_right'>" . $locale['ccp141'] . ":</td>
+              <td class='ccp_left'>" . $data['iban'] . "</td>
             </tr>
             <tr>
-              <td align='right'>" . $locale['ccp142'] . ":&nbsp;</td>
-              <td align='left'>&nbsp;" . $data['swift'] . "</td>
+              <td class='ccp_right'>" . $locale['ccp142'] . ":</td>
+              <td class='ccp_left'>" . $data['swift'] . "</td>
             </tr>
             <tr>
-              <td align='right'><br>" . $locale['ccp156'] . ":&nbsp;</td>
-              <td align='left'><br>&nbsp;" . $data['zweck'] . "</td>
-            </tr>
-            </table><br>";
+              <td class='ccp_right'>" . $locale['ccp156'] . ":</td>
+              <td class='ccp_left'>" . $data['zweck'] . "</td>
+            </tr>";
     if ($paypal != '0' && $data['paypal_email'] != '') {
-        echo" <a href='" . INFUSIONS . "clancash_panel/ccp_paypal.php?id=" . $data['id'] . "'><img src='" . $data['paypal_button'] . "' border='0'></a>";
+        echo "<tr><td colspan='2'>";
+        echo " <a href='" . INFUSIONS . "clancash_panel/ccp_paypal.php?id=" . $data['id'] . "'><img src='" . $data['paypal_button'] . "' border='0'></a>";
+        echo "</td></tr>";        
     }
+    echo "</table><br>";
 }
 echo"</td></tr></table>";
 echo "</div>";

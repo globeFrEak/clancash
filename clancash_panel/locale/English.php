@@ -96,6 +96,7 @@ $locale['ccp159'] = "Members can see hole cashflow";
 $locale['ccp160'] = "permanently delete";
 $locale['ccp161'] = "income/expenditure";
 $locale['ccp162'] = "You have got to be logged in to shown more details";
+$locale['ccp163'] = "filter";
 
 $locale['ccp180'] = "Members can see names";
 $locale['ccp181'] = "Display name when 'Members can see names' disabled";

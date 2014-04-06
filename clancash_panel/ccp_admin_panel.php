@@ -29,9 +29,6 @@ if (file_exists(INFUSIONS . "clancash_panel/locale/" . $settings['locale'] . ".p
 } else {
     include INFUSIONS . "clancash_panel/locale/English.php";
 }
-
-add_to_head("<link rel='stylesheet' href='" . INFUSIONS . "clancash_panel/css/clancash.css' type='text/css'/>\n");
-
 include_once INFUSIONS . "clancash_panel/ccp_functions.php";
 
 $edit = (isset($_POST['edit'])) ? $_POST['edit'] : "";
@@ -142,10 +139,10 @@ closetable();
 opentable($locale['ccp100']);
 
 echo"<form name='chasadmin' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>
-      <table class='tbl-border' width='100%'>
+      <table class='tbl-border tbl_ccp'>
       <tr>
-        <td class='tbl1' style='text-align: center; width:30%;'>" . $locale['ccp101'] . ":$required</td>
-        <td class='tbl1' style='width:70%'>
+        <td class='tbl1'>" . $locale['ccp101'] . ":$required</td>
+        <td class='tbl1 ccp_left'>
           <select name='tag' class='textbox'>\n";
 $tag = 1;
 while ($tag < 32) {
@@ -171,8 +168,8 @@ echo"</select>";
 echo"</td>
       </tr>
       <tr>
-        <td class='tbl1' style='text-align: center; width:30%;'>" . $locale['ccp102'] . ":$required</td>
-        <td class='tbl1' style='width:70%' >
+        <td class='tbl2'>" . $locale['ccp102'] . ":$required</td>
+        <td class='tbl2 ccp_left'>
           <select name='kategorie' class='textbox' style='width:95%;'>\n
           <option value=''>" . $locale['ccp103'] . "</option>\n";
 $result = dbquery("SELECT * FROM " . DB_CCP_KATEGORIEN . " ORDER BY kat_klartext asc");
@@ -182,22 +179,21 @@ while ($data = dbarray($result)) {
 echo" </select></td>
       </tr>
       <tr>
-        <td class='tbl1' style='text-align:center; width:30%;'>" . $locale['ccp104'] . ":$required</td>
-        <td class='tbl1' style='width:30%'>\n
-          <select name='einaus' class='textbox' style='text-align:center;'>\n
+        <td class='tbl1'>" . $locale['ccp104'] . ":$required</td>
+        <td class='tbl1 ccp_left'>\n
+          <select name='einaus' class='textbox'>\n
                  <option value='1' $ed_check_p style='background-color:green;color:black;'>+</option>\n
                  <option value='-1' $ed_check_m style='background-color:red;color:black;'>-</option>\n
           </select>
-        <input type='text' name='betrag' class='textbox' value='$ed_valuta' size='8' style='text-align:center; maxlength:9;'>&nbsp;$set_symbol</td>  
-        <!--<td class='tbl1' style='width:40%' align='left'><input name='einaus' value='1' type='radio' $ed_check_p>" . $locale['ccp117'] . "<br><input name='einaus' value='-1' type='radio' $ed_check_m>" . $locale['ccp118'] . "</td>-->  
+        <input type='text' name='betrag' class='textbox' value='$ed_valuta' size='8' style='maxlength:9;'>&nbsp;$set_symbol</td>  
       </tr>
       <tr>
-        <td class='tbl1' style='text-align: center;width:30%;'>" . $locale['ccp155'] . "</td>
-        <td class='tbl1' style='width:70%' ><input type='text' name='comment' class='textbox' value='$ed_comment' style='width:95%; maxlenght:40;'></td>
+        <td class='tbl2'>" . $locale['ccp155'] . "</td>
+        <td class='tbl2 ccp_left'><input type='text' name='comment' class='textbox' value='$ed_comment' style='width:95%; maxlenght:40;'></td>
       </tr>
       <tr>
-        <td  class='tbl1' style='text-align: center; width:30%;'>" . $locale['ccp106'] . ":$required</td>
-        <td  class='tbl1' style='width:70%'>";
+        <td  class='tbl1'>" . $locale['ccp106'] . ":$required</td>
+        <td  class='tbl1 ccp_left'>";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
 if (dbrows($result) > 0) {
     echo "<select name='konto_id' class='textbox' style='width:145;'>\n
@@ -212,9 +208,9 @@ if (dbrows($result) > 0) {
 echo"</td>
       </tr>
       <tr>
-        <td class='tbl1' style='text-align: center; width:30%;'>" . $locale['ccp107'] . "</td>
-        <td class='tbl1' style='width:50%'>
-         <select name='user_id' class='textbox' style='width:145; textalign:right;'>\n
+        <td class='tbl2'>" . $locale['ccp107'] . "</td>
+        <td class='tbl2 ccp_left'>
+         <select name='user_id' class='textbox ccp_right'>\n
          <option value=''>----</option>\n";
 if ($set_member_id == 0 || 101 || 102 || 103) {
     if ($set_member_id == 101) {
@@ -236,9 +232,8 @@ if ($set_member_id == 0 || 101 || 102 || 103) {
 }
 echo"</select></td>
       </tr>
-      <tr> 
-        <td class='tbl2'>&nbsp;</td>\n
-        <td class='tbl2' align='center'>";
+      <tr>        
+        <td class='tbl1' colspan='2'>";
 if ($edit != "")
     echo"<input type='hidden' name='id' value='$edit' /><input style='width:75' type='submit' name='update' class='button' value='" . $locale['ccp108'] . "'>&nbsp;&nbsp;<input style='width:75' type='submit' class='button' value='" . $locale['ccp109'] . "'>";
 else
@@ -246,12 +241,18 @@ else
 echo"</td>
       </tr>
       <tr>
-        <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td>
+        <td class='tbl1' colspan='2'>" . $locale['ccp111'] . "</td>
       </tr></table></form>";
 
 closetable();
+
+opentable($locale['ccp163']);
 include "ccp_filter.php";
+closetable();
+
+opentable($locale['ccp143']);
 include "ccp_buchungen.php";
+closetable();
 include "ccp_copyright.php";
 require_once THEMES . "templates/footer.php";
 ?>

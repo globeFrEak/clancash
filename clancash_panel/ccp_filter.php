@@ -80,24 +80,24 @@ $fvaluta = $fsumme . "&nbsp;" . $set_symbol;
 //echo "$filter";   //Filter debugging
 echo "<form name='filter' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>
       <div>
-      <table class='tbl-border' width='100%'>
+      <table class='tbl-border tbl_ccp'>
       <tr>
         <td width='10%' class='tbl1' align='center'>" . $locale['ccp125'] . "</td>\n
         <td width='10%' class='tbl1' align='center'>" . $locale['ccp126'] . "</td>\n";
 if ($is_admin == 1)
     echo"
-          <td width='15%' class='tbl1' style='border:0'align='center'>" . $locale['ccp107'] . "</td>\n
-          <td width='15%' class='tbl1' style='border:0'align='center'>" . $locale['ccp105'] . "</td>\n
-          <td width='15%' class='tbl1' style='border:0'align='center'>" . $locale['ccp106'] . "</td>\n
-          <td width='20%' class='tbl1' style='border:0'align='center'>" . $locale['ccp104'] . "</td>\n
-          <td width='15%' class='tbl1' style='border:0'align='center'><a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php" . $aidlink . "'>Admincenter</a></td>\n";
+          <td width='15%' class='tbl1'>" . $locale['ccp107'] . "</td>\n
+          <td width='15%' class='tbl1'>" . $locale['ccp105'] . "</td>\n
+          <td width='15%' class='tbl1'>" . $locale['ccp106'] . "</td>\n
+          <td width='20%' class='tbl1'>" . $locale['ccp104'] . "</td>\n
+          <td width='15%' class='tbl1'><a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php" . $aidlink . "'>Admincenter</a></td>\n";
 else
     echo"
-          <td width='70%' colspan='2' class='tbl1' style='border:0'></td>\n";
+          <td width='70%' colspan='2' class='tbl1'></td>\n";
 echo"
       </tr>
       <tr>
-        <td width='10%' class='tbl1' style='border:0' align='right'><select name='filter_monat' class='textbox' style='width:95%; text-align:center; ' onChange='document.filter.submit();'>\n
+        <td width='10%' class='tbl1 ccp_right'><select name='filter_monat' class='textbox' style='width:95%;' onChange='document.filter.submit();'>\n
           <option value='all' style='text-align:center'>" . $locale['ccp128'] . "</option>\n";
 $monat = 0;
 while ($monat < 12) {
@@ -106,7 +106,7 @@ while ($monat < 12) {
 }
 echo"</select>
         </td>
-        <td width='10%'class='tbl1' style='border:0' align='right'><select name='filter_jahr' class='textbox' style='width:95%; text-align:center; ' onChange='document.filter.submit();'>\n
+        <td width='10%'class='tbl1 ccp_right' style='border:0'><select name='filter_jahr' class='textbox' style='width:95%;text-align:center;' onChange='document.filter.submit();'>\n
           <option value='all' style='text-align:center'>" . $locale['ccp128'] . "</option>\n";
 $admin_filter = ($is_admin == 0 ? "WHERE geloescht='0'" : "");
 $data = dbarray(dbquery("SELECT MIN(jahr) AS min FROM " . DB_CCP_BUCHUNGEN . " $admin_filter"));
@@ -119,7 +119,7 @@ while ($jahr < $akt_jahr) {
 echo"</select></td>";
 if ($is_admin == 1) {
     echo"
-            <td width='15%' class='tbl1' style='border:0' align='right'><select name='filter_user' class='textbox' style='width:95%; text-align:center; ' onChange='document.filter.submit();'>\n
+            <td width='15%' class='tbl1 ccp_right'><select name='filter_user' class='textbox' style='width:95%; text-align:center; ' onChange='document.filter.submit();'>\n
             <option value='all' style='text-align:center'>" . $locale['ccp128'] . "</option>\n";
     $result = dbquery("SELECT DISTINCT " . DB_USERS . ".user_id," . DB_USERS . ".user_name FROM " . DB_CCP_BUCHUNGEN . "," . DB_USERS . " WHERE " . DB_CCP_BUCHUNGEN . ".user_id = " . DB_USERS . ".user_id ORDER BY user_name");
     while ($data = dbarray($result)) {
@@ -127,21 +127,21 @@ if ($is_admin == 1) {
     }
     echo" </select>
             </td>
-            <td width='15%' class='tbl1' style='border:0' align='right'><select name='filter_cat' class='textbox' style='width:95%; text-align:center; ' onChange='document.filter.submit();'>\n
+            <td width='15%' class='tbl1 ccp_right'><select name='filter_cat' class='textbox' style='width:95%; text-align:center; ' onChange='document.filter.submit();'>\n
             <option value='all' style='text-align:center'>" . $locale['ccp128'] . "</option>\n";
     $result = dbquery("SELECT * FROM " . DB_CCP_KATEGORIEN);
     while ($data = dbarray($result)) {
         echo "<option" . ($data['id'] == $filter_cat ? " selected" : "") . " value='" . $data['id'] . "' style='text-align:center'>" . $data['kat_klartext'] . "</option>\n";
     }
     echo"</select></td>
-            <td width='15%' class='tbl1' style='border:0' align='right'><select name='filter_konto' class='textbox' style='width:95%; text-align:center; ' onChange='document.filter.submit();'>\n
+            <td width='15%' class='tbl1 ccp_right'><select name='filter_konto' class='textbox' style='width:95%; text-align:center; ' onChange='document.filter.submit();'>\n
             <option value='all' style='text-align:center'>" . $locale['ccp128'] . "</option>\n";
     $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN);
     while ($data = dbarray($result)) {
         echo "<option" . ($data['id'] == $filter_konto ? " selected" : "") . " value='" . $data['id'] . "' style='text-align:center'>" . $data['name'] . "</option>\n";
     }
     echo"</select></td>
-            <td width='10%' class='tbl1' align='center'>$fvaluta</td>";
+            <td width='10%' class='tbl1'>$fvaluta</td>";
 } else
     echo"<input type='hidden' name='filter_user' value='all'>\n
                   <input type='hidden' name='filter_cat' value='all'>\n

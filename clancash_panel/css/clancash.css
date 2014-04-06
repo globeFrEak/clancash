@@ -14,36 +14,46 @@
     white-space:nowrap;
     margin: 5px;    
 }
-
+.tbl_ccp{
+    width: 100%;    
+}
+.tbl_ccp td {
+    text-align: center;    
+}
+.ccp_left {
+    text-align: left !important;
+}
+.ccp_right {
+    text-align: right !important;
+}
 ul.ccp_tabs {
-	margin:0px; padding:0px;
-	margin-top:5px;
-	margin-bottom:6px;
+    margin:0px; padding:0px;
+    margin-top:5px;
+    margin-bottom:6px;
 }
 ul.ccp_tabs li {
-	list-style:none;
-        white-space:nowrap;
-	display:inline;
+    list-style:none;
+    white-space:nowrap;
+    display:inline;
 }
 ul.ccp_tabs li a {		
-	padding:8px 14px 8px 14px;
-	text-decoration:none;
-	font-size:9px;	
-	font-weight:bold;
-	text-transform:uppercase;	
+    padding:8px 14px 8px 14px;
+    text-decoration:none;
+    font-size:9px;	
+    font-weight:bold;
+    text-transform:uppercase;	
 }
 ul.ccp_tabs li a:hover {
-	background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
 }
 ul.ccp_tabs li a.active {
-	background-color:#ffffff;	
-	border-bottom: 1px solid #ffffff;}
+    background-color:#ffffff;	
+    border-bottom: 1px solid #ffffff;}
 .tab_content {
-	background-color:#ffffff;
-	padding:10px;		
+    background-color:#ffffff;
+    padding:10px;		
 }
 #content_2, #content_3 { display:none; }
-
 /* jqPlot Styles */
 .jqplot-target{position:relative;color:#666;font-size:1em}
 .jqplot-axis{font-size:.75em}

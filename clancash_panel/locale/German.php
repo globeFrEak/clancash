@@ -96,6 +96,7 @@ $locale['ccp159'] = "Buchungen sichtbar";
 $locale['ccp160'] = "entg&uuml;ltig L&ouml;schen";
 $locale['ccp161'] = "Einnahmen/Ausgaben";
 $locale['ccp162'] = "Du musst eingelogt sein um weitere Details angezeigt zu bekommen";
+$locale['ccp163'] = "Filter";
 
 $locale['ccp180'] = "Namen sichtbar";
 $locale['ccp181'] = "Anzeige wenn 'Namen sichtbar' deaktiviert' ist";

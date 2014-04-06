@@ -71,10 +71,10 @@ closetable();
 opentable($locale['ccp145']);
 echo"
 <form name='cashadmin' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . $aidlink . "'>
-<table align='center' width='50%' class='tbl-border'>
+<table class='tbl-border tbl_ccp'>
    <tr>
-    <td class='tbl1' align='center' width='50%'>" . $locale['ccp147'] . "</td>
-    <td class='tbl1' align='center' width='50%'>
+    <td class='tbl1'>" . $locale['ccp147'] . "</td>
+    <td class='tbl1'>
     <select name='cashadmin_id' class='textbox' style='width:150px'><option value='' style='text-align:center'>" . $locale['ccp103'] . "</option>\n";
 $user_groups = getusergroups();
 $access_opts = "";
@@ -88,8 +88,8 @@ while (list($key, $user_group) = each($user_groups)) {
 echo"</select></td>
   </tr>
   <tr>
-    <td class='tbl1' align='center' width='50%'>" . $locale['ccp148'] . "</td>
-    <td class='tbl1' align='center' width='50%'>
+    <td class='tbl2'>" . $locale['ccp148'] . "</td>
+    <td class='tbl2'>
     <select name='member_id' class='textbox' style='width:150px'><option value='' style='text-align:center'>" . $locale['ccp103'] . "</option>\n";
 $user_groups = getusergroups();
 $access_opts = "";
@@ -104,8 +104,8 @@ echo"</select></td>
 $data = dbarray(dbquery("SELECT *  FROM " . DB_CCP_SETTINGS . ""));
 echo"
   <tr>
-  <td class='tbl1' align='center' width='50%'>" . $locale['ccp149'] . "</td>
-    <td class='tbl1' align='center' width='50%'>
+  <td class='tbl1'>" . $locale['ccp149'] . "</td>
+    <td class='tbl1'>
       <select name='zeilen' class='textbox'>
         <option" . ($data['zeilen'] == 5 ? " selected" : "") . " value='5' style='text-align:center'>5</option>
         <option" . ($data['zeilen'] == 10 ? " selected" : "") . " value='10' style='text-align:center'>10</option>
@@ -120,14 +120,14 @@ echo"
       </select>
   </tr>
   <tr>
-  <td class='tbl1' align='center' width='50%'>" . $locale['ccp150'] . "</td>
-    <td class='tbl1' align='center' width='50%'>";
+  <td class='tbl2'>" . $locale['ccp150'] . "</td>
+    <td class='tbl2'>";
 echo"<input name='waehrung' class='textbox' style='width:40px; text-align:center' value='" . $data['waehrung'] . "'>          
     </td>
   </tr>
   <tr>
-  <td class='tbl1' align='center' width='50%'>" . $locale['ccp250'] . "</td>
-    <td class='tbl1' align='center' width='50%'>";
+  <td class='tbl1'>" . $locale['ccp250'] . "</td>
+    <td class='tbl1'>";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
 if (dbrows($result) > 0) {
     echo"<select name='standard_konto' class='textbox'>";
@@ -140,31 +140,31 @@ if (dbrows($result) > 0) {
 }
 echo"</td>
   </tr>
-  <td class='tbl1' align='center' width='50%'>" . $locale['ccp182'] . "</td>
-    <td class='tbl1' align='center' width='50%'>";
+  <td class='tbl2'>" . $locale['ccp182'] . "</td>
+    <td class='tbl2'>";
 echo"<input type='checkbox' " . (($data['paypal'] == 1) ? "checked='checked'" : "") . " name='paypal' value='1' style='width:10px; text-align:center'>
     </td>
   </tr>
   <tr>
-  <td class='tbl1' align='center' width='50%'>" . $locale['ccp159'] . "</td>
-    <td class='tbl1' align='center' width='50%'>";
+  <td class='tbl1'>" . $locale['ccp159'] . "</td>
+    <td class='tbl1'>";
 echo"<input type='checkbox' " . (($data['member_show_all'] == 1) ? "checked='checked'" : "") . " name='member_show_all' value='1' style='width:10px; text-align:center'>
     </td>
   </tr>
   <tr>
-  <td class='tbl1' align='center' width='50%'>" . $locale['ccp180'] . "</td>
-    <td class='tbl1' align='center' width='50%'>";
+  <td class='tbl2'>" . $locale['ccp180'] . "</td>
+    <td class='tbl2'>";
 echo"<input id='set_1' type='checkbox' " . (($data['member_show_names'] == 1) ? "checked='checked'" : "") . " name='member_show_names' value='1' style='width:10px; text-align:center'>
     </td>
   </tr>
   <tr>
-  <td class='tbl1 placeholder_set_1' align='center' width='50%'>" . $locale['ccp181'] . "</td>
-    <td class='tbl1 placeholder_set_1' align='center' width='50%'>";
+  <td class='tbl1 placeholder_set_1'>" . $locale['ccp181'] . "</td>
+    <td class='tbl1 placeholder_set_1'>";
 echo"<input name='placeholder_name' class='textbox' style='width:150px; text-align:center' value='" . $data['placeholder_name'] . "'>
     </td>
   </tr>
   <tr>
-  <td class='tbl2' align='center' width='100%' colspan='2'><input class='button' type='submit' name='save' style='width:150' value='" . $locale['ccp108'] . "'></td>
+  <td class='tbl2' colspan='2'><input class='button' type='submit' name='save' style='width:150' value='" . $locale['ccp108'] . "'></td>
   </tr></table></form>";
 
 closetable();

@@ -204,13 +204,13 @@ closetable();
 opentable($locale['ccp135']);
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN . " ORDER BY name");
 if (dbrows($result) > 0) {
-    echo"<table align='center' class='tbl-border' width='100%'>";
+    echo"<table class='tbl-border tbl_ccp'>";
     while ($data = dbarray($result)) {
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         $i++;
         echo"<tr>
-        <td class='$cell_color' align='center' width='70%'>" . $data['name'] . "</td>
-        <td class='$cell_color' align='center' width='30%'><a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'>" . $locale['ccp113'] . "</a>";
+        <td class='$cell_color'>" . $data['name'] . "</td>
+        <td class='$cell_color'><a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'>" . $locale['ccp113'] . "</a>";
         if (dbrows(dbquery("SELECT * FROM " . DB_CCP_BUCHUNGEN . " WHERE konto_id='" . $data['id'] . "'")) == 0) {
             echo " -- <a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'>" . $locale['ccp114'] . "</a>";
         } else {
@@ -224,60 +224,60 @@ if (dbrows($result) > 0) {
 }
 echo "<hr></hr>";
 echo"<form name='chasadmin' id='chasadmin' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>";
-echo"<table class='tbl-border' width='100%'>";
+echo"<table class='tbl-border tbl_ccp'>";
 echo"<tr>
             <td class='tbl1'>" . $locale['ccp136'] . ":$required</td>
             <td class='tbl1'><input name='name' class='textbox' value='$ed_name' maxlength='15' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1'>" . $locale['ccp137'] . ":$required</td>
-            <td class='tbl1'><input name='inhaber' class='textbox' value='$ed_inhaber' maxlength='40' style='width:100%;'></td>
+            <td class='tbl2'>" . $locale['ccp137'] . ":$required</td>
+            <td class='tbl2'><input name='inhaber' class='textbox' value='$ed_inhaber' maxlength='40' style='width:100%;'></td>
         </tr>
         <tr>
             <td class='tbl1'>" . $locale['ccp138'] . ":$required</td>
             <td class='tbl1'><input name='konto_id' class='textbox' value='$ed_konto_id' maxlength='15' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1'>" . $locale['ccp139'] . ":$required</td>
-            <td class='tbl1'><input name='blz' class='textbox' value='$ed_blz' maxlength='10' style='width:100%;'></td>
+            <td class='tbl2'>" . $locale['ccp139'] . ":$required</td>
+            <td class='tbl2'><input name='blz' class='textbox' value='$ed_blz' maxlength='10' style='width:100%;'></td>
         </tr>
         <tr>
             <td class='tbl1'>" . $locale['ccp140'] . ":$required</td>
             <td class='tbl1'><input name='bank' class='textbox' value='$ed_bank' maxlength='40' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1'>" . $locale['ccp156'] . ":$required</td>
-            <td class='tbl1'><input name='zweck' class='textbox' value='$ed_zweck' maxlength='54' style='width:100%;'></td>
+            <td class='tbl2'>" . $locale['ccp156'] . ":$required</td>
+            <td class='tbl2'><input name='zweck' class='textbox' value='$ed_zweck' maxlength='54' style='width:100%;'></td>
         </tr>
         <tr>
             <td class='tbl1'>" . $locale['ccp141'] . ":$required</td>
             <td class='tbl1'><input name='iban' class='textbox' value='$ed_iban' maxlength='34' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1'>" . $locale['ccp142'] . ":$required</td>
-            <td class='tbl1'><input name='swift' class='textbox' value='$ed_swift' maxlength='11' style='width:100%;'></td>
+            <td class='tbl2'>" . $locale['ccp142'] . ":$required</td>
+            <td class='tbl2'><input name='swift' class='textbox' value='$ed_swift' maxlength='11' style='width:100%;'></td>
         </tr>";
 if ($paypal != '0') {
     echo"<tr>
-            <td class='tbl1' colspan='2' align='center'><h4>" . $locale['ccp188'] . "</h4></td>
+            <td class='tbl1' colspan='2'><h4>" . $locale['ccp188'] . "</h4></td>
         </tr>
         <tr>
-            <td class='tbl1'>" . $locale['ccp183'] . "</td>
-            <td class='tbl1'><input name='paypal_email' id='paypal_email' class='textbox' value='$ed_paypal_email' maxlength='200' style='width:100%;'></td>
+            <td class='tbl2'>" . $locale['ccp183'] . "</td>
+            <td class='tbl2'><input name='paypal_email' id='paypal_email' class='textbox' value='$ed_paypal_email' maxlength='200' style='width:100%;'></td>
         </tr>
         <tr>
             <td class='tbl1'>" . $locale['ccp184'] . "</td>";
     echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypal();' id='paypal_btn' name='paypal_button' class='textbox paypal' value='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' maxlength='300' style='width:100%;'><img id='paypal_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
     echo"<tr>
-            <td class='tbl1'>" . $locale['ccp185'] . "</td>";
-    echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypalSubmit();' id='paypal_submit_btn' name='paypal_submit_button' class='textbox paypal' value='" . (($ed_paypal_submit_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_submit_button) . "' maxlength='300' style='width:100%;'><img id='paypal_submit_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
+            <td class='tbl2'>" . $locale['ccp185'] . "</td>";
+    echo"<td title='" . $locale['ccp192'] . "' class='tbl2' style='vertical-align: middle;'><input onchange='updatePaypalSubmit();' id='paypal_submit_btn' name='paypal_submit_button' class='textbox paypal' value='" . (($ed_paypal_submit_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_submit_button) . "' maxlength='300' style='width:100%;'><img id='paypal_submit_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
     echo"<tr>
             <td class='tbl1'>" . $locale['ccp186'] . "</td>
             <td class='tbl1'><input name='paypal_cancel_url' class='textbox' value='$ed_paypal_cancel_url' maxlength='200' style='width:100%;'></td>
         </tr>
         <tr>
-            <td class='tbl1'>" . $locale['ccp187'] . "</td>
-            <td class='tbl1'><input name='paypal_thanks_url' class='textbox' value='$ed_paypal_thanks_url' maxlength='200' style='width:100%;'></td>
+            <td class='tbl2'>" . $locale['ccp187'] . "</td>
+            <td class='tbl2'><input name='paypal_thanks_url' class='textbox' value='$ed_paypal_thanks_url' maxlength='200' style='width:100%;'></td>
         </tr>";
 
     if (!isset($_GET['step'])) {
@@ -288,12 +288,12 @@ if ($paypal != '0') {
     include INFUSIONS . "clancash_panel/ccp_paypal_admin_form.php";
 }
 if ($edit != "") {
-    echo"<tr><td align='center' class='tbl2' colspan='2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='" . $locale['ccp108'] . "'></td></tr>";
+    echo"<tr><td class='tbl1' colspan='2'><input type='hidden' name='ed_id' value='$edit'><input type='submit' name='update' class='button' value='" . $locale['ccp108'] . "'></td></tr>";
 } else {
-    echo"<tr><td align='center' class='tbl2' colspan='2'><input type='submit' name='save' class='button' value='" . $locale['ccp110'] . "'></td></tr>";
+    echo"<tr><td class='tbl1' colspan='2'><input type='submit' name='save' class='button' value='" . $locale['ccp110'] . "'></td></tr>";
 }
 echo"<tr>
-            <td class='tbl1' align='center' colspan='2'>" . $locale['ccp111'] . "</td></tr>
+            <td class='tbl1' colspan='2'>" . $locale['ccp111'] . "</td></tr>
     </table></form>";
 closetable();
 include_once "ccp_copyright.php";

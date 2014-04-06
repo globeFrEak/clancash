@@ -31,7 +31,7 @@ include_once INFUSIONS . "clancash_panel/ccp_functions.php";
 
 if (!checkgroup($set_member_id) && !checkgroup($set_admin_id))
     redirect("../../login.php");
-$view_jahr = (isset($_POST['view_jahr'])) ? $_POST['view_jahr'] : $akt_jahr;
+$view_jahr = (isset($_POST['filter_jahr'])) ? $_POST['filter_jahr'] : $akt_jahr;
 $view = (isset($_POST['view'])) ? $_POST['view'] : "";
 $openkonten = (isset($_POST['view'])) ? "on" : "off";
 $openview = (isset($_POST['view_jahr'])) ? "on" : "off";
@@ -41,24 +41,11 @@ $box_img_view = ($openview == "on" ? "off" : "on");
 $box_img_graph = ($opengraph == "on" ? "off" : "on");
 
 echo"<form name='zahlungen' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>
-    <table class='tbl-border' cellpadding='1' width='100%'>
-        <tr>
-            <td colspan='13'>&nbsp;</td>
-        </tr>
-        <tr class='tbl1'>
-            <td style='border:0; width:10%;' align='center'><select name='view_jahr' class='textbox' style='text-align:center;' onChange='document.zahlungen.submit();'>\n";
-$admin_filter = ($is_admin == 0 ? "WHERE geloescht='0'" : "");
-$data = dbarray(dbquery("SELECT MIN(jahr) AS min FROM " . DB_CCP_BUCHUNGEN . " $admin_filter"));
-$jahre = $akt_jahr - $data['min'] + 1;
-$jahr = $akt_jahr - $jahre;
-while ($jahr < $akt_jahr) {
-    $jahr = $jahr + 1;
-    echo "<option" . ($jahr == $view_jahr ? " selected" : "") . " value='$jahr' style='text-align:center'>$jahr</option>\n";
-}
-echo"</select></td>";
+    <table class='tbl-border tbl_ccp' cellpadding='1'>
+    <td></td>";
 $monat = explode("|", $locale['shortmonths']);
 for ($sp = 0; $sp < 12; $sp++) {
-    echo "<td style='width:7%;' align='center'>" . $monat[$sp + 1] . "</td>";
+    echo "<td style='width:7%;'>" . $monat[$sp + 1] . "</td>";
 }
 echo"</tr>";
 if ($set_member_id == 0 || 101 || 102 || 103) {
@@ -93,9 +80,9 @@ while ($data = dbarray($result)) {
         $username = $name = $placeholder_name;
     }
     echo"<tr>
-              <td class='$cell_color' align='left'><img src='" . INFUSIONS . "clancash_panel/images/user_16.png' alt='" . $locale['user1'] . "&nbsp;" . $name . "' title='" . $locale['user1'] . "&nbsp;" . $name . "'>&nbsp;" . $username . "</td>\n";
+              <td class='$cell_color ccp_left'><img src='" . INFUSIONS . "clancash_panel/images/user_16.png' alt='" . $locale['user1'] . "&nbsp;" . $name . "' title='" . $locale['user1'] . "&nbsp;" . $name . "'>&nbsp;" . $username . "</td>\n";
     for ($c = 1; $c < 13; $c++) {
-        echo"<td class='$cell_color' align='center'>" . ${"col_" . $c} . "</td>\n";
+        echo"<td class='$cell_color'>" . ${"col_" . $c} . "</td>\n";
     }
     echo"</tr>";
 }
@@ -114,9 +101,9 @@ if (dbrows($result) > 0) {
             ${"col_" . $nr} = (${"total_" . $nr} <> 0 ? ${"total_" . $nr} . " $set_symbol" : "");
         }
         echo"<tr>
-              <td class='$cell_color' align='left'><img src='" . INFUSIONS . "clancash_panel/images/cats_16.png' alt='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "' title='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "'>&nbsp;" . $data['kat_klartext'] . "</td>\n";
+              <td class='$cell_color ccp_left'><img src='" . INFUSIONS . "clancash_panel/images/cats_16.png' alt='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "' title='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "'>&nbsp;" . $data['kat_klartext'] . "</td>\n";
         for ($c = 1; $c < 13; $c++) {
-            echo"<td class='$cell_color' align='center'>" . ${"col_" . $c} . "</td>\n";
+            echo"<td class='$cell_color'>" . ${"col_" . $c} . "</td>\n";
         }
         echo"</tr>";
     }

@@ -35,17 +35,9 @@ include_once INFUSIONS."clancash_panel/ccp_functions.php";
 if (!checkgroup($set_member_id) && !checkgroup($set_admin_id)) redirect("../../login.php");
 
 opentable($locale['ccp000']);
-echo"
-<table align='center' width='100%'>\n
-  <tr>\n
-    <td>\n";
       include "ccp_valuta.php";
       include "ccp_filter.php";
       include "ccp_buchungen.php";
-echo"</td>\n
-  </tr>\n
-</table>\n";
-
 closetable();
 
 include "ccp_copyright.php";
