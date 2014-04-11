@@ -28,11 +28,13 @@ add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.barRender
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.categoryAxisRenderer.min.js'></script>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.highlighter.min.js'></script>");
 
-$view_jahr = (isset($_POST['filter_jahr'])) && $_POST['filter_jahr'] != 'all' ? $_POST['filter_jahr'] : date('Y');
+$view_jahr = (isset($_POST['filter_jahr'])) && $_POST['filter_jahr'] != 'all' ? mysql_real_escape_string($_POST['filter_jahr']) : date('Y');
+$view_konto = (isset($_POST['filter_jahr'])) && $_POST['filter_konto'] != 'all' ? "AND konto_id = '".mysql_real_escape_string($_POST['filter_konto'])."'" : "";
+
 
 //
 // Übertrag aus Vorjahren
-$result = dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE valuta IS NOT NULL AND jahr < $view_jahr AND geloescht='0'");
+$result = dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE valuta IS NOT NULL AND jahr < $view_jahr AND geloescht='0' $view_konto");
 if (dbrows($result) > 0) {
     $gesamt = dbarraynum($result);
     $uebertrag = (double) $gesamt[0];
@@ -42,7 +44,7 @@ if (dbrows($result) > 0) {
 
 //
 // Einnahmen pro Monat
-$result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta > 0 AND geloescht='0' GROUP BY monat ORDER BY monat ASC");
+$result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta > 0 AND geloescht='0' $view_konto GROUP BY monat ORDER BY monat ASC");
 $totalein = array_fill(0, 12, 0);
 
 while ($db_total = dbarraynum($result)) {
@@ -51,7 +53,7 @@ while ($db_total = dbarraynum($result)) {
 }
 //
 // Ausgaben pro Monat
-$result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta < 0 AND geloescht='0' GROUP BY monat ORDER BY monat ASC");
+$result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta < 0 AND geloescht='0' $view_konto GROUP BY monat ORDER BY monat ASC");
 $totalaus = array_fill(0, 12, 0);
 
 while ($db_total = dbarraynum($result)) {
