@@ -52,10 +52,6 @@ $ed_user_id = "0";
 $ed_check_p = "selected ";
 $ccp_version = $data['version'];
 
-$data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM " . DB_CCP_BUCHUNGEN . " WHERE geloescht='0'"));
-$summe = number_format($data['summe'], 2, $locale['ccp006'], $locale['ccp007']);
-$valuta = "<font style='font-size:150%'><b>$summe $set_symbol</b></font>";
-
 add_to_head("<script type='text/javascript'>
     function ccp_ask_first(link){
         return window.confirm('" . $locale['ccp999'] . "');
@@ -126,4 +122,16 @@ if (((isset($_POST['filter_jahr'])) || (isset($_POST['filter_monat'])) || (isset
     $cat = "";
     $month = "";
 }
+
+
+$data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM " . DB_CCP_BUCHUNGEN . " WHERE geloescht='0'"));
+$summe = number_format($data['summe'], 2, $locale['ccp006'], $locale['ccp007']);
+$valuta = "<font style='font-size:150%'><b>$summe $set_symbol</b></font>";
+
+if (isset($_POST['filter_konto'])){    
+    $data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM " . DB_CCP_BUCHUNGEN . " WHERE geloescht='0' AND konto_id = '".mysql_real_escape_string($_POST['filter_konto'])."'"));
+    $summe_konto = number_format($data['summe'], 2, $locale['ccp006'], $locale['ccp007']);
+    $valuta = "<font style='font-size:150%'><b>$summe_konto $set_symbol</b></font>";
+}
+
 ?>

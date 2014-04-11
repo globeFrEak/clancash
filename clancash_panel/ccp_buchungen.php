@@ -33,24 +33,24 @@ $rows = dbrows($result);
 $result = dbquery("SELECT * FROM " . DB_CCP_BUCHUNGEN . " $filter ORDER BY jahr DESC, monat DESC, tag DESC LIMIT $rowstart,$b_per_page");
 
 if ($rows > 0) {
-    echo"<table class='tbl-border tbl_ccp'>";
+    echo"<table class='tbl-border tbl_ccp' cellspacing='0' cellpadding='5'>";
 
     echo"<tr>\n
-        <th class='tbl1'>Datum</th>\n
-        <th class='tbl1'>Kategorie</th>\n
-        <th class='tbl1'>Username</th>\n        
-        <th class='tbl1'>Kontoname</th>\n
-        <th class='tbl1 ccp_right'>Betrag</th>\n
-      </tr>\n
-      <tr>\n
-        <th class='tbl1' colspan='4'>Comments</th>\n
-        <th class='tbl1 ccp_right'>Settings";
-    echo"</th>\n</tr>\n";
+        <th class='tbl1'>" . $locale['ccp101'] . "</th>\n
+        <th class='tbl1'>" . $locale['ccp105'] . "</th>\n                
+        <th class='tbl1'>" . $locale['ccp136'] . "</th>\n
+        <th class='tbl1'>" . $locale['ccp107'] . "</th>\n
+        <th class='tbl1 ccp_right'>" . $locale['ccp104'] . "</th>\n
+        <th class='tbl1 ccp_right'>" . $locale['ccp113'] . "</th>\n
+      </tr>\n";
     $i = 1;
     while ($data = dbarray($result)) {
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
+        if (checkgroup($set_admin_id) && $data['geloescht']) {
+            $cell_color = "tbl_del";
+        }
         $i++;
-        $users = dbarray(dbquery("SELECT * FROM " . DB_USERS . " WHERE user_id=" . $data['user_id'] . ""));
+        $users = dbarray(dbquery("SELECT user_id, user_name, user_status FROM " . DB_USERS . " WHERE user_id=" . $data['user_id'] . ""));
         $kat = dbarray(dbquery("SELECT * FROM " . DB_CCP_KATEGORIEN . " WHERE id=" . $data['kat_id'] . ""));
         $konto = dbarray(dbquery("SELECT * FROM " . DB_CCP_KONTEN . " WHERE id=" . $data['konto_id'] . ""));
         $kategorie = $kat['kat_klartext'];
@@ -60,22 +60,22 @@ if ($rows > 0) {
 
         echo"<tr>\n
         <td class='$cell_color'>$datum</td>\n
-        <td class='$cell_color'>$kategorie</td>\n
-        <td class='$cell_color'>" . $users['user_name'] . "</td>\n
+        <td class='$cell_color'>$kategorie</td>\n        
         <td class='$cell_color'>" . $konto['name'] . "</td>\n
-        <td class='$cell_color ccp_right'>$valuta</td>\n
-      </tr>\n
-      <tr>\n
-        <td class='$cell_color' colspan='4'>" . $data['comment'] . "</td>\n
+        <td class='$cell_color'>" . profile_link($users['user_id'], $users['user_name'], $users['user_status']) . "</td>\n
+        <td class='$cell_color ccp_right' style='white-space: nowrap'>$valuta</td>\n
         <td class='$cell_color ccp_right' style='white-space: nowrap'>";
         if (checkgroup($set_admin_id) && $data['geloescht']) {
-            echo"<font style='color:red'>" . $locale['ccp112'] . "</font> --- <a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&delcom=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/delete.png' alt='" . $locale['ccp160'] . "' title='" . $locale['ccp160'] . "'></a>&nbsp;";
-            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&delret=" . $data['id'] . "' ><img src='" . INFUSIONS . "clancash_panel/images/returndel.png' alt='" . $locale['ccp114a'] . "' title='" . $locale['ccp114a'] . "'></a>&nbsp;";
+            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&delcom=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/delete.png' alt='" . $locale['ccp160'] . "' title='" . $locale['ccp160'] . "'></a>&nbsp;";
+            echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&delret=" . $data['id'] . "' ><img src='" . INFUSIONS . "clancash_panel/images/returndel.png' alt='" . $locale['ccp114a'] . "' title='" . $locale['ccp112'] . "'></a>&nbsp;";
         } else if (checkgroup($set_admin_id)) {
             echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&edit=" . $data['id'] . "' ><img src='" . INFUSIONS . "clancash_panel/images/edit.png' alt='" . $locale['ccp113'] . "' title='" . $locale['ccp113'] . "'></a>&nbsp;";
             echo"<a href='" . INFUSIONS . "clancash_panel/ccp_admin_panel.php?year=$filter_jahr&amp;month=$filter_monat&amp;user=$filter_user&amp;cat=$filter_cat&amp;account=$filter_konto&del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/temp-delete.png' alt='" . $locale['ccp114'] . "' title='" . $locale['ccp114'] . "'></a>";
         }
         echo"</td>\n</tr>\n";
+        if ($data['comment']) {
+            echo"<tr>\n<td class='$cell_color ccp_left' colspan='6'>" . $locale['ccp155'] . ": " . $data['comment'] . "</td>\n</tr>\n";
+        }
     }
     echo "</table>";
 } else {

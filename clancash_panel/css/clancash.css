@@ -17,6 +17,10 @@
 .tbl_ccp{
     width: 100%;    
 }
+.tbl_del {
+    background: rgb(255, 135, 135);
+    background: rgba(255, 135, 135, 0.8);
+}
 .tbl_ccp td {
     text-align: center;    
 }

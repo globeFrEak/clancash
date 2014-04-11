@@ -53,9 +53,6 @@ if (checkgroup("$set_admin_id") || $show_all == 1) {
     echo "<li><a href='#' title='content_2' class='tab'><img border='0' src='" . INFUSIONS . "clancash_panel/images/beitrag.png'>" . $locale['ccp158'] . "</a></li>";
 }
 echo "<li><a href='#' title='content_3' class='tab'><img border='0' src='" . INFUSIONS . "clancash_panel/images/konto.png'>" . $locale['ccp151'] . "</a></li>";
-if (checkgroup("$set_admin_id") || $show_all == 1) {
-    echo "<li><span>" . $locale['ccp152'] . ": $valuta</span></li>";
-}
 echo "</ul>";
 
 /** Graph * */
