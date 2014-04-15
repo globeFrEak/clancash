@@ -57,9 +57,8 @@ echo "</ul>";
 
 /** Graph * */
 echo "<div id='content_1' class='tbl-border tab_content'>";
-echo "<div id='box_graph'></div>";
-echo "<hr>";
-echo "<div id='box_graph_2'></div>";
+echo "<div id='box_graph' class='tbl1'></div>";
+echo "<div id='box_graph_2' class='tbl2'></div>";
 echo "</div>";
 
 /** Beiträge * */
@@ -69,7 +68,7 @@ echo "</div>";
 
 /** Kontakt * */
 echo "<div id='content_3' class='tbl-border tab_content'>";
-echo "<table class='tbl_ccp'>
+echo "<table class='tbl_ccp' cellspacing='0' >
           <tr>
           <td class='tbl1'>";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN);

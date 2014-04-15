@@ -182,13 +182,13 @@ echo" </select></td>
         <td class='tbl1'>" . $locale['ccp104'] . ":$required</td>
         <td class='tbl1 ccp_left'>\n
           <select name='einaus' class='textbox'>\n
-                 <option value='1' $ed_check_p style='background-color:green;color:black;'>+</option>\n
-                 <option value='-1' $ed_check_m style='background-color:red;color:black;'>-</option>\n
+                 <option value='1' $ed_check_p class='ccp_plus_bgr'>+</option>\n
+                 <option value='-1' $ed_check_m class='ccp_minus_bgr'>-</option>\n
           </select>
         <input type='text' name='betrag' class='textbox' value='$ed_valuta' size='8' style='maxlength:9;'>&nbsp;$set_symbol</td>  
       </tr>
       <tr>
-        <td class='tbl2'>" . $locale['ccp155'] . "</td>
+        <td class='tbl2'>" . $locale['ccp155'] . ":</td>
         <td class='tbl2 ccp_left'><input type='text' name='comment' class='textbox' value='$ed_comment' style='width:95%; maxlenght:40;'></td>
       </tr>
       <tr>
@@ -208,7 +208,7 @@ if (dbrows($result) > 0) {
 echo"</td>
       </tr>
       <tr>
-        <td class='tbl2'>" . $locale['ccp107'] . "</td>
+        <td class='tbl2'>" . $locale['ccp107'] . ":</td>
         <td class='tbl2 ccp_left'>
          <select name='user_id' class='textbox ccp_right'>\n
          <option value=''>----</option>\n";

@@ -21,7 +21,7 @@
  | written permission from the original author(s).				|
  +--------------------------------------------------------------*/
 echo "<br><center>
-    <span style=color:black;font-size:12px>&copy;2010 
+    <span class='ccp_copyright'>&copy;2010 
     <a href='http://www.efc-funclan.de'>RedDragon</a> <br>     
     &uuml;berarbeitet von <a href='http://www.germanys-united-legends.de'>GUL-Sonic</a> und <a href='http://www.cwclan.de'>globeFrEak</a> 2013 f&uuml;r PHP-FUSION (v7.02) <br> 
     ClanCash Panel V" . $locale['ccp002'] . "</span></center>";

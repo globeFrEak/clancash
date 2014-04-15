@@ -179,7 +179,7 @@ if (version_compare($new_version, $ccp_version, '<=') AND $new_version > 0) {
 	  <table cellpadding='0' cellspacing='1'>
 	  <tr>
 	  <td><img src='" . INFUSIONS . "clancash_panel/images/version.gif' alt='up to date' /></td>
-	  <td><span style=\"font-weight: bold; color: #1bdc16;\">" . $locale['ccp303'] . ": " . $ccp_version . "</span></td>
+	  <td><span class='ccp_update'>" . $locale['ccp303'] . ": " . $ccp_version . "</span></td>
 	  </tr>
 	  </table>";
 } else {
@@ -188,15 +188,15 @@ if (version_compare($new_version, $ccp_version, '<=') AND $new_version > 0) {
 	<table cellpadding='0' cellspacing='1'>
 	<tr>
 	<td><img src='" . INFUSIONS . "clancash_panel/images/version_old.gif' alt='old version' /></td>
-	<td><span style='font-weight: bold; color: red;'>" . $locale['ccp302'] . ": " . $ccp_version . "</span><br />
-	<span style='font-weight: bold; color: #1bdc16;'>" . $locale['ccp301'] . ": " . $new_version . "</span><br />
+	<td><span class='ccp_negative'>" . $locale['ccp302'] . ": " . $ccp_version . "</span><br />
+	<span class='ccp_positive'>" . $locale['ccp301'] . ": " . $new_version . "</span><br />
 	<span style='font-weight: bold;'>" . $locale['ccp304'] . ": </span><a href='http://globefreak.github.io/clancash/' target='_blank' title='" . $locale['ccp312'] . "'><span style='font-weight: bold;'>" . $locale['ccp312'] . "</span></a></td>
 	</tr>
 	</table>";
     }
 }
 if (empty($new_version)) {
-    $ausgabe = "<br /><span style='font-weight: bold; color: red;'>" . $locale['ccp305'] . "!<br /></span><span style='font-weight: bold;'>" . $locale['ccp304'] . "</span> <a href='http://globefreak.github.io/clancash/' target='_blank' title='" . $locale['ccp312'] . "'><span style='font-weight: bold;'>" . $locale['ccp312'] . "</span></a><br /><br />";
+    $ausgabe = "<br /><span class='ccp_negative'>" . $locale['ccp305'] . "!<br /></span><span style='font-weight: bold;'>" . $locale['ccp304'] . "</span> <a href='http://globefreak.github.io/clancash/' target='_blank' title='" . $locale['ccp312'] . "'><span style='font-weight: bold;'>" . $locale['ccp312'] . "</span></a><br /><br />";
 }
 echo "<div align='center'>" . $ausgabe . "</div>";
 

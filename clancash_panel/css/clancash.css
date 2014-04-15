@@ -2,6 +2,34 @@
     Created on : 08.03.2014, 13:14:39
     Author     : globeFrEak
 */
+.ccp_plus, .ccp_positive {
+    color: green;
+    font-weight: bold;
+}
+.ccp_plus_bgr {
+    background: green;    
+}
+.ccp_minus, .ccp_negative {
+    color: red;
+    font-weight: bold;
+}
+.ccp_minus_bgr {
+    background: red;    
+}
+.ccp_require {
+    color: red;
+}
+.ccp_copyright {
+    color:black;
+    font-size:12px
+}
+.ccp_paypal {    
+    margin: 0px 10px 0px 0px;
+}
+.ccp_update {
+    font-weight: bold; 
+    color: #1bdc16;
+}
 .navi{
     position: relative;
     top: -12px;
@@ -17,7 +45,7 @@
 .tbl_ccp{
     width: 100%;    
 }
-.tbl_del {
+.tbl_ccp_del {
     background: rgb(255, 135, 135);
     background: rgba(255, 135, 135, 0.8);
 }
@@ -50,16 +78,12 @@ ul.ccp_tabs li a {
 ul.ccp_tabs li a:hover {
     background: rgba(0, 0, 0, 0.2);
 }
-ul.ccp_tabs li a.active {
-    background-color:#ffffff;	
-    border-bottom: 1px solid #ffffff;}
-.tab_content {
-    background-color:#ffffff;
-    padding:10px;		
-}
+ul.ccp_tabs li a.active {}
+.tab_content {}
 #content_2, #content_3 { display:none; }
+
 /* jqPlot Styles */
-.jqplot-target{position:relative;color:#666;font-size:1em}
+.jqplot-target{position:relative;font-size:1em}
 .jqplot-axis{font-size:.75em}
 .jqplot-xaxis{margin-top:10px}
 .jqplot-x2axis{margin-bottom:10px}

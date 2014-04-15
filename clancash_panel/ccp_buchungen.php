@@ -47,7 +47,7 @@ if ($rows > 0) {
     while ($data = dbarray($result)) {
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         if (checkgroup($set_admin_id) && $data['geloescht']) {
-            $cell_color = "tbl_del";
+            $cell_color = "tbl_ccp_del";
         }
         $i++;
         $users = dbarray(dbquery("SELECT user_id, user_name, user_status FROM " . DB_USERS . " WHERE user_id=" . $data['user_id'] . ""));
@@ -56,7 +56,7 @@ if ($rows > 0) {
         $kategorie = $kat['kat_klartext'];
         $datum = $data['tag'] . "." . $data['monat'] . "." . $data['jahr'];
         $summe = number_format($data['valuta'], 2, $locale['ccp006'], $locale['ccp007']);
-        ($summe >= 0 ? $valuta = "<span style='color:green;'>$summe </span>$set_symbol" : $valuta = "<span style='color:red;'>$summe </span>$set_symbol");
+        ($summe >= 0 ? $valuta = "<span class='ccp_plus'>$summe </span>$set_symbol" : $valuta = "<span class='ccp_minus'>$summe </span>$set_symbol");
 
         echo"<tr>\n
         <td class='$cell_color'>$datum</td>\n
