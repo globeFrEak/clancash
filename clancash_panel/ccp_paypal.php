@@ -65,8 +65,8 @@ echo "
 <input type=\"radio\" name=\"amount\" value=\"\" />
 <input type=\"text\" name=\"amount\" value=\"0.00\" size=\"6\" />&#8364; <input type='textbox' name='f_beitrag' size='31' maxlength='30'><br/>
 $AMOUNTS ";
-/*
-if ($DONATION_AMOUNTS !="" or $DONATION_AMOUNTS !=0){
+/* So funktioniert es nicht ist klar 
+if ($AMOUNTS !="" or $AMOUNTS !=0){
 echo "<input type=\"hidden\" name=\"item_name\" value=\"".$data['name']." von ".$userdata['user_name']." \" />";
 }
 else {
