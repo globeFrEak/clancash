@@ -20,20 +20,24 @@
  | written permission from the original author(s).		|
  +--------------------------------------------------------------*/
 //Get donation amounts from db...
-$get_donation_amounts = dbquery("SELECT subtype, value FROM " . DB_CCP_PAYPAL);
-while ($data = dbarray($get_donation_amounts)) {
+$result = dbquery("SELECT subtype, value, name FROM " . DB_CCP_PAYPAL);
+while ($data = dbarray($result)) {
     switch ($data['subtype']) {
         case 1:
-            $don_amount_value_1 = $data['value'];
+            $amount_value_1 = $data['value'];
+			$amount_name_1 = $data['name'];
             break;
         case 2:
-            $don_amount_value_2 = $data['value'];
+            $amount_value_2 = $data['value'];
+			$amount_name_2 = $data['name'];
             break;
         case 3:
-            $don_amount_value_3 = $data['value'];
+            $amount_value_3 = $data['value'];
+			$amount_name_3 = $data['name'];
             break;
         case 4:
-            $don_amount_value_4 = $data['value'];
+            $amount_value_4 = $data['value'];
+			$amount_name_4 = $data['name'];
             break;
     }
 }
@@ -56,27 +60,27 @@ echo"
             <tr> 
                 <td align='center'><b>Nummer</b></td>
                 <td align='center'><b>Betrag</b></td>
-		<td align='center'><b>Bezeichnung</b></td>
+				<td align='center'><b>Bezeichnung</b></td>
             </tr>
             <tr>
                 <td align='center'>1</td>
-	        <td title='" . $locale['ccp191'] . "' align='center'><input size='4' name='var_don_amount_1' type='text' value='" . $don_amount_value_1 . "' onChange='return validInt(this,'Suggested Donation Amount #1',1);'></td>
-		<td align='center'>" . $locale['ccp198'] . "</td>
+	        <td title='" . $locale['ccp191'] . "' align='center'><input size='4' name='var_amount_1' type='text' value='" . $amount_value_1 . "' onChange='return validInt(this,'Suggested Donation Amount #1',1);'></td>
+			<td align='center'><input type='textbox' name='var_name_1' size='31' maxlength='30' value='".$amount_name_1."'></td>
             </tr>
             <tr>
 		<td align='center'>2</td>
-	        <td title='" . $locale['ccp191'] . "' align='center'><input size='4' name='var_don_amount_2' type='text' value='" . $don_amount_value_2 . "' onChange='return validInt(this,'Suggested Donation Amount #2',1);'></td>
-		<td align='center'>" . $locale['ccp198'] . "</td>
+	        <td title='" . $locale['ccp191'] . "' align='center'><input size='4' name='var_amount_2' type='text' value='" . $amount_value_2 . "' onChange='return validInt(this,'Suggested Donation Amount #2',1);'></td>
+			<td align='center'><input type='textbox' name='var_name_2' size='31' maxlength='30' value='".$amount_name_2."'></td>
             </tr>
             <tr>
 		<td align='center'>3</td>
-	        <td title='" . $locale['ccp191'] . "' align='center'><input size='4' name='var_don_amount_3' type='text' value='" . $don_amount_value_3 . "' onChange='return validInt(this,'Suggested Donation Amount #3',1);'></td>
-		<td align='center'>" . $locale['ccp198'] . "</td>
+	        <td title='" . $locale['ccp191'] . "' align='center'><input size='4' name='var_amount_3' type='text' value='" . $amount_value_3 . "' onChange='return validInt(this,'Suggested Donation Amount #3',1);'></td>
+			<td align='center'><input type='textbox' name='var_name_3' size='31' maxlength='30' value='".$amount_name_3."'></td>
             </tr>
             <tr>
 		<td align='center'>4</td>
-	        <td title='" . $locale['ccp191'] . "' align='center'><input size='4' name='var_don_amount_4' type='text' value='" . $don_amount_value_4 . "' onChange='return validInt(this,'Suggested Donation Amount #4',1);'></td>
-		<td align='center'>" . $locale['ccp198'] . "</td> 
+	        <td title='" . $locale['ccp191'] . "' align='center'><input size='4' name='var_amount_4' type='text' value='" . $amount_value_4 . "' onChange='return validInt(this,'Suggested Donation Amount #4',1);'></td>
+			<td align='center'><input type='textbox' name='var_name_4' size='31' maxlength='30' value='".$amount_name_4."'></td> 
 	    </tr>
         </table>
     </td>
