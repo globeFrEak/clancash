@@ -279,6 +279,9 @@ if ($paypal != '0') {
 =======
             <td class='tbl2'>" . $locale['ccp185'] . "</td>";
     echo"<td title='" . $locale['ccp192'] . "' class='tbl2' style='vertical-align: middle;'><input onchange='updatePaypalSubmit();' id='paypal_submit_btn' name='paypal_submit_button' class='textbox ccp_paypal' value='" . (($ed_paypal_submit_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_submit_button) . "' maxlength='300' style='width:100%;'><img id='paypal_submit_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
+<<<<<<< HEAD
+>>>>>>> 55cd3c973593f9ad0d1297f96f4814a09fcb89c0
+=======
 >>>>>>> 55cd3c973593f9ad0d1297f96f4814a09fcb89c0
     echo"<tr>
             <td class='tbl1'>" . $locale['ccp186'] . "</td>
