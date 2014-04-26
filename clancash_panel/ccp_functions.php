@@ -1,24 +1,25 @@
 <?php
-/*--------------------------------------------------------------+
- | PHP-Fusion 7 Content Management System             		|
- +--------------------------------------------------------------+
- | Copyright © 2002 - 2013 Nick Jones                 		|
- | http://www.php-fusion.co.uk/                       		|
- +--------------------------------------------------------------+
- | Infusion: ClanCash                                 		|
- | Author:                                            		|
- | RedDragon(v6) 	    http://www.efc-funclan.de      	|
- | globeFrEak (v7) 		http://www.cwclan.de           	|
- | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
- +--------------------------------------------------------------+
- | This program is released as free software under the		|
- | Affero GPL license. You can redistribute it and/or		|
- | modify it under the terms of this license which you		|
- | can read by viewing the included agpl.txt or online		|
- | at www.gnu.org/licenses/agpl.html. Removal of this		|
- | copyright header is strictly prohibited without		|
- | written permission from the original author(s).		|
- +--------------------------------------------------------------*/
+
+/* --------------------------------------------------------------+
+  | PHP-Fusion 7 Content Management System             		|
+  +--------------------------------------------------------------+
+  | Copyright © 2002 - 2013 Nick Jones                 		|
+  | http://www.php-fusion.co.uk/                       		|
+  +--------------------------------------------------------------+
+  | Infusion: ClanCash                                 		|
+  | Author:                                            		|
+  | RedDragon(v6) 	    http://www.efc-funclan.de      	|
+  | globeFrEak (v7) 		http://www.cwclan.de           	|
+  | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
+  +--------------------------------------------------------------+
+  | This program is released as free software under the		|
+  | Affero GPL license. You can redistribute it and/or		|
+  | modify it under the terms of this license which you		|
+  | can read by viewing the included agpl.txt or online		|
+  | at www.gnu.org/licenses/agpl.html. Removal of this		|
+  | copyright header is strictly prohibited without		|
+  | written permission from the original author(s).		|
+  +-------------------------------------------------------------- */
 if (!defined("IN_FUSION") || !IN_FUSION)
     die("Access denied!");
 
@@ -33,13 +34,13 @@ $show_names = $data['member_show_names'];
 $placeholder_name = $data['placeholder_name'];
 $paypal = $data['paypal'];
 $standard_konto = $data['standard_konto'];
-$gespeichert = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:green;'><b>" . $locale['ccp130'] . "</b></span></td></tr>\n</table>\n";
-$ngespeichert = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:red;'><b>" . $locale['ccp132'] . "</b></span></td></tr>\n</table>\n";
-$geloescht = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:green;'><b>" . $locale['ccp131'] . "</b></span></td></tr>\n</table>\n";
-$ngeloescht = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:red;'><b>" . $locale['ccp134'] . "</b></span></td></tr>\n</table>\n";
-$keintrag = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:red;'><b>" . $locale['ccp133'] . "</b></span></td></tr>\n</table>\n";
-$doppelt = "<table align='center' cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr><td class='tbl2' align='center' width='100%'><span style='color:red;'><b>" . $locale['ccp157'] . "</b></span></td></tr>\n</table>\n";
-$required = "<span style='color:red;'>*</span>";
+$gespeichert = "<table cellpadding='0' cellspacing='1' class='tbl-border tbl_ccp'>\n<tr><td class='tbl2'><span class='ccp_positive'>" . $locale['ccp130'] . "</span></td></tr>\n</table>\n";
+$ngespeichert = "<table cellpadding='0' cellspacing='1' class='tbl-border tbl_ccp'>\n<tr><td class='tbl2'><span class='ccp_negative'>" . $locale['ccp132'] . "</span></td></tr>\n</table>\n";
+$geloescht = "<table cellpadding='0' cellspacing='1' class='tbl-border tbl_ccp'>\n<tr><td class='tbl2'><span class='ccp_positive'>" . $locale['ccp131'] . "</span></td></tr>\n</table>\n";
+$ngeloescht = "<table cellpadding='0' cellspacing='1' class='tbl-border tbl_ccp'>\n<tr><td class='tbl2'><span class='ccp_negative'>" . $locale['ccp134'] . "</span></td></tr>\n</table>\n";
+$keintrag = "<table cellpadding='0' cellspacing='1' class='tbl-border tbl_ccp'>\n<tr><td class='tbl2'><span class='ccp_negative'>" . $locale['ccp133'] . "</span></td></tr>\n</table>\n";
+$doppelt = "<table cellpadding='0' cellspacing='1' class='tbl-border tbl_ccp'>\n<tr><td class='tbl2'><span class='ccp_negative'>" . $locale['ccp157'] . "</span></td></tr>\n</table>\n";
+$required = "<span class='ccp_require'>*</span>";
 $akt_monat = date('m');
 $akt_jahr = date('Y');
 $ed_valuta = "00.00";
@@ -51,10 +52,6 @@ $ed_kat = "0";
 $ed_user_id = "0";
 $ed_check_p = "selected ";
 $ccp_version = $data['version'];
-
-$data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM " . DB_CCP_BUCHUNGEN . " WHERE geloescht='0'"));
-$summe = number_format($data['summe'], 2, $locale['ccp006'], $locale['ccp007']);
-$valuta = "<font style='font-size:150%'><b>$summe $set_symbol</b></font>";
 
 add_to_head("<script type='text/javascript'>
     function ccp_ask_first(link){
@@ -72,29 +69,31 @@ function VerifyMail($mail) {
 }
 
 //// Testsequenz für Updateüberprüfung ////
-function latest_ccp_version()
-{
-	$url = "http://germanys-united-legends.de/version/phpfusion_ccp.txt";
-	$url_p = @parse_url($url);
-	$host = $url_p['host'];
-	$port = isset($url_p['port']) ? $url_p['port'] : 80;
+function latest_ccp_version() {
+    $url = "http://germanys-united-legends.de/version/phpfusion_ccp.txt";
+    $url_p = @parse_url($url);
+    $host = $url_p['host'];
+    $port = isset($url_p['port']) ? $url_p['port'] : 80;
 
-	$fp = @fsockopen($url_p['host'], $port, $errno, $errstr, 5);
-	if(!$fp) return false;
+    $fp = @fsockopen($url_p['host'], $port, $errno, $errstr, 5);
+    if (!$fp)
+        return false;
 
-	@fputs($fp, 'GET '.$url_p['path'].' HTTP/1.1'.chr(10));
-	@fputs($fp, 'HOST: '.$url_p['host'].chr(10));
-	@fputs($fp, 'Connection: close'.chr(10).chr(10));
+    @fputs($fp, 'GET ' . $url_p['path'] . ' HTTP/1.1' . chr(10));
+    @fputs($fp, 'HOST: ' . $url_p['host'] . chr(10));
+    @fputs($fp, 'Connection: close' . chr(10) . chr(10));
 
-	$response = @fgets($fp, 1024);
-	$content = @fread($fp,1024);
-	$content = preg_replace("#(.*?)text/plain(.*?)$#is","$2",$content);
-	@fclose ($fp);
+    $response = @fgets($fp, 1024);
+    $content = @fread($fp, 1024);
+    $content = preg_replace("#(.*?)text/plain(.*?)$#is", "$2", $content);
+    @fclose($fp);
 
-	$content = preg_replace("/X-Pad: avoid browser bug/si", "", $content);
+    $content = preg_replace("/X-Pad: avoid browser bug/si", "", $content);
 
-	if(preg_match("#404#",$response)) return false;
-	else return trim($content);
+    if (preg_match("#404#", $response))
+        return false;
+    else
+        return trim($content);
 }
 
 // Filter Settings
@@ -125,5 +124,16 @@ if (((isset($_POST['filter_jahr'])) || (isset($_POST['filter_monat'])) || (isset
     $user = "";
     $cat = "";
     $month = "";
+}
+
+
+$data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM " . DB_CCP_BUCHUNGEN . " WHERE geloescht='0'"));
+$summe = number_format($data['summe'], 2, $locale['ccp006'], $locale['ccp007']);
+$valuta = "<font style='font-size:150%'><b>$summe $set_symbol</b></font>";
+
+if (isset($_POST['filter_konto']) && $_POST['filter_konto'] != 'all') {
+    $data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM " . DB_CCP_BUCHUNGEN . " WHERE geloescht='0' AND konto_id = '" . mysql_real_escape_string($_POST['filter_konto']) . "'"));
+    $summe_konto = number_format($data['summe'], 2, $locale['ccp006'], $locale['ccp007']);
+    $valuta = "<font style='font-size:150%'><b>$summe_konto $set_symbol</b></font>";
 }
 ?>

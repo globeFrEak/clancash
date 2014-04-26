@@ -28,11 +28,13 @@ add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.barRender
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.categoryAxisRenderer.min.js'></script>");
 add_to_head("<script src='" . INFUSIONS . "clancash_panel/graph/jqplot.highlighter.min.js'></script>");
 
-$view_jahr = (isset($_POST['filter_jahr'])) && $_POST['filter_jahr'] != 'all' ? $_POST['filter_jahr'] : date('Y');
+$view_jahr = (isset($_POST['filter_jahr'])) && $_POST['filter_jahr'] != 'all' ? mysql_real_escape_string($_POST['filter_jahr']) : date('Y');
+$view_konto = (isset($_POST['filter_jahr'])) && $_POST['filter_konto'] != 'all' ? "AND konto_id = '" . mysql_real_escape_string($_POST['filter_konto']) . "'" : "";
+
 
 //
 // Übertrag aus Vorjahren
-$result = dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE valuta IS NOT NULL AND jahr < $view_jahr AND geloescht='0'");
+$result = dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE valuta IS NOT NULL AND jahr < $view_jahr AND geloescht='0' $view_konto");
 if (dbrows($result) > 0) {
     $gesamt = dbarraynum($result);
     $uebertrag = (double) $gesamt[0];
@@ -42,7 +44,7 @@ if (dbrows($result) > 0) {
 
 //
 // Einnahmen pro Monat
-$result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta > 0 AND geloescht='0' GROUP BY monat ORDER BY monat ASC");
+$result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta > 0 AND geloescht='0' $view_konto GROUP BY monat ORDER BY monat ASC");
 $totalein = array_fill(0, 12, 0);
 
 while ($db_total = dbarraynum($result)) {
@@ -51,7 +53,7 @@ while ($db_total = dbarraynum($result)) {
 }
 //
 // Ausgaben pro Monat
-$result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta < 0 AND geloescht='0' GROUP BY monat ORDER BY monat ASC");
+$result = dbquery("SELECT SUM(valuta) AS total, monat FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr=$view_jahr AND valuta < 0 AND geloescht='0' $view_konto GROUP BY monat ORDER BY monat ASC");
 $totalaus = array_fill(0, 12, 0);
 
 while ($db_total = dbarraynum($result)) {
@@ -105,10 +107,10 @@ $(document).ready(function(){
         '" . $locale['ccp_nov'] . "',
         '" . $locale['ccp_dez'] . "']; 
             
-    $.jqplot.sprintf.thousandsSeparator = '".$locale['ccp007']."';
-    $.jqplot.sprintf.decimalMark = '".$locale['ccp006']."';
+    $.jqplot.sprintf.thousandsSeparator = '" . $locale['ccp007'] . "';
+    $.jqplot.sprintf.decimalMark = '" . $locale['ccp006'] . "';
     
-    var plot1 = $.jqplot('box_graph', [s1, s2], { 
+    plot1 = $.jqplot('box_graph', [s1, s2], { 
         title: '" . $locale['ccp_graph_title'] . $view_jahr . "',
         stackSeries: true, 
         seriesColors:['#089629', '#980F0F'],
@@ -142,45 +144,59 @@ $(document).ready(function(){
             yaxis: {                
                 tickOptions: {formatString: '%\'.2f " . $set_symbol . "'}
             }
+        },
+        grid: {
+            background: 'transparent'
         }
     });
     
-    var plot2 = $.jqplot('box_graph_2', [m1], { 
+    plot2 = $.jqplot('box_graph_2', [m1], { 
         title: '" . $locale['ccp_graph2_title'] . $view_jahr . " (" . $locale['ccp_graph2_uebertrag'] . $uebertrag . "&nbsp;" . $set_symbol . ")',
         stackSeries: true, 
         seriesColors:['#089629'],
         negativeSeriesColors: ['#980F0F'],
         seriesDefaults:{
-        renderer:$.jqplot.BarRenderer,
-        rendererOptions: {fillToZero: true, varyBarColor: true},
+            renderer:$.jqplot.BarRenderer,
+            rendererOptions: {fillToZero: true, varyBarColor: true},
         },
         series:[
-        {label:'" . $locale['ccp004'] . "'}
+            {label:'" . $locale['ccp004'] . "'}
         ],
         legend: {
-        show: false,
-        location: 'sw',
-        placement: 'insideGrid',
-        border: 'border:none;'
+            show: false,
+            location: 'sw',
+            placement: 'insideGrid',
+            border: 'border:none;'
         },
         highlighter: {
-        show: true,
-        showMarker: false,
-        tooltipLocation: 'n',
-        tooltipAxes: 'y',
-        bringSeriesToFront: true,
-        tooltipOffset: 9
+            show: true,
+            showMarker: false,
+            tooltipLocation: 'n',
+            tooltipAxes: 'y',
+            bringSeriesToFront: true,
+            tooltipOffset: 9
         },
         axes: {
-        xaxis: {
-        renderer: $.jqplot.CategoryAxisRenderer,
-        ticks: ticks
+            xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+                ticks: ticks
+            },
+            yaxis: {
+                tickOptions: {formatString: '%\'.2f " . $set_symbol . "'}
+            }
         },
-        yaxis: {
-        tickOptions: {formatString: '%\'.2f " . $set_symbol . "'}
+        grid: {
+            background: 'transparent'
         }
-        }
-        });
-        });
+    });
+});
+
+$(window).resize(function() {
+    $.each(plot1.series, function(index, series) {series.barWidth = undefined;});
+    plot1.replot( {resetAxes: true } );
+    $.each(plot2.series, function(index, series) {series.barWidth = undefined;});
+    plot2.replot( {resetAxes: true } );        
+});
+
 </script>");
 ?>

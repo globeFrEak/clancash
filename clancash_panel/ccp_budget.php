@@ -144,8 +144,8 @@ echo"<tr>
             <td class='tbl2'>" . $locale['ccp104'] . ":$required</td>
             <td class='tbl2 ccp_left'>
               <select name='einaus' class='textbox' style='text-align:center;'>\n
-                 <option value='1' $ed_check_p style='background-color:green;color:black;'>+</option>\n
-                 <option value='-1' $ed_check_m style='background-color:red;color:black;'>-</option>\n
+                 <option value='1' $ed_check_p class='ccp_plus_bgr'>+</option>\n
+                 <option value='-1' $ed_check_m class='ccp_minus_bgr'>-</option>\n
               </select>
             <input name='betrag' class='textbox' value='$ed_valuta' maxlength='10' size='11' style='text-align:center'>&nbsp;$set_symbol</td>
           </tr>

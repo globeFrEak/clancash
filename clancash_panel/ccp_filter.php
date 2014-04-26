@@ -47,7 +47,7 @@ $and = ($filter == '' && $is_admin == 1 ? "WHERE geloescht='0'" : "AND geloescht
 $data = dbarray(dbquery("SELECT SUM(valuta) AS summe FROM " . DB_CCP_BUCHUNGEN . " $filter1$filter2$and1$filter3$and2$filter4$and3$filter5$and4$filter6$and5$filter7 $and"));
 
 $fsumme = number_format($data['summe'], 2, $locale['ccp006'], $locale['ccp007']);
-$fvaluta = $fsumme . "&nbsp;" . $set_symbol;
+($fsumme >= 0 ? $fvaluta = "<span class='ccp_plus'>$fsumme </span>$set_symbol" : $fvaluta = "<span class='ccp_minus'>$fsumme </span>$set_symbol");
 //echo "$filter";   //Filter debugging
 echo "<form name='filter' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>
       <div>

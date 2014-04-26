@@ -53,16 +53,12 @@ if (checkgroup("$set_admin_id") || $show_all == 1) {
     echo "<li><a href='#' title='content_2' class='tab'><img border='0' src='" . INFUSIONS . "clancash_panel/images/beitrag.png'>" . $locale['ccp158'] . "</a></li>";
 }
 echo "<li><a href='#' title='content_3' class='tab'><img border='0' src='" . INFUSIONS . "clancash_panel/images/konto.png'>" . $locale['ccp151'] . "</a></li>";
-if (checkgroup("$set_admin_id") || $show_all == 1) {
-    echo "<li><span>" . $locale['ccp152'] . ": $valuta</span></li>";
-}
 echo "</ul>";
 
 /** Graph * */
 echo "<div id='content_1' class='tbl-border tab_content'>";
-echo "<div id='box_graph'></div>";
-echo "<hr>";
-echo "<div id='box_graph_2'></div>";
+echo "<div id='box_graph' class='tbl1'></div>";
+echo "<div id='box_graph_2' class='tbl2'></div>";
 echo "</div>";
 
 /** Beiträge * */
@@ -72,7 +68,7 @@ echo "</div>";
 
 /** Kontakt * */
 echo "<div id='content_3' class='tbl-border tab_content'>";
-echo "<table class='tbl_ccp'>
+echo "<table class='tbl_ccp' cellspacing='0' >
           <tr>
           <td class='tbl1'>";
 $result = dbquery("SELECT * FROM " . DB_CCP_KONTEN);
