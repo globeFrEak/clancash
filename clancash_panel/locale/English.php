@@ -159,5 +159,4 @@ $locale['ccp_monat_9'] = "Sep";
 $locale['ccp_monat_10'] = "Oct";
 $locale['ccp_monat_11'] = "Nov";
 $locale['ccp_monat_12'] = "Dec";
-
 ?>
