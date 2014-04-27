@@ -97,6 +97,7 @@ $locale['ccp161'] = "income/expenditure";
 $locale['ccp162'] = "You have got to be logged in to shown more details";
 $locale['ccp163'] = "filter";
 $locale['ccp164'] = "from";
+$locale['ccp165'] = "Overview";
 
 $locale['ccp180'] = "Members can see names";
 $locale['ccp181'] = "Display name when 'Members can see names' disabled";
@@ -137,6 +138,7 @@ $locale['ccp309'] = "Errors occurred during the update process";
 $locale['ccp310'] = "update successful";
 $locale['ccp311'] = "back";
 $locale['ccp312'] = "Latest version on github.com";
+$locale['ccp313'] = "The pChart folder can now be deleted from the server, since this is no longer needed";
 
 $locale['ccp999'] = "are u sure?";
 
@@ -145,16 +147,16 @@ $locale['ccp_a000'] = "ClanCash - administration";
 $locale['ccp_graph_title'] = "Income/Expenditure ";
 $locale['ccp_graph2_title'] = "Account balance history ";
 $locale['ccp_graph2_uebertrag'] = "transfer: ";
-$locale['ccp_monat_1'] = "Jan";
-$locale['ccp_monat_2'] = "Feb";
-$locale['ccp_monat_3'] = "Mar";
-$locale['ccp_monat_4'] = "Apr";
-$locale['ccp_monat_5'] = "May";
-$locale['ccp_monat_6'] = "Jun";
-$locale['ccp_monat_7'] = "Jul";
-$locale['ccp_monat_8'] = "Aug";
-$locale['ccp_monat_9'] = "Sep";
-$locale['ccp_monat_10'] = "Oct";
-$locale['ccp_monat_11'] = "Nov";
-$locale['ccp_monat_12'] = "Dec";
+$locale['ccp_jan'] = "Jan";
+$locale['ccp_feb'] = "Feb";
+$locale['ccp_mar'] = "Mar";
+$locale['ccp_apr'] = "Apr";
+$locale['ccp_may'] = "May";
+$locale['ccp_jun'] = "Jun";
+$locale['ccp_jul'] = "Jul";
+$locale['ccp_aug'] = "Aug";
+$locale['ccp_sep'] = "Sep";
+$locale['ccp_okt'] = "Oct";
+$locale['ccp_nov'] = "Nov";
+$locale['ccp_dez'] = "Dec";
 ?>
