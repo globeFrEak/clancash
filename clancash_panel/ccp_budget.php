@@ -218,7 +218,7 @@ if (dbrows($query) > 0) {
             <td class='$cell_color'>$bjahr&nbsp;$set_symbol</td>
             <td class='$cell_color'>"
                 . "<a href='" . FUSION_SELF . "?edit=" . $data['id'] . "'><img src='" . INFUSIONS . "clancash_panel/images/edit.png' alt='" . $locale['ccp113'] . "' title='" . $locale['ccp113'] . "'></a>&nbsp;"
-                . "<a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/temp-delete.png' alt='" . $locale['ccp114'] . "' title='" . $locale['ccp114'] . "'></a></td>
+                . "<a href='" . FUSION_SELF . "?del=" . $data['id'] . "' onclick='return ccp_ask_first(this)'><img src='" . INFUSIONS . "clancash_panel/images/tempdelete.png' alt='" . $locale['ccp114'] . "' title='" . $locale['ccp114'] . "'></a></td>
           </tr>";
     } echo "</table>";
 } else {
