@@ -25,6 +25,8 @@ if (file_exists(INFUSIONS . "clancash_panel/locale/" . $settings['locale'] . ".p
     include INFUSIONS . "clancash_panel/locale/English.php";
 }
 
+include_once INFUSIONS . "clancash_panel/infusion_db.php";
+
 if (!checkgroup($set_member_id))
     redirect("../../login.php");
 
