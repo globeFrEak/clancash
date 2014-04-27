@@ -62,16 +62,8 @@ while ($db_total = dbarraynum($result)) {
 }
 //
 // Monats Kalkulation abzueglich der Ausgaben
-if ($view_jahr == date('Y')){
-    $monat = date('n');
-    $for_monat = $monat - 1;
-} else {
-    $monat = 12;
-    $for_monat = $monat - 1;
-}
-$totalmonat = array_fill(0, $monat, 0);
-$ticksmonat = array_fill(0, $monat, 0);
-for ($m = 0; $m <= $for_monat; $m++) {
+$totalmonat = array_fill(0, 12, 0);
+for ($m = 0; $m <= 11; $m++) {
     if ($totalein[$m] === 0) {
         $totalmonat[$m] = (double) $totalaus[$m];
     } elseif ($totalaus[$m] === 0) {
@@ -85,27 +77,29 @@ for ($m = 0; $m <= $for_monat; $m++) {
     } else {
         $i = $m - 1;
         $totalmonat[$m] = round($totalmonat[$m] + $totalmonat[$i], 2);
-    }    
+    }
+    // loescht den Verlauf der Zukunft ^^
+    if ($view_jahr == date('Y')) {
+        $monat = date('n') -1;
+        if ($m > $monat){
+            $totalmonat[$m] = 0;
+        }
+    }
     $totalaus[$m] = round($totalaus[$m], 2);
     $totalein[$m] = round($totalein[$m], 2);
-    // erzeuge die Monate aus der locales
-    $mon = $m + 1;
-    $ticksmonat[$m] = $locale['ccp_monat_'."$mon"];
 }
 //
 // Arrays in JSON Enkodieren
 $totalein_json = json_encode($totalein);
 $totalaus_json = json_encode($totalaus);
 $totalmonat_json = json_encode($totalmonat);
-$ticksmonat_json = json_encode($ticksmonat);
 
 // Graph definition als Javascript
 add_to_footer("<script type='text/javascript'>
 $(document).ready(function(){
     var s1 = " . $totalein_json . ";
     var s2 = " . $totalaus_json . ";
-    var m1 = " . $totalmonat_json . "; 
-    var m_ticks = " . $ticksmonat_json . ";
+    var m1 = " . $totalmonat_json . ";    
     
     var ticks = ['" . $locale['ccp_monat_1'] . "',
         '" . $locale['ccp_monat_2'] . "',
@@ -192,7 +186,7 @@ $(document).ready(function(){
         axes: {
             xaxis: {
                 renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: m_ticks
+                ticks: ticks
             },
             yaxis: {
                 tickOptions: {formatString: '%\'.2f " . $set_symbol . "'}
