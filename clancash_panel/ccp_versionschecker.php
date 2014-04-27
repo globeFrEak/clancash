@@ -1,24 +1,23 @@
 <?php
 /*--------------------------------------------------------------+
- | PHP-Fusion 7 Content Management System             			|
+ | PHP-Fusion 7 Content Management System             		|
  +--------------------------------------------------------------+
- | Copyright � 2002 - 2013 Nick Jones                 			|
- | http://www.php-fusion.co.uk/                       			|
+ | Copyright © 2002 - 2013 Nick Jones                 		|
+ | http://www.php-fusion.co.uk/                       		|
  +--------------------------------------------------------------+
- | Infusion: ClanCash                                 			|
- | Filename: ccp_admin_panel.php                      			|
- | Author:                                            			|
- | RedDragon(v6) 	    http://www.efc-funclan.de      			|
- | globeFrEak (v7) 		http://www.cwclan.de           			|
+ | Infusion: ClanCash                                 		|
+ | Author:                                            		|
+ | RedDragon(v6) 	    http://www.efc-funclan.de      	|
+ | globeFrEak (v7) 		http://www.cwclan.de           	|
  | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
  +--------------------------------------------------------------+
- | This program is released as free software under the			|
- | Affero GPL license. You can redistribute it and/or			|
- | modify it under the terms of this license which you			|
- | can read by viewing the included agpl.txt or online			|
- | at www.gnu.org/licenses/agpl.html. Removal of this			|
- | copyright header is strictly prohibited without				|
- | written permission from the original author(s).				|
+ | This program is released as free software under the		|
+ | Affero GPL license. You can redistribute it and/or		|
+ | modify it under the terms of this license which you		|
+ | can read by viewing the included agpl.txt or online		|
+ | at www.gnu.org/licenses/agpl.html. Removal of this		|
+ | copyright header is strictly prohibited without		|
+ | written permission from the original author(s).		|
  +--------------------------------------------------------------*/
 function cURLcheck() {
     if (function_exists("curl_exec"))
@@ -56,5 +55,7 @@ if (cURLcheck()) {
     $url = "https://api.github.com/repos/globeFrEak/clancash/releases";
     $file_content = getTag(cURLcheck(), $url);
     $new_version = $file_content['0']['tag_name'];
+    // DEBUG
+    // $new_version = 1.5;
 }
 ?>

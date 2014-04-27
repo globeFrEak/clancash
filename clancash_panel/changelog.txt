@@ -20,6 +20,17 @@
  | written permission from the original author(s).		|
  +--------------------------------------------------------------+
 
+ClanCash v1.5
+-------------
+-neue grafische Anzeige der Buchungen (JqPlot - http://www.jqplot.com/)
+-Graph wird je nach Filter für Konto separat erzeugt
+-gesetzte Filter werden gespeichert
+-Seiten Navigation FIX
+-Verwendungszwecke bei Paypal Zahlung
+-Style.css hinzugefügt und HTML Styles in die Style.css übernommen
+-neue Icons für Links (Buchung löschen, Buchung bearbeiten, Versionprüfung, ...)
+-Größenreduzierung der Infusion
+
 ClanCash v1.4
 -------------
 -Bugfix Beträge unter 1.00 wurden in der Beitragsübersicht nicht richtig dargestellt

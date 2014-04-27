@@ -28,6 +28,9 @@ $locale['ccp002'] = "1.4";
 $locale['ccp003'] = "Spenden";
 $locale['ccp004'] = "Einnahmen";
 $locale['ccp005'] = "Ausgaben";
+// dezimal marker + tausender zeichen
+$locale['ccp006'] = ",";
+$locale['ccp007'] = ".";
 
 $locale['ccp100'] = "Verwaltung";
 $locale['ccp101'] = "Datum";
@@ -41,7 +44,7 @@ $locale['ccp108'] = "Speichern";
 $locale['ccp109'] = "Neu";
 $locale['ccp110'] = "hinzuf&uuml;gen";
 $locale['ccp111'] = "Felder mit <span style='color:red;'>*</span> m&uuml;ssen ausgef&uuml;llt werden!";
-$locale['ccp112'] = "Buchung wurde gel&ouml;scht!";
+$locale['ccp112'] = "Gel&ouml;schte Buchung wiederherstellen!";
 $locale['ccp113'] = "Bearbeiten";
 $locale['ccp114'] = "L&ouml;schen";
 $locale['ccp115'] = "Budgetplanung";
@@ -89,9 +92,12 @@ $locale['ccp156'] = "Verwendungszweck";
 $locale['ccp157'] = "Nicht gespeichert!<br>Eintrag ist schon vorhanden.";
 $locale['ccp158'] = "Beitrags&uuml;bersicht";
 $locale['ccp159'] = "Buchungen sichtbar";
-$locale['ccp160'] = "entg&uuml;ltig L&ouml;schen";
+$locale['ccp160'] = "Entg&uuml;ltig L&ouml;schen!";
 $locale['ccp161'] = "Einnahmen/Ausgaben";
 $locale['ccp162'] = "Du musst eingelogt sein um weitere Details angezeigt zu bekommen";
+$locale['ccp163'] = "Filter";
+$locale['ccp164'] = "von";
+$locale['ccp165'] = "&Uuml;bersicht";
 
 $locale['ccp180'] = "Namen sichtbar";
 $locale['ccp181'] = "Anzeige wenn 'Namen sichtbar' deaktiviert' ist";
@@ -111,7 +117,7 @@ $locale['ccp194'] = "Betrag";
 $locale['ccp195'] = "Bezeichnung";
 $locale['ccp196'] = "Zahlung per Paypal";
 $locale['ccp197'] = "Betrag ausw&auml;hlen und fortfahren";
-$locale['ccp198'] = "Clanbeitrag";
+$locale['ccp198'] = "Verwendungszweck eingeben";
 $locale['ccp199'] = "Fehler";
 $locale['ccp200'] = "Paypal-Konto konnte nicht erkannt werden!";
 $locale['ccp201'] = "Paypal-Email wurde falsch oder nicht vollständig eingegeben!";
@@ -132,8 +138,25 @@ $locale['ccp309'] = "Es sind Fehler w&auml;hrend des Update-Vorgangs aufgetreten
 $locale['ccp310'] = "Update erfolgreich";
 $locale['ccp311'] = "zur&uuml;ck";
 $locale['ccp312'] = "Aktuellste Version auf github.com";
+$locale['ccp313'] = "Der Ordner pChart kann nun vom Server gel&ouml;scht werden, da dieser nicht l&auml;nger ben&ouml;tigt wird";
 
 $locale['ccp999'] = "Wirklich löschen?";
 
 $locale['ccp_a000'] = "ClanKasse - Administration";
+
+$locale['ccp_graph_title'] = "Ein-/Ausgaben ";
+$locale['ccp_graph2_title'] = "Kontoverlauf ";
+$locale['ccp_graph2_uebertrag'] = "Übertrag: ";
+$locale['ccp_monat_1'] = "Jan";
+$locale['ccp_monat_2'] = "Febr";
+$locale['ccp_monat_3'] = "M&auml;rz";
+$locale['ccp_monat_4'] = "Apr";
+$locale['ccp_monat_5'] = "Mai";
+$locale['ccp_monat_6'] = "Juni";
+$locale['ccp_monat_7'] = "Juli";
+$locale['ccp_monat_8'] = "Aug";
+$locale['ccp_monat_9'] = "Sept";
+$locale['ccp_monat_10'] = "Okt";
+$locale['ccp_monat_11'] = "Nov";
+$locale['ccp_monat_12'] = "Dez";
 ?>

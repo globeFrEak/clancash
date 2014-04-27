@@ -28,6 +28,9 @@ $locale['ccp002'] = "1.4";
 $locale['ccp003'] = "donation";
 $locale['ccp004'] = "income";
 $locale['ccp005'] = "expenditure";
+// decimal mark + thousands meparator
+$locale['ccp006'] = ".";
+$locale['ccp007'] = ",";
 
 $locale['ccp100'] = "Administration";
 $locale['ccp101'] = "date:";
@@ -41,7 +44,7 @@ $locale['ccp108'] = "save";
 $locale['ccp109'] = "new";
 $locale['ccp110'] = "add";
 $locale['ccp111'] = "Fields with <span style='color:red;'>*</span> have to be filled!";
-$locale['ccp112'] = "Bank posting has been deleted!";
+$locale['ccp112'] = "recover deleted Booking";
 $locale['ccp113'] = "edit";
 $locale['ccp114'] = "delete";
 $locale['ccp115'] = "budget control";
@@ -92,6 +95,9 @@ $locale['ccp159'] = "Members can see hole cashflow";
 $locale['ccp160'] = "permanently delete";
 $locale['ccp161'] = "income/expenditure";
 $locale['ccp162'] = "You have got to be logged in to shown more details";
+$locale['ccp163'] = "filter";
+$locale['ccp164'] = "from";
+$locale['ccp165'] = "Overview";
 
 $locale['ccp180'] = "Members can see names";
 $locale['ccp181'] = "Display name when 'Members can see names' disabled";
@@ -111,7 +117,7 @@ $locale['ccp194'] = "Amount";
 $locale['ccp195'] = "Name";
 $locale['ccp196'] = "Pay per Paypal";
 $locale['ccp197'] = "Use the amunt and continue";
-$locale['ccp198'] = "Clanamount";
+$locale['ccp198'] = "enter use for";
 $locale['ccp199'] = "error";
 $locale['ccp200'] = "Paypal-Account not found!";
 $locale['ccp201'] = "Paypal-Email incorrect!";
@@ -132,8 +138,25 @@ $locale['ccp309'] = "Errors occurred during the update process";
 $locale['ccp310'] = "update successful";
 $locale['ccp311'] = "back";
 $locale['ccp312'] = "Latest version on github.com";
+$locale['ccp313'] = "The pChart folder can now be deleted from the server, since this is no longer needed";
 
 $locale['ccp999'] = "are u sure?";
 
 $locale['ccp_a000'] = "ClanCash - administration";
+
+$locale['ccp_graph_title'] = "Income/Expenditure ";
+$locale['ccp_graph2_title'] = "Account balance history ";
+$locale['ccp_graph2_uebertrag'] = "transfer: ";
+$locale['ccp_monat_1'] = "Jan";
+$locale['ccp_monat_2'] = "Feb";
+$locale['ccp_monat_3'] = "Mar";
+$locale['ccp_monat_4'] = "Apr";
+$locale['ccp_monat_5'] = "May";
+$locale['ccp_monat_6'] = "Jun";
+$locale['ccp_monat_7'] = "Jul";
+$locale['ccp_monat_8'] = "Aug";
+$locale['ccp_monat_9'] = "Sep";
+$locale['ccp_monat_10'] = "Oct";
+$locale['ccp_monat_11'] = "Nov";
+$locale['ccp_monat_12'] = "Dec";
 ?>

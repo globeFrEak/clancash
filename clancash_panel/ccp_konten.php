@@ -1,24 +1,23 @@
 <?php
 /*--------------------------------------------------------------+
- | PHP-Fusion 7 Content Management System             			|
+ | PHP-Fusion 7 Content Management System             		|
  +--------------------------------------------------------------+
- | Copyright © 2002 - 2013 Nick Jones                 			|
- | http://www.php-fusion.co.uk/                       			|
+ | Copyright © 2002 - 2013 Nick Jones                 		|
+ | http://www.php-fusion.co.uk/                       		|
  +--------------------------------------------------------------+
- | Infusion: ClanCash                                 			|
- | Filename: ccp_admin_panel.php                      			|
- | Author:                                            			|
- | RedDragon(v6) 	    http://www.efc-funclan.de      			|
- | globeFrEak (v7) 		http://www.cwclan.de           			|
+ | Infusion: ClanCash                                 		|
+ | Author:                                            		|
+ | RedDragon(v6) 	    http://www.efc-funclan.de      	|
+ | globeFrEak (v7) 		http://www.cwclan.de           	|
  | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
  +--------------------------------------------------------------+
- | This program is released as free software under the			|
- | Affero GPL license. You can redistribute it and/or			|
- | modify it under the terms of this license which you			|
- | can read by viewing the included agpl.txt or online			|
- | at www.gnu.org/licenses/agpl.html. Removal of this			|
- | copyright header is strictly prohibited without				|
- | written permission from the original author(s).				|
+ | This program is released as free software under the		|
+ | Affero GPL license. You can redistribute it and/or		|
+ | modify it under the terms of this license which you		|
+ | can read by viewing the included agpl.txt or online		|
+ | at www.gnu.org/licenses/agpl.html. Removal of this		|
+ | copyright header is strictly prohibited without		|
+ | written permission from the original author(s).		|
  +--------------------------------------------------------------*/
 require_once "../../maincore.php";
 require_once THEMES . "templates/header.php";
@@ -30,12 +29,6 @@ if (file_exists(INFUSIONS . "clancash_panel/locale/" . $settings['locale'] . ".p
     include INFUSIONS . "clancash_panel/locale/English.php";
 }
 include_once INFUSIONS . "clancash_panel/ccp_functions.php";
-
-add_to_head("<style type='text/css'>
-.paypal {    
-    margin: 0px 10px 0px 0px;
-}
-</style>");
 
 add_to_head("<script type=\"text/javascript\">
 $(document).ready(function() {
@@ -187,15 +180,25 @@ paypal_thanks_url = '" . stripinput($paypal_thanks_url) . "',
 paypal_beitrag_checked = '" . stripinput($paypal_beitrag_checked) . "' WHERE id='$ed_id'");
     }
 
-    $var_don_amount_1 = stripinput($_POST['var_don_amount_1']);
-    $var_don_amount_2 = stripinput($_POST['var_don_amount_2']);
-    $var_don_amount_3 = stripinput($_POST['var_don_amount_3']);
-    $var_don_amount_4 = stripinput($_POST['var_don_amount_4']);
+    $var_amount_1 = stripinput($_POST['var_amount_1']);
+    $var_amount_2 = stripinput($_POST['var_amount_2']);
+    $var_amount_3 = stripinput($_POST['var_amount_3']);
+    $var_amount_4 = stripinput($_POST['var_amount_4']);
+	
+	$var_name_1 = stripinput($_POST['var_name_1']);
+	$var_name_2 = stripinput($_POST['var_name_2']);
+	$var_name_3 = stripinput($_POST['var_name_3']);
+	$var_name_4 = stripinput($_POST['var_name_4']);
 
-    $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_don_amount_1' WHERE subtype=1");
-    $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_don_amount_2' WHERE subtype=2");
-    $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_don_amount_3' WHERE subtype=3");
-    $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_don_amount_4' WHERE subtype=4");
+    $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_amount_1' WHERE subtype=1");
+    $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_amount_2' WHERE subtype=2");
+    $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_amount_3' WHERE subtype=3");
+    $result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET value='$var_amount_4' WHERE subtype=4");
+	
+	$result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET name='$var_name_1' WHERE subtype=1");
+	$result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET name='$var_name_2' WHERE subtype=2");
+	$result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET name='$var_name_3' WHERE subtype=3");
+	$result = dbquery("UPDATE " . DB_CCP_PAYPAL . " SET name='$var_name_4' WHERE subtype=4");
     echo $gespeichert;
 }
 
@@ -268,10 +271,10 @@ if ($paypal != '0') {
         </tr>
         <tr>
             <td class='tbl1'>" . $locale['ccp184'] . "</td>";
-    echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypal();' id='paypal_btn' name='paypal_button' class='textbox paypal' value='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' maxlength='300' style='width:100%;'><img id='paypal_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
+    echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypal();' id='paypal_btn' name='paypal_button' class='textbox ccp_paypal' value='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' maxlength='300' style='width:100%;'><img id='paypal_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
     echo"<tr>
-            <td class='tbl1'>" . $locale['ccp185'] . "</td>";
-    echo"<td title='" . $locale['ccp192'] . "' class='tbl1' style='vertical-align: middle;'><input onchange='updatePaypalSubmit();' id='paypal_submit_btn' name='paypal_submit_button' class='textbox paypal' value='" . (($ed_paypal_submit_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_submit_button) . "' maxlength='300' style='width:100%;'><img id='paypal_submit_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
+            <td class='tbl2'>" . $locale['ccp185'] . "</td>";
+    echo"<td title='" . $locale['ccp192'] . "' class='tbl2' style='vertical-align: middle;'><input onchange='updatePaypalSubmit();' id='paypal_submit_btn' name='paypal_submit_button' class='textbox ccp_paypal' value='" . (($ed_paypal_submit_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_submit_button) . "' maxlength='300' style='width:100%;'><img id='paypal_submit_btn_img' src='" . (($ed_paypal_button == '') ? "https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" : $ed_paypal_button ) . "' alt='paypal_button' style='max-height:80px; max-width:80px;'/></td></tr>";
     echo"<tr>
             <td class='tbl1'>" . $locale['ccp186'] . "</td>
             <td class='tbl1'><input name='paypal_cancel_url' class='textbox' value='$ed_paypal_cancel_url' maxlength='200' style='width:100%;'></td>

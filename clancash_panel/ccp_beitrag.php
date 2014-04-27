@@ -1,26 +1,24 @@
 <?php
-
-/* --------------------------------------------------------------+
-  | PHP-Fusion 7 Content Management System             			|
-  +--------------------------------------------------------------+
-  | Copyright © 2002 - 2013 Nick Jones                 			|
-  | http://www.php-fusion.co.uk/                       			|
-  +--------------------------------------------------------------+
-  | Infusion: ClanCash                                 			|
-  | Filename: ccp_admin_panel.php                      			|
-  | Author:                                            			|
-  | RedDragon(v6) 	    http://www.efc-funclan.de      			|
-  | globeFrEak (v7) 	http://www.cwclan.de           			|
-  | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
-  +--------------------------------------------------------------+
-  | This program is released as free software under the			|
-  | Affero GPL license. You can redistribute it and/or			|
-  | modify it under the terms of this license which you			|
-  | can read by viewing the included agpl.txt or online			|
-  | at www.gnu.org/licenses/agpl.html. Removal of this			|
-  | copyright header is strictly prohibited without				|
-  | written permission from the original author(s).				|
-  +-------------------------------------------------------------- */
+/*--------------------------------------------------------------+
+ | PHP-Fusion 7 Content Management System             		|
+ +--------------------------------------------------------------+
+ | Copyright © 2002 - 2013 Nick Jones                 		|
+ | http://www.php-fusion.co.uk/                       		|
+ +--------------------------------------------------------------+
+ | Infusion: ClanCash                                 		|
+ | Author:                                            		|
+ | RedDragon(v6) 	    http://www.efc-funclan.de      	|
+ | globeFrEak (v7) 		http://www.cwclan.de           	|
+ | GUL-Sonic (v7.02)	http://www.germanys-united-legends.de 	|
+ +--------------------------------------------------------------+
+ | This program is released as free software under the		|
+ | Affero GPL license. You can redistribute it and/or		|
+ | modify it under the terms of this license which you		|
+ | can read by viewing the included agpl.txt or online		|
+ | at www.gnu.org/licenses/agpl.html. Removal of this		|
+ | copyright header is strictly prohibited without		|
+ | written permission from the original author(s).		|
+ +--------------------------------------------------------------*/
 if (!defined("IN_FUSION") || !IN_FUSION)
     die("Access denied!");
 
@@ -33,7 +31,7 @@ include_once INFUSIONS . "clancash_panel/ccp_functions.php";
 
 if (!checkgroup($set_member_id) && !checkgroup($set_admin_id))
     redirect("../../login.php");
-$view_jahr = (isset($_POST['view_jahr'])) ? $_POST['view_jahr'] : $akt_jahr;
+$view_jahr = (isset($_POST['filter_jahr'])) ? $_POST['filter_jahr'] : $akt_jahr;
 $view = (isset($_POST['view'])) ? $_POST['view'] : "";
 $openkonten = (isset($_POST['view'])) ? "on" : "off";
 $openview = (isset($_POST['view_jahr'])) ? "on" : "off";
@@ -43,24 +41,11 @@ $box_img_view = ($openview == "on" ? "off" : "on");
 $box_img_graph = ($opengraph == "on" ? "off" : "on");
 
 echo"<form name='zahlungen' method='post' enctype='multipart/form-data' action='" . FUSION_SELF . "'>
-    <table class='tbl-border' cellpadding='1' width='100%'>
-        <tr>
-            <td colspan='13'>&nbsp;</td>
-        </tr>
-        <tr class='tbl1'>
-            <td style='border:0; width:10%;' align='center'><select name='view_jahr' class='textbox' style='text-align:center;' onChange='document.zahlungen.submit();'>\n";
-$admin_filter = ($is_admin == 0 ? "WHERE geloescht='0'" : "");
-$data = dbarray(dbquery("SELECT MIN(jahr) AS min FROM " . DB_CCP_BUCHUNGEN . " $admin_filter"));
-$jahre = $akt_jahr - $data['min'] + 1;
-$jahr = $akt_jahr - $jahre;
-while ($jahr < $akt_jahr) {
-    $jahr = $jahr + 1;
-    echo "<option" . ($jahr == $view_jahr ? " selected" : "") . " value='$jahr' style='text-align:center'>$jahr</option>\n";
-}
-echo"</select></td>";
+    <table class='tbl-border tbl_ccp' cellpadding='1'>
+    <td></td>";
 $monat = explode("|", $locale['shortmonths']);
 for ($sp = 0; $sp < 12; $sp++) {
-    echo "<td style='width:7%;' align='center'>" . $monat[$sp + 1] . "</td>";
+    echo "<td style='width:7%;'>" . $monat[$sp + 1] . "</td>";
 }
 echo"</tr>";
 if ($set_member_id == 0 || 101 || 102 || 103) {
@@ -75,7 +60,7 @@ if ($set_member_id == 0 || 101 || 102 || 103) {
 while ($data = dbarray($result)) {
     for ($count_monat = 1; $count_monat < 13; $count_monat++) {
         $db_total = dbarray(dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='" . $data['user_id'] . "' AND geloescht='0'"));
-        $summe = number_format($db_total['total'], 2, ',', '.');
+        $summe = number_format($db_total['total'], 2, $locale['ccp006'], $locale['ccp007']);
         ${"total_" . $count_monat} = $summe;
         ${"total_op" . $count_monat} = $db_total['total'];
     }
@@ -95,9 +80,9 @@ while ($data = dbarray($result)) {
         $username = $name = $placeholder_name;
     }
     echo"<tr>
-              <td class='$cell_color' align='left'><img src='" . INFUSIONS . "clancash_panel/images/user_16.png' alt='" . $locale['user1'] . "&nbsp;" . $name . "' title='" . $locale['user1'] . "&nbsp;" . $name . "'>&nbsp;" . $username . "</td>\n";
+              <td class='$cell_color ccp_left'><img src='" . INFUSIONS . "clancash_panel/images/user_16.png' alt='" . $locale['user1'] . "&nbsp;" . $name . "' title='" . $locale['user1'] . "&nbsp;" . $name . "'>&nbsp;" . $username . "</td>\n";
     for ($c = 1; $c < 13; $c++) {
-        echo"<td class='$cell_color' align='center'>" . ${"col_" . $c} . "</td>\n";
+        echo"<td class='$cell_color'>" . ${"col_" . $c} . "</td>\n";
     }
     echo"</tr>";
 }
@@ -107,8 +92,8 @@ if (dbrows($result) > 0) {
     while ($data = dbarray($result)) {
         for ($count_monat = 1; $count_monat < 13; $count_monat++) {
             $db_total = dbarray(dbquery("SELECT ROUND(SUM(valuta), 2) AS total FROM " . DB_CCP_BUCHUNGEN . " WHERE jahr='$view_jahr' AND monat='$count_monat' AND user_id='0' AND geloescht='0' AND kat_id='" . $data['id'] . "'"));
-            $summe = number_format($db_total['total'], 2, ',', '.');
-            ${"total_" . $count_monat} = $summe;            
+            $summe = number_format($db_total['total'], 2, $locale['ccp006'], $locale['ccp007']);
+            ${"total_" . $count_monat} = $summe;
         }
         $cell_color = ($i % 2 == 0 ? "tbl1" : "tbl2");
         $i++;
@@ -116,9 +101,9 @@ if (dbrows($result) > 0) {
             ${"col_" . $nr} = (${"total_" . $nr} <> 0 ? ${"total_" . $nr} . " $set_symbol" : "");
         }
         echo"<tr>
-              <td class='$cell_color' align='left'><img src='" . INFUSIONS . "clancash_panel/images/cats_16.png' alt='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "' title='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "'>&nbsp;" . $data['kat_klartext'] . "</td>\n";
+              <td class='$cell_color ccp_left'><img src='" . INFUSIONS . "clancash_panel/images/cats_16.png' alt='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "' title='" . $locale['ccp102'] . "&nbsp;" . $data['kat_klartext'] . "'>&nbsp;" . $data['kat_klartext'] . "</td>\n";
         for ($c = 1; $c < 13; $c++) {
-            echo"<td class='$cell_color' align='center'>" . ${"col_" . $c} . "</td>\n";
+            echo"<td class='$cell_color'>" . ${"col_" . $c} . "</td>\n";
         }
         echo"</tr>";
     }
