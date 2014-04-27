@@ -22,7 +22,7 @@
 if (!defined("IN_FUSION") || !IN_FUSION) die("Access denied!");
 
 echo"<h4 class='ccp_navi'>\n
-	 <span><img src='" . INFUSIONS . "clancash_panel/images/overview.png' alt='".$locale['ccp143']."'><a class='navi' href='ccp_clancash.php".$aidlink."'>".$locale['ccp311']."</a></span>\n
+	 <span><img src='" . INFUSIONS . "clancash_panel/images/overview.png' alt='".$locale['ccp143']."'><a class='navi' href='ccp_clancash.php".$aidlink."'>".$locale['ccp165']."</a></span>\n
      <span><img src='" . INFUSIONS . "clancash_panel/images/admin_panel.png' alt='".$locale['ccp143']."'><a class='navi' href='ccp_admin_panel.php".$aidlink."'>".$locale['ccp143']."</a></span>\n
      <span><img src='" . INFUSIONS . "clancash_panel/images/cats.png' alt='".$locale['ccp127']."'><a class='navi' href='ccp_cats.php'>".$locale['ccp127']."</a></span>\n
      <span><img src='" . INFUSIONS . "clancash_panel/images/konto.png' alt='".$locale['ccp135']."'><a class='navi' href='ccp_konten.php'>".$locale['ccp135']."</a></span>\n
