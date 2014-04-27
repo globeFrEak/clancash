@@ -55,5 +55,7 @@ if (cURLcheck()) {
     $url = "https://api.github.com/repos/globeFrEak/clancash/releases";
     $file_content = getTag(cURLcheck(), $url);
     $new_version = $file_content['0']['tag_name'];
+    // DEBUG
+    // $new_version = 1.5;
 }
 ?>
