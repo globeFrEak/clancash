@@ -62,8 +62,16 @@ while ($db_total = dbarraynum($result)) {
 }
 //
 // Monats Kalkulation abzueglich der Ausgaben
-$totalmonat = array_fill(0, 12, 0);
-for ($m = 0; $m <= 11; $m++) {
+if ($view_jahr == date('Y')){
+    $monat = date('n');
+    $for_monat = $monat - 1;
+} else {
+    $monat = 12;
+    $for_monat = $monat - 1;
+}
+$totalmonat = array_fill(0, $monat, 0);
+$ticksmonat = array_fill(0, $monat, 0);
+for ($m = 0; $m <= $for_monat; $m++) {
     if ($totalein[$m] === 0) {
         $totalmonat[$m] = (double) $totalaus[$m];
     } elseif ($totalaus[$m] === 0) {
@@ -77,35 +85,40 @@ for ($m = 0; $m <= 11; $m++) {
     } else {
         $i = $m - 1;
         $totalmonat[$m] = round($totalmonat[$m] + $totalmonat[$i], 2);
-    }
+    }    
     $totalaus[$m] = round($totalaus[$m], 2);
     $totalein[$m] = round($totalein[$m], 2);
+    // erzeuge die Monate aus der locales
+    $mon = $m + 1;
+    $ticksmonat[$m] = $locale['ccp_monat_'."$mon"];
 }
 //
 // Arrays in JSON Enkodieren
 $totalein_json = json_encode($totalein);
 $totalaus_json = json_encode($totalaus);
 $totalmonat_json = json_encode($totalmonat);
+$ticksmonat_json = json_encode($ticksmonat);
 
 // Graph definition als Javascript
 add_to_footer("<script type='text/javascript'>
 $(document).ready(function(){
     var s1 = " . $totalein_json . ";
     var s2 = " . $totalaus_json . ";
-    var m1 = " . $totalmonat_json . ";    
+    var m1 = " . $totalmonat_json . "; 
+    var m_ticks = " . $ticksmonat_json . ";
     
-    var ticks = ['" . $locale['ccp_jan'] . "',
-        '" . $locale['ccp_feb'] . "',
-        '" . $locale['ccp_mar'] . "', 
-        '" . $locale['ccp_apr'] . "',
-        '" . $locale['ccp_may'] . "',
-        '" . $locale['ccp_jun'] . "',
-        '" . $locale['ccp_jul'] . "',
-        '" . $locale['ccp_aug'] . "',
-        '" . $locale['ccp_sep'] . "',
-        '" . $locale['ccp_okt'] . "',
-        '" . $locale['ccp_nov'] . "',
-        '" . $locale['ccp_dez'] . "']; 
+    var ticks = ['" . $locale['ccp_monat_1'] . "',
+        '" . $locale['ccp_monat_2'] . "',
+        '" . $locale['ccp_monat_3'] . "', 
+        '" . $locale['ccp_monat_4'] . "',
+        '" . $locale['ccp_monat_5'] . "',
+        '" . $locale['ccp_monat_6'] . "',
+        '" . $locale['ccp_monat_7'] . "',
+        '" . $locale['ccp_monat_8'] . "',
+        '" . $locale['ccp_monat_9'] . "',
+        '" . $locale['ccp_monat_10'] . "',
+        '" . $locale['ccp_monat_11'] . "',
+        '" . $locale['ccp_monat_12'] . "'];
             
     $.jqplot.sprintf.thousandsSeparator = '" . $locale['ccp007'] . "';
     $.jqplot.sprintf.decimalMark = '" . $locale['ccp006'] . "';
@@ -179,7 +192,7 @@ $(document).ready(function(){
         axes: {
             xaxis: {
                 renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: ticks
+                ticks: m_ticks
             },
             yaxis: {
                 tickOptions: {formatString: '%\'.2f " . $set_symbol . "'}
