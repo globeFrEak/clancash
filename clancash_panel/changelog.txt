@@ -28,7 +28,8 @@ ClanCash v1.5
 -Seiten Navigation FIX
 -Verwendungszwecke bei Paypal Zahlung
 -Style.css hinzugefügt und HTML Styles in die Style.css übernommen
--
+-neue Icons für Links (Buchung löschen, Buchung bearbeiten, Versionprüfung, ...)
+-Größenreduzierung der Infusion
 
 ClanCash v1.4
 -------------
