@@ -64,12 +64,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <input type='hidden' name='cmd' value='_xclick' /> 
 <input type='hidden' name='business' value='" . $paypal_email . "' />
 <input type='radio' name='amount' value='' id='ccp_pay_var'>
-<input type='text' name='amount' value='0.00' size='6' id='ccp_pay_amo' />&#8364;
-<input type='textbox' name='f_beitrag' size='31' maxlength='30' /><br/>$AMOUNTS ";
-
-        echo "<input type='text' disabled size='31' name='item_name' value='' id='ccp_pay_name' />";
-
-        echo "
+<input type='text' name='amount' value='0.00' size='6' id='ccp_pay_amo' />&#8364;<br/>
+$AMOUNTS 
+<input type='hidden' size='31' name='item_name' value='' id='ccp_pay_name' />
 <input type='hidden' name='rm' value='2' />
 <input type='hidden' name='no_shipping' value='0' />
 <input type='hidden' name='currency_code' value='EUR' />
@@ -79,24 +76,17 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <center><input type='image' src='http://www.paypal.com/de_DE/i/btn/x-click-but04.gif' style='border-width:0' name='I1' /></center>
 
 </form>";
-        closetable();
-    }
+
+closetable();
+}
 } else {
     opentable($locale['ccp199']);
     echo "<h3>" . $locale['ccp200'] . "</h3>";
     closetable();
 }
 
-
-- /* So funktioniert es nicht ist klar 
-          -	if ($AMOUNTS !="" or $AMOUNTS !=0){
-          -	echo "<input type=\"hidden\" name=\"item_name\" value=\"".$data['name']." von ".$userdata['user_name']." \" />";
-          -	}
-          -	else {
-          -	echo "<input type=\"hidden\" name=\"item_name\" value=\"".$f_beitrag." von ".$userdata['user_name']." \" />";
-          -	} */
 // Javascript zum Formular auslesen
-        add_to_footer("<script type='text/javascript'>
+add_to_footer("<script type='text/javascript'>
 $(document).ready(function(){
 // setzt den betrag und den user in die hidden box
     $('#ccp_pay_var').change(function(){
