@@ -65,7 +65,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <input type='hidden' name='business' value='" . $paypal_email . "' />
 <input type='radio' name='amount' value='' id='ccp_pay_var'>
 <input type='text' name='amount' value='0.00' size='6' id='ccp_pay_amo' />&#8364;
-<input type='textbox' name='verw' value='' placeholder='anderer Verwendungszweck' size='31' maxlength='30' id='ccp_pay_verw'/><br/>
+<input type='textbox' name='verw' value='' placeholder='".$locale['ccp156']."' size='31' maxlength='30' id='ccp_pay_verw'/><br/>
 $AMOUNTS 
 <input type='hidden' size='31' name='item_name' value='' id='ccp_pay_name' />
 <input type='hidden' name='rm' value='2' />
@@ -92,40 +92,40 @@ $(document).ready(function(){
 // setzt den betrag und den user in die hidden box
     $('#ccp_pay_var').change(function(){
         if ($('#ccp_pay_var').is(':checked')){
-            $('#ccp_pay_name').val($('#ccp_pay_amo').val() + ' Verwendungszweck: ' + $('#ccp_pay_verw').val() + ' von " . $userdata['user_name'] . "');
+            $('#ccp_pay_name').val($('#ccp_pay_amo').val() + ' ".$locale['ccp156'].": ' + $('#ccp_pay_verw').val() + ' ".$locale['ccp164']." " . $userdata['user_name'] . "');
         } 
     });
     
 // ändert den betrag der hidden box wenn dieser verändert wird
     $('#ccp_pay_amo').change(function(){
         if ($('#ccp_pay_var').is(':checked')){
-            $('#ccp_pay_name').val($('#ccp_pay_amo').val() + ' Verwendungszweck: ' + $('#ccp_pay_verw').val() + ' von " . $userdata['user_name'] . "');
+            $('#ccp_pay_name').val($('#ccp_pay_amo').val() + ' ".$locale['ccp156'].": ' + $('#ccp_pay_verw').val() + ' ".$locale['ccp164']." " . $userdata['user_name'] . "');
         }
     });
 	
 // ändert den Verwendungszweck der hidden box wenn dieser verändert wird
     $('#ccp_pay_verw').change(function(){
         if ($('#ccp_pay_var').is(':checked')){
-            $('#ccp_pay_name').val($('#ccp_pay_amo').val() + ' Verwendungszweck: ' + $('#ccp_pay_verw').val() + ' von " . $userdata['user_name'] . "');
+            $('#ccp_pay_name').val($('#ccp_pay_amo').val() + ' ".$locale['ccp156'].": ' + $('#ccp_pay_verw').val() + ' ".$locale['ccp164']." " . $userdata['user_name'] . "');
         }
     });
 
 // liest die aktive checkbox nach dem anklicken aus
     $('.ccp_pay_class').change(function(){
         if ($(this).is(':checked')){
-            $('#ccp_pay_name').val($(this).next('span').text() + ' von " . $userdata['user_name'] . "');
+            $('#ccp_pay_name').val($(this).next('span').text() + ' ".$locale['ccp164']." " . $userdata['user_name'] . "');
         }
     });
 
 // liest die aktive checkbox nach dem seiten aufbau aus
     $('.ccp_pay_class').each(function(){
         if ($(this).is(':checked')){
-            $('#ccp_pay_name').val($(this).next('span').text() + ' von " . $userdata['user_name'] . "');
+            $('#ccp_pay_name').val($(this).next('span').text() + ' ".$locale['ccp164']." " . $userdata['user_name'] . "');
         }
     });      
 });
 </script>");
 
-
+echo " <a href='".BASEDIR."infusions/clancash_panel/ccp_clancash.php'><strong>".$locale['ccp311']."</strong></a>";
 require_once THEMES . "templates/footer.php";
 ?>
