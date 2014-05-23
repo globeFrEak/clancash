@@ -58,6 +58,7 @@ function dbquery_ccp_update($query) {
 opentable($locale['ccp306'].": v1.5 => v1.6");
 
 $mysql[] = "UPDATE ".DB_CCP_SETTINGS." SET version='1.6'";
+$mysql[] = "ALTER TABLE ".DB_CCP_SETTINGS." ADD superadmin_pn BOOL NOT NULL";
 $mysql[] = "UPDATE ".DB_CCP_SETTINGS." SET superadmin_pn='1'";
 
 $mysql[] = "UPDATE ".DB_INFUSIONS." SET inf_version='1.6' WHERE inf_folder='clancash_panel'";
