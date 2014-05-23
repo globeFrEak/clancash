@@ -45,6 +45,20 @@ include "ccp_filter.php";
 include "ccp_buchungen.php";
 closetable();
 
+include_once INFUSIONS . "clancash_panel/ccp_versionschecker.php";
+
+	if (version_compare($new_version, $ccp_version, '>') AND $new_version > 0) {
+	if ($superadmin_pn == 1) {
+	/* Start Send PM Notification to Superadmin */
+	$pm_subject = $locale['ccp314'];
+	$pm_message = $locale['ccp315'];
+	$result = dbquery("INSERT INTO ".$db_prefix."messages (message_to, message_from, message_subject, message_message, message_smileys, message_read, message_datestamp, message_folder) 
+				  VALUES( '4', '1', '".$pm_subject."', '<br>".$pm_message."', 'n', '0', '".time()."', '0')");
+	$result1 = dbquery("UPDATE ".DB_CCP_SETTINGS." SET superadmin_pn='0'");
+	/* End Send PM Notification to Superadmin */
+}
+}
+
 include "ccp_copyright.php";
 require_once THEMES . "templates/footer.php";
 ?>

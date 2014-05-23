@@ -52,6 +52,7 @@ $ed_kat = "0";
 $ed_user_id = "0";
 $ed_check_p = "selected ";
 $ccp_version = $data['version'];
+$superadmin_pn = $data['superadmin_pn'];
 
 add_to_head("<script type='text/javascript'>
     function ccp_ask_first(link){

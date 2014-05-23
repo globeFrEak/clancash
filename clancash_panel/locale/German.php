@@ -139,6 +139,8 @@ $locale['ccp310'] = "Update erfolgreich";
 $locale['ccp311'] = "zur&uuml;ck";
 $locale['ccp312'] = "Aktuellste Version auf github.com";
 $locale['ccp313'] = "Der Ordner pChart kann nun vom Server gel&ouml;scht werden, da dieser nicht l&auml;nger ben&ouml;tigt wird";
+$locale['ccp314'] = "Es ist eine neue Version des ClanCash Panels verfügbar";
+$locale['ccp315'] = "Sie können die aktuellste Version auf [url=http://globefreak.github.io/clancash/]github.com[/url] downloaden. <br><br> M.f.G. <br>[url=http://cwclan.de]globeFrEak[/url] & [url=http://germanys-united-legends.de]GUL-Sonic[/url]";
 
 $locale['ccp999'] = "Wirklich löschen?";
 

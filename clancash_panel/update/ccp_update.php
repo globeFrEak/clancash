@@ -37,6 +37,10 @@ switch ($ccp_version):
 	echo "<tr><td colspan='4' class='tbl1'><a href='".INFUSIONS."clancash_panel/update/update_from_v1.4.php".$aidlink."'>".$locale['ccp306'].": 1.4 => 1.5</a></td></tr>";
 	break;
 	
+	case "1.5":
+	echo "<tr><td colspan='4' class='tbl1'><a href='".INFUSIONS."clancash_panel/update/update_from_v1.5.php".$aidlink."'>".$locale['ccp306'].": 1.5 => 1.6</a></td></tr>";
+	break;
+	
 	default :
 	$uptodate = 1;
 	

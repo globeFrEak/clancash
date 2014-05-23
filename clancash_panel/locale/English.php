@@ -139,6 +139,8 @@ $locale['ccp310'] = "update successful";
 $locale['ccp311'] = "back";
 $locale['ccp312'] = "Latest version on github.com";
 $locale['ccp313'] = "The pChart folder can now be deleted from the server, since this is no longer needed";
+$locale['ccp314'] = "There is a new version of ClanCash panel available";
+$locale['ccp315'] = "You can download the latest version at [url=http://globefreak.github.io/clancash/]github.com[/url]. <br><br> Greetings from <br>[url=http://cwclan.de]globeFrEak[/url] & [url=http://germanys-united-legends.de]GUL-Sonic[/url]";
 
 $locale['ccp999'] = "are u sure?";
 
