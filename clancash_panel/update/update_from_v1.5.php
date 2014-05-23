@@ -85,7 +85,6 @@ if($errors) {
 	echo "<p><p>&nbsp;</p>";
 	echo "<p align='center'><font color='green'><b>".$locale['ccp310']."</b></font></p>";
 	echo "<p><p>&nbsp;</p>";
-	echo "<p><font color='red'><b>".$locale['ccp313']."</b></font></p>";
 }
 echo "<br /><a href='".INFUSIONS."clancash_panel/ccp_settings_panel.php".$aidlink."'>".$locale['ccp311']."</a><br /><br />";
 
