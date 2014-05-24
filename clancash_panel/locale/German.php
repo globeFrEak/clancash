@@ -24,7 +24,7 @@
 
 $locale['ccp000'] = "ClanCash";
 $locale['ccp001'] = "Panel f&uuml;r die Verwaltung der Clan- oder Vereins-kasse.";
-$locale['ccp002'] = "1.5";
+$locale['ccp002'] = "1.6";
 $locale['ccp003'] = "Spenden";
 $locale['ccp004'] = "Einnahmen";
 $locale['ccp005'] = "Ausgaben";
